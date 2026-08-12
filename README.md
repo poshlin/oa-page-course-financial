@@ -84,6 +84,9 @@
 | 造型單品 100–1,800 金幣、Lv.2 起解鎖 | staging §二-15（商城實測） |
 | 8 月排行榜／月度結算倒數 | staging §二-11（排行榜實測） |
 | 課程地圖節點（18 關各關標題與型態） | course-content.md §一（第 1 課完整 18 關表） |
+| hero 頂欄複刻（bg #F9EDCF／底線 4px #F0DCA8／白色藥丸統計／右上頭像）、經驗值與金幣圖示 | 2026-08-12 實測平台 header DOM；圖示＝平台原件 `asset-overrides/icons/exp.png`、`coin.png` |
+| `assets/avatar-student.png` 學生角色頭像 | 平台原件五層造型合成（`cms-mirror/cosmetics/`：背景＋`_base`＋制服＋雀斑＋綠蘑菇髮），即測試帳號小明的真實造型；本機 PIL 合成後縮至 96px |
+| 頂欄經驗值 290 | staging §二-10（該帳號簽到前經驗值） |
 
 ## 紅線（改版時逐條自查）
 
