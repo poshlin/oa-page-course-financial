@@ -200,6 +200,21 @@
 
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
     section { padding: 72px 0; }
+    section[id] { scroll-margin-top: 76px; }
+
+    /* 長頁浮動索引：捲過 hero 後出現、標示目前章節、到最終 CTA 隱藏（比照麥塊 Python 頁做法） */
+    .section-nav { position: fixed; inset: 0 0 auto; z-index: 95; background: rgba(255,249,240,.97); border-bottom: 4px solid var(--gold); box-shadow: 0 4px 4px rgba(0,0,0,.12); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-110%); transition: opacity .22s ease, transform .28s ease, visibility 0s linear .28s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .section-nav.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition-delay: 0s; }
+    .section-nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; min-height: 56px; display: flex; align-items: center; gap: 12px; }
+    .section-nav-brand { font-size: 0.88rem; font-weight: 800; white-space: nowrap; }
+    .section-nav-toggle { display: none; }
+    .section-nav-links { display: flex; justify-content: center; flex: 1; min-width: 0; gap: 2px; }
+    .section-nav-links a { position: relative; min-height: 56px; display: inline-flex; align-items: center; padding: 0 10px; color: var(--text-2); font-size: 0.84rem; font-weight: 700; text-decoration: none; white-space: nowrap; transition: color .18s ease, background-color .18s ease; }
+    .section-nav-links a::after { content: ''; position: absolute; left: 10px; right: 10px; bottom: 0; height: 3px; background: var(--primary); transform: scaleX(0); transition: transform .18s ease; }
+    .section-nav-links a:hover, .section-nav-links a[aria-current="location"] { color: var(--text); background: rgba(245,166,35,.16); }
+    .section-nav-links a[aria-current="location"]::after { transform: scaleX(1); }
+    .section-nav-cta { flex: 0 0 auto; padding: 8px 16px; border: 2px solid transparent; border-radius: var(--r-pill); background: var(--primary); color: var(--text); font-family: inherit; font-size: 0.82rem; font-weight: 800; cursor: pointer; white-space: nowrap; box-shadow: var(--shadow-soft); }
+    .section-nav-cta:hover { box-shadow: var(--shadow); }
 
 
     .eyebrow { display: inline-block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text); background: var(--cream-2); border: 2px solid var(--gold); border-radius: var(--r-pill); padding: 4px 14px; margin-bottom: 18px; }
@@ -468,6 +483,17 @@
       section { padding: 56px 0; }
       .hero-grid, .report-grid, .mod-invest, .mod-shop, .fate-row { grid-template-columns: 1fr; }
       .grid-3, .grid-4, .flow, .modules, .showcase, .char-band { grid-template-columns: 1fr; }
+      .section-nav-inner { flex-wrap: wrap; padding: 0 16px; }
+      .section-nav-brand { display: none; }
+      .section-nav-toggle { flex: 1; min-height: 52px; display: flex; align-items: center; gap: 8px; background: none; border: 0; cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 800; color: var(--text); }
+      .section-nav-current { flex: 1; text-align: left; }
+      .section-nav-chevron { transition: transform .2s ease; }
+      .section-nav.is-open .section-nav-chevron { transform: rotate(180deg); }
+      .section-nav-links { flex: 0 0 100%; flex-direction: column; gap: 0; max-height: 0; overflow: hidden; transition: max-height .28s ease; }
+      .section-nav.is-open .section-nav-links { max-height: 420px; }
+      .section-nav-links a { min-height: 46px; width: 100%; justify-content: flex-start; border-top: 1px solid var(--gold); }
+      .section-nav-links a::after { display: none; }
+      .section-nav-cta { display: none; }
       .mod-invest { grid-column: auto; }
       .flow .card { padding-top: 30px; }
       .sticky-cta:not([hidden]) { display: block; }
@@ -477,6 +503,26 @@
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <nav class="section-nav" aria-label="章節快速導覽" aria-hidden="true">
+    <div class="section-nav-inner">
+      <span class="section-nav-brand">橘蘋財商素養課程</span>
+      <button type="button" class="section-nav-toggle" aria-expanded="false" aria-controls="navLinks">
+        <span class="section-nav-current">為什麼需要</span>
+        <span class="section-nav-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="section-nav-links" id="navLinks">
+        <a href="#why" data-section="why">為什麼需要</a>
+        <a href="#class" data-section="class">上課方式</a>
+        <a href="#how" data-section="how">平台機制</a>
+        <a href="#course" data-section="course">課程內容</a>
+        <a href="#world" data-section="world">課堂之外</a>
+        <a href="#report" data-section="report">學習週報</a>
+        <a href="#faq" data-section="faq">常見問題</a>
+      </div>
+      <button type="button" class="section-nav-cta" data-oa-cta="nav">預約免費試聽</button>
+    </div>
+  </nav>
 
   <main id="main">
     <!-- Hero -->
@@ -1007,7 +1053,7 @@
     </section>
 
     <!-- 底部 CTA -->
-    <section class="cta-band">
+    <section class="cta-band" id="cta">
       <div class="wrap">
         <h2 class="h2">孩子的第一堂金錢課，<br>讓它在遊戲裡發生</h2>
         <p>50 分鐘免費試聽：和正式課一樣的雙師模式，孩子實際上課、實際操作平台。</p>
@@ -1021,6 +1067,49 @@
   <button type="button" class="sticky-cta" data-oa-cta="sticky" hidden>預約免費試聽<span>50 分鐘・體驗雙師上課與平台</span></button>
 
   <script>
+    /* 長頁浮動索引：捲過 hero CTA 後出現、標示目前章節、到最終 CTA 隱藏、手機下拉 */
+    (function () {
+      var nav = document.querySelector('.section-nav');
+      var heroCta = document.querySelector('[data-oa-cta="hero"]');
+      var finalCta = document.querySelector('#cta');
+      if (!nav || !heroCta || !finalCta) return;
+      var toggle = nav.querySelector('.section-nav-toggle');
+      var currentLabel = nav.querySelector('.section-nav-current');
+      var links = Array.prototype.slice.call(nav.querySelectorAll('.section-nav-links a'));
+      var sections = links.map(function (link) {
+        return { label: link.textContent.trim(), link: link, element: document.getElementById(link.getAttribute('data-section')) };
+      }).filter(function (i) { return i.element; });
+      var ticking = false;
+      function closeMenu() { nav.classList.remove('is-open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); }
+      function setVisible(show) { nav.classList.toggle('is-visible', show); nav.setAttribute('aria-hidden', show ? 'false' : 'true'); if (!show) closeMenu(); }
+      function setActive(item) {
+        sections.forEach(function (s) { if (s === item) s.link.setAttribute('aria-current', 'location'); else s.link.removeAttribute('aria-current'); });
+        if (currentLabel && item) currentLabel.textContent = item.label;
+      }
+      function updateNav() {
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var passedHero = heroCta.getBoundingClientRect().bottom < 0;
+        var reachedFinal = finalCta.getBoundingClientRect().top < vh;
+        setVisible(passedHero && !reachedFinal);
+        var marker = nav.offsetHeight + 28;
+        var active = sections[0];
+        sections.forEach(function (s) { if (s.element.getBoundingClientRect().top <= marker) active = s; });
+        setActive(active);
+        ticking = false;
+      }
+      function requestUpdate() { if (ticking) return; ticking = true; window.requestAnimationFrame(updateNav); }
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate);
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var open = nav.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+      links.forEach(function (a) { a.addEventListener('click', closeMenu); });
+      updateNav();
+    })();
+
     (function () {
       var sticky = document.querySelector('.sticky-cta');
       if (!sticky) return;
