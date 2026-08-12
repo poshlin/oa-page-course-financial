@@ -461,8 +461,9 @@
     .mid-cta { text-align: center; padding: 0 0 72px; }
 
     /* FAQ */
-    .faq-list { max-width: 780px; }
-    details.faq { background: var(--card); border: 2px solid var(--gold); border-radius: var(--r); margin-bottom: 14px; overflow: hidden; }
+    /* 兩欄：8 題收合列直向堆疊是長度主因，改雙欄減半（加寬本身省不到，因為收合列固定一行高） */
+    .faq-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+    details.faq { background: var(--card); border: 2px solid var(--gold); border-radius: var(--r); overflow: hidden; }
     details.faq summary { list-style: none; cursor: pointer; font-weight: 800; padding: 18px 22px; position: relative; padding-right: 48px; }
     details.faq summary::-webkit-details-marker { display: none; }
     details.faq summary::after { content: "▸"; position: absolute; right: 22px; top: 18px; color: var(--primary); transition: transform .15s ease; }
@@ -482,7 +483,7 @@
     @media (max-width: 860px) {
       section { padding: 56px 0; }
       .hero-grid, .report-grid, .mod-invest, .mod-shop, .fate-row { grid-template-columns: 1fr; }
-      .grid-3, .grid-4, .flow, .modules, .showcase, .char-band { grid-template-columns: 1fr; }
+      .grid-3, .grid-4, .flow, .modules, .showcase, .char-band, .faq-list { grid-template-columns: 1fr; }
       .section-nav-inner { flex-wrap: wrap; padding: 0 16px; }
       .section-nav-brand { display: none; }
       .section-nav-toggle { flex: 1; min-height: 52px; display: flex; align-items: center; gap: 8px; background: none; border: 0; cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 800; color: var(--text); }
@@ -588,7 +589,7 @@
 
     <!-- TLDR 結論先行 -->
     <div class="wrap">
-      <p class="tldr" id="tldr"><strong>「橘蘋財商素養課程」是橘子蘋果程式學苑為 3-7 年級孩子設計的財商課程，搭配專屬的「財商學習平台」練習。</strong>每週一堂 90 分鐘：前 50 分鐘雙師模式——課程影片講觀念、真人老師看著每個孩子的操作；後 40 分鐘「財商議題課」，老師帶著討論當週議題。課後平台開放，孩子在理財經營遊戲中領日薪、記帳、儲蓄生息、模擬投資、用保險面對突發風險；家長每週一收到學習週報。課程共 45 堂。課程由深耕台灣兒童與青少年程式教育 14 年的橘子蘋果推出。平台內所有金幣皆為模擬貨幣，非真實金錢，也不涉及任何真實金融交易或投資建議。</p>
+      <p class="tldr" id="tldr"><strong>「橘蘋財商素養課程」是橘子蘋果程式學苑為 3-7 年級孩子設計的財商課程，搭配專屬的「財商學習平台」練習。</strong>每週一堂 90 分鐘：前 50 分鐘雙師模式——課程影片講觀念、真人老師看著每個孩子的操作；後 40 分鐘「財商議題課」，老師帶著討論當週議題。課後平台開放，孩子在理財經營遊戲中領日薪、記帳、儲蓄生息、模擬投資、用保險面對突發風險；家長每週收到學習週報。課程共 45 堂。課程由深耕台灣兒童與青少年程式教育 14 年的橘子蘋果推出。平台內所有金幣皆為模擬貨幣，非真實金錢，也不涉及任何真實金融交易或投資建議。</p>
     </div>
 
     <!-- 01 痛點 -->
@@ -938,7 +939,7 @@
             <p class="kicker">06・家長看得到</p>
             <h2 class="h2">孩子在玩，<br>你看得到他學了什麼</h2>
             <ul>
-              <li>每週一自動生成上一週的學習報告</li>
+              <li>每週自動生成一份，整理孩子上一週的學習與理財紀錄</li>
               <li>雙軌記錄：上課進度（完成單元、活躍天數、升級進度）＋理財行為（資產配置、收支去向、投資／儲蓄／保險動作）</li>
               <li>附「可以和孩子一起聊聊」建議——直接給你開啟餐桌對話的切入點</li>
             </ul>
