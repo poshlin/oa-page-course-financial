@@ -1,0 +1,79 @@
+# oa-page-fin-platform — 財商學習平台 landing page
+
+橘子蘋果「財商學習平台」（內部代號 Coin Quest）的官網銷售頁。留單導向（data-oa-cta modal，母站提供）、不放價格。比照 classroom：自包含單一 `index.html`，注入 orangeapple.co，不自帶 header/footer。
+
+- 建立：2026-08-11（Claude ＋ 保旭）
+- 內容事實來源：`~/Documents/oa-coin-quest/research/`（`deck-transcript.md` 簡報 32 張逐字稿＋`staging-inventory.md` staging 17 畫面盤點）
+- 設計系統：`DESIGN.md`（Coin Quest 平台實測 token，非官網亮橘系）
+- 平台 staging 環境與測試帳號：不寫入本 repo（公開），詳見內部記憶 `project_oa_coin_quest_site` 與 `~/Documents/oa-coin-quest/research/`
+
+## 已拍板決策（2026-08-11 保旭）
+
+1. 對外名稱＝「財商學習平台」
+2. CTA＝留單（官網試聽 modal 機制，data-oa-cta）
+3. 部署比照 classroom（OrangeApple-Lab → 數位長注入）
+4. 堂數結構（45 堂）可放；**價格與 SKU 組合不放**（Albert 修正中）
+5. 視覺以平台自身 token 為準
+
+## 健檢紀錄
+
+- 2026-08-11 完整 12 人健檢（框架＝`Claude知識庫/OA_官網健檢多Agent框架.md`）：總分**暫定 74.6**（無 commit 故不給正式分）。判決與唯一修改清單見 `reports/00-VERDICT.md`，各專家原始報告見 `reports/01`～`11`。實證量測數據見 `AUDIT-EVIDENCE.md`。
+- 2026-08-11 P0 八項修畢＋閉環複審：總分**暫定 79.8**（＋5.2），四面向全數上升、零退步。見 `reports/12-CLOSEOUT.md`。
+- ✅ **課程結構已由保旭確認（2026-08-11）**：課程**就是 45 堂**；平台上的「課」＝「堂」，同一單位。staging 目前放了 **10 堂**，之後一堂一堂逐步補上——先前研究檔記載的「第一階段共 3 課」是**當時 staging 的建置進度**，不是產品結構，勿再據此推論課程規模。頁面統一用「堂」。
+- 時程：**9 月中前後上線**（保旭 2026-08-11 對話所述，非硬死線）。
+
+## 上線前待辦
+
+- [ ] **正式 URL 拍板**：目前全檔用占位 `/fin-platform/`（canonical、og:url、schema @id、oa.config.json 同步改）
+- [ ] **移除 noindex**：上線時把 robots 換成 `index, follow, max-image-preview:large, max-snippet:-1`
+- [ ] **og:image**：1200×630 尚未製作（head 目前刻意不放 og:image tag，補圖時一併加）
+- [ ] **真實素材**：課堂實境區已用平台課程原件（`assets/`，2026-08-11 自 staging 下載）；hero 與週報區仍為 CSS mockup，平台正式環境開放後決定換真截圖或保留。上線前與正式環境比對 assets 素材版本
+- [ ] favicon（注入母站後沿用官網，獨立預覽時缺）
+- [ ] git init ＋ commit → preflight（hook 強制）→ push `OrangeApple-Lab/oa-page-fin-platform`
+- [ ] 上線日更新 schema `dateModified`
+
+## 對外數字 → 來源對照
+
+| 頁面聲稱 | 來源 |
+|---|---|
+| 45 堂課程 | deck 第 28/30 張＋知識庫 §5.3；保旭 2026-08-11 核可堂數可放 |
+| 3-7 年級 | deck 第 30 張＋知識庫 §5.3 |
+| 超過 1,300 檔台股／ETF | staging `/market`「共 1363 筆」（盤點 §二-9） |
+| 9 種保險商品 | staging `/insurance`（盤點 §二-14，9 商品逐字） |
+| 每兩週結算利息 | staging `/savings` 原句（盤點 §二-13） |
+| 命運卡／「重感冒住院」情境 | staging 簽到流程＋`/cash` 真實流水（盤點 §二-10/12） |
+| 等級稱號「打工新手」起步 | staging `/check-in`（盤點 §二-10） |
+| 中・英・日三語 | deck 第 23 張＋staging 會員選單 |
+| 每週一自動學習週報／親子對話建議 | staging `/weekly-report`（盤點 §二-17） |
+| 模擬金幣免責 | staging 週報原句「以下皆為平台模擬金幣，並非真實金錢」 |
+| 14 年／10 萬+ 學員 | 記憶 project_oa_brand_facts |
+| 第 1 堂「支出與公益」拆成 18 關 | course-content.md §一（2026-08-11 真 Chrome 實測，修正舊盤點的 12 關） |
+| 投資模組安全聲明（模擬資料非即時報價／不連結真實帳戶／不推薦個股／不提供投資建議） | 產品事實：staging `/market` 為模擬交易（盤點 §二-9）；聲明刻意置於投資卡內部，使單獨截圖也帶脈絡 |
+| 課名：支出與公益／古代貨幣／現代貨幣與支付工具 | course-content.md §一（第一階段前三課） |
+| 波比對白「露比，我的零用錢又用光了！」 | course-content.md §三（第 5 關影片 0:00 幀字幕） |
+| 叩叮對白「今天我們要來聊聊…」 | course-content.md §三（第 2 關影片開場） |
+| 測驗題「下列哪一個不是…需要的物品」 | course-content.md §四（原題照錄） |
+| 小遊戲「波比的白日夢泡泡」玩法描述 | course-content.md §五（開場規則說明原文） |
+| 關卡名「小心！拿鐵因子」 | course-content.md §一（第 15 關標題） |
+| 瀏覽器即用免安裝 | staging 為純網頁 URL＋deck 第 32 張把「打包 APP」列為未來待辦；**保旭 2026-08-11 已口頭確認** |
+| Lv.1 打工新手 日薪 1,000 → Lv.2 資深打工族 日薪 1,200 | staging §二-10（等級卡實測數據） |
+| 命運卡「重感冒發燒住院」-3,000／醫療險理賠 +3,000 | 事件名＝staging §二-12 流水帳（消費與理賠兩筆同名事件）；金額＝course-content.md §六 週報收支（風險事件支付 3,000／保險理賠 3,000）＋staging §二-14 醫療險理賠 $3,000；badge「享有保障」＝staging §二-14 徽章原文 |
+| 金幣 30,000（hero pill 與資產總額） | 保旭 2026-08-11 對話原話：「第一次登入的帳號，會有 30000 金幣可以使用」（研究檔未收錄，來源為使用者原話） |
+| mockup 長條／圓格（資產配置寬度、週報收支條寬、活躍度格） | 純視覺示意、不帶數字文字、不代表真實比例（DESIGN.md mockup 規範：數字必有源，比例圖形不標數） |
+| `assets/` 全部圖檔（波比/露比/叩叮 GIF、操場背景、遊戲波比與道具 PNG） | staging firebasestorage 課程原件（assets-manifest.md §一/二/四，2026-08-11 下載並縮圖）；公司自有素材、非 AI 生成；⚠️ 上線前與正式環境比對素材版本 |
+| 課堂實境對白（零用錢又用光／多買了幾包零食／要不要試著記帳／開機會發光的筆電） | assets-manifest.md §六（第 5 關 p0/p14/p8、第 1 關開場原句） |
+| 遊戲 HUD（做夢時間／理智積分／連擊）與規則描述、影片時長 1:26 | course-content.md §五（開場規則與狀態欄原文）＋§三（第 5 關影片時長） |
+| 角色分工（波比＝故事主角／露比＝故事夥伴／叩叮＝知識出鏡講師） | staging-inventory.md §四（三角色分工陳述）＋§二-5/6（出鏡紀錄）＋assets-manifest.md §六對白 |
+| 保險理賠額：醫療 $3,000／意外 $5,000／手機 $3,000 | staging §二-14（9 商品逐字） |
+| 造型單品 100–1,800 金幣、Lv.2 起解鎖 | staging §二-15（商城實測） |
+| 8 月排行榜／月度結算倒數 | staging §二-11（排行榜實測） |
+| 課程地圖節點（18 關各關標題與型態） | course-content.md §一（第 1 課完整 18 關表） |
+
+## 紅線（改版時逐條自查）
+
+- 不放價格、SKU 組合、平台使用權月數
+- 補課相關舊承諾禁用（「免費再上」開頭那句——詳見全域 CLAUDE.md 紅線清單，原文因 hook 字面攔截不在此複述）
+- 純自學產品：不得寫成有真人老師／雙師
+- 「模擬金幣非真實金錢」免責必須存在
+- 彩色 emoji 禁；實心鈕禁白字；禁 AI 生成 logo／吉祥物
+- deck 內部資訊（成本、內部人名、IT 需求、製課後台）不上站
