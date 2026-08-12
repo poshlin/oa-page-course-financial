@@ -326,6 +326,12 @@
     .pill-btn.alt { background: var(--cream-2); }
     .tag-lv { font-size: 0.68rem; font-weight: 800; background: var(--cream-2); border: 1px solid var(--gold); border-radius: 6px; padding: 1px 6px; color: var(--text-2); }
     .shop-item .tag-lv { margin-left: 8px; }
+    .mod-shop { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.05fr; gap: 26px; align-items: center; }
+    .looks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .look { margin: 0; text-align: center; }
+    .look .stage { width: 100%; aspect-ratio: 1 / 1; margin-bottom: 8px; }
+    .look figcaption { font-size: 0.76rem; font-weight: 700; line-height: 1.5; }
+    .look figcaption b { display: block; font-size: 0.72rem; font-weight: 800; color: var(--coral-ink); }
     .xp { height: 10px; border-radius: var(--r-pill); background: var(--cream-2); border: 2px solid var(--gold); overflow: hidden; margin-top: 10px; }
     .xp i { display: block; height: 100%; width: 38%; background: var(--primary); }
     .cal-strip { display: flex; gap: 6px; margin-top: 12px; }
@@ -397,9 +403,16 @@
     .game-popi { position: absolute; right: 8px; bottom: 68px; width: 108px; height: auto; }
     .game-title { font-weight: 800; margin-top: 8px; }
     .game-rule { font-size: 0.78rem; opacity: 0.92; }
+    /* 圓形舞台：角色（尤其白色的波比）從白底浮起來，並用色彩區分角色定位 */
+    .stage { border-radius: 50%; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; position: relative; border: 3px solid var(--gold); box-shadow: inset 0 -10px 20px rgba(0,0,0,.05); }
+    .stage img { width: 88%; height: auto; filter: drop-shadow(0 5px 7px rgba(0,0,0,.18)); }
+    .stage.t-teal  { background: radial-gradient(circle at 50% 32%, #E6F7F5 0%, #B4E5DE 100%); }
+    .stage.t-gold  { background: radial-gradient(circle at 50% 32%, #FFF7E6 0%, #FFE0A6 100%); }
+    .stage.t-coral { background: radial-gradient(circle at 50% 32%, #FFF1EA 0%, #FFD0BB 100%); }
+    .stage.t-sky   { background: radial-gradient(circle at 50% 32%, #EEF3FF 0%, #C4D5F3 100%); }
     .char-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
     .char-card { text-align: center; }
-    .char-card img { width: 104px; height: auto; margin-bottom: 8px; }
+    .char-card .stage { width: 132px; height: 132px; margin: 0 auto 12px; }
     .char-name { font-weight: 800; margin-bottom: 6px; }
     .char-role { font-size: 0.88rem; color: var(--text-2); }
 
@@ -446,7 +459,7 @@
 
     @media (max-width: 860px) {
       section { padding: 56px 0; }
-      .hero-grid, .report-grid, .mod-invest, .fate-row { grid-template-columns: 1fr; }
+      .hero-grid, .report-grid, .mod-invest, .mod-shop, .fate-row { grid-template-columns: 1fr; }
       .grid-3, .grid-4, .flow, .modules, .showcase, .char-band { grid-template-columns: 1fr; }
       .mod-invest { grid-column: auto; }
       .flow .card { padding-top: 30px; }
@@ -727,17 +740,17 @@
         <p class="center-note">— 以上畫面以平台實際課程素材重現：角色、道具、場景、對白皆為課程原件</p>
         <div class="char-band">
           <div class="card char-card">
-            <img src="assets/popi-talk.gif" alt="波比：白色小鳥，故事關卡主角" loading="lazy">
+            <span class="stage t-teal"><img src="assets/popi-talk.gif" alt="波比：白色小鳥，故事關卡主角" loading="lazy"></span>
             <p class="char-name">波比｜故事主角</p>
             <p class="char-role">會衝動、會想買「開機會發光」的筆電——跟你家孩子一樣。金錢的難題，由牠先替孩子踩一次。</p>
           </div>
           <div class="card char-card">
-            <img src="assets/rubi-talk.gif" alt="露比：戴眼鏡的紅貓熊，故事裡的夥伴" loading="lazy">
+            <span class="stage t-gold"><img src="assets/rubi-talk.gif" alt="露比：戴眼鏡的紅貓熊，故事裡的夥伴" loading="lazy"></span>
             <p class="char-name">露比｜故事裡的夥伴</p>
             <p class="char-role">總在旁邊一句話點破盲點——「你要不要試著記帳看看？」</p>
           </div>
           <div class="card char-card">
-            <img src="assets/kdding-point.gif" alt="叩叮：水獺，橘子蘋果吉祥物，知識關卡講師" loading="lazy">
+            <span class="stage t-coral"><img src="assets/kdding-point.gif" alt="叩叮：水獺，橘子蘋果吉祥物，知識關卡講師" loading="lazy"></span>
             <p class="char-name">叩叮｜知識講師</p>
             <p class="char-role">橘子蘋果的吉祥物水獺，小知識影片親自出鏡，把觀念講到孩子聽得懂。</p>
           </div>
@@ -794,18 +807,41 @@
             <h3>保險</h3>
             <p>醫療險、意外險、手機險、寵物險……9 種保險商品。先花一小筆錢換一份保障，值不值得？讓孩子自己算。</p>
             <div class="ui-strip ins-chips">
-              <span class="ins-chip">醫療險<b>理賠 $3,000</b></span>
-              <span class="ins-chip">意外險<b>理賠 $5,000</b></span>
-              <span class="ins-chip">手機險<b>理賠 $3,000</b></span>
+              <span class="ins-chip">意外險<b>$5,000</b></span>
+              <span class="ins-chip">醫療險<b>$3,000</b></span>
+              <span class="ins-chip">住宅險<b>$12,000</b></span>
+              <span class="ins-chip">租客險<b>$10,000</b></span>
+              <span class="ins-chip">汽車責任險<b>$20,000</b></span>
+              <span class="ins-chip">汽車車體險<b>$15,000</b></span>
+              <span class="ins-chip">旅行不便險<b>$4,000</b></span>
+              <span class="ins-chip">手機險<b>$3,000</b></span>
+              <span class="ins-chip">寵物險<b>$4,000</b></span>
             </div>
+            <p class="mini-note">9 種商品與理賠金額皆為平台實際設定（模擬金幣）</p>
           </div>
-          <div class="card">
-            <h3>造型商城</h3>
-            <p>賺來的金幣有地方花——幫角色治裝，先試穿再決定。想要的買不起？那就回去多上幾堂課。</p>
-            <div class="ui-strip">
-              <div class="shop-tabs" aria-hidden="true"><span class="on">衣服</span><span>髮型</span><span>頭飾</span><span>背景</span></div>
-              <p class="shop-item">造型單品 100–1,800 金幣<span class="tag-lv">Lv.2 起逐步解鎖</span></p>
-              <p class="mini-note">分類頁籤為平台商城節選</p>
+          <div class="card mod-shop">
+            <div>
+              <h3>造型商城</h3>
+              <p>賺來的金幣有地方花——幫角色治裝，先試穿再決定。但越想要的越貴，還得先升到那個等級：想穿太空裝，得先存到 1,800 金幣、也得先上到 Lv.4。</p>
+              <div class="ui-strip">
+                <div class="shop-tabs" aria-hidden="true"><span class="on">衣服</span><span>髮型</span><span>頭飾</span><span>背景</span></div>
+                <p class="shop-item">造型單品 100–1,800 金幣<span class="tag-lv">Lv.2 起逐步解鎖</span></p>
+                <p class="mini-note">分類頁籤為平台商城節選</p>
+              </div>
+            </div>
+            <div class="looks">
+              <figure class="look">
+                <span class="stage t-gold"><img src="assets/look-uniform.png" alt="平台角色穿著白色學校制服" loading="lazy"></span>
+                <figcaption>白色學校制服<b>已擁有</b></figcaption>
+              </figure>
+              <figure class="look">
+                <span class="stage t-teal"><img src="assets/look-chef.png" alt="平台角色穿著白色廚師服" loading="lazy"></span>
+                <figcaption>白色廚師服<b>900 金幣・Lv.2</b></figcaption>
+              </figure>
+              <figure class="look">
+                <span class="stage t-sky"><img src="assets/look-space.png" alt="平台角色穿著白色太空裝" loading="lazy"></span>
+                <figcaption>白色太空裝<b>1,800 金幣・Lv.4</b></figcaption>
+              </figure>
             </div>
           </div>
           <div class="card">
