@@ -304,7 +304,12 @@
     .mod-invest h3 { color: var(--invest-orange); }
     .mod-invest p { color: #FFF9F0; opacity: 0.92; }
     .ticker { background: #1B1B1B; border-radius: 12px; padding: 14px 16px; font-size: 0.85rem; }
-    .ticker-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,249,240,0.12); }
+    .ticker-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,249,240,0.12); }
+    .spark { width: 60px; height: 18px; flex-shrink: 0; opacity: 0.9; }
+    /* 儲蓄複利成長示意（純視覺，不標數字） */
+    .grow { display: flex; align-items: flex-end; gap: 5px; height: 46px; margin-top: 12px; }
+    .grow .gbar { flex: 1; border-radius: 4px 4px 0 0; background: var(--cream-2); border: 1px solid var(--gold); border-bottom: 0; }
+    .grow .gbar.on { background: var(--teal); border-color: var(--teal); }
     .ticker-row:last-child { border-bottom: 0; }
     .ticker .up { color: var(--gain); font-weight: 700; }
     .ticker .dn { color: var(--loss); font-weight: 700; }
@@ -334,10 +339,12 @@
     .look figcaption b { display: block; font-size: 0.72rem; font-weight: 800; color: var(--coral-ink); }
     .xp { height: 10px; border-radius: var(--r-pill); background: var(--cream-2); border: 2px solid var(--gold); overflow: hidden; margin-top: 10px; }
     .xp i { display: block; height: 100%; width: 38%; background: var(--primary); }
-    .cal-strip { display: flex; gap: 6px; margin-top: 12px; }
-    .cal-strip .c { width: 34px; height: 34px; border-radius: 8px; background: var(--cream-2); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: var(--text-2); }
-    .cal-strip .done { background: var(--card); color: #2E7D32; }
-    .cal-strip .today { background: var(--coral); color: var(--text); border-color: var(--coral); }
+    /* 簽到月曆：複刻平台月曆式簽到格 */
+    .cal-month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .cal-month .cd { aspect-ratio: 1 / 1; border-radius: 6px; background: var(--cream-2); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 800; color: var(--text-2); }
+    .cal-month .done { background: var(--card); color: #2E7D32; }
+    .cal-month .today { background: var(--coral); color: var(--text); border-color: var(--coral); }
+    .cal-month .f { opacity: 0.55; }
     .fate-cap { text-align: center; font-weight: 800; font-size: 1.05rem; margin-top: 44px; }
     .fate-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
     .fate-card { background: var(--card); border: 4px solid var(--gold); border-radius: var(--r); box-shadow: var(--shadow); padding: 18px 22px; }
@@ -624,8 +631,13 @@
             <span class="step-num">03</span>
             <h3>簽到，領日薪</h3>
             <p>每天簽到領取當天薪水，自然養成每天回來學習的習慣。</p>
-            <div class="cal-strip" aria-hidden="true">
-              <span class="c done">✓</span><span class="c done">✓</span><span class="c done">✓</span><span class="c today">簽到</span><span class="c">12</span><span class="c">13</span>
+            <div class="ui-strip">
+              <div class="cal-month" aria-hidden="true">
+                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">6</span><span class="cd">7</span>
+                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">11</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">14</span>
+                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd today">今</span><span class="cd f">18</span><span class="cd f">19</span><span class="cd f">20</span><span class="cd f">21</span>
+              </div>
+              <p class="mini-note">一天只能簽一次，忘記按就沒有了。</p>
             </div>
           </div>
           <div class="card">
@@ -789,9 +801,15 @@
               <p class="safety-note">畫面中的代號與漲跌皆為<strong>教學用的模擬資料，不是即時報價</strong>。平台不連結任何真實金融帳戶，孩子不會也無法買賣真實股票；課程不推薦任何個股，亦不提供投資建議。</p>
             </div>
             <div class="ticker" aria-hidden="true">
-              <div class="ticker-row"><span>0050</span><span class="up">▲ +1.2%</span></div>
-              <div class="ticker-row"><span>0056</span><span class="dn">▼ -0.4%</span></div>
-              <div class="ticker-row"><span>0052</span><span class="up">▲ +0.8%</span></div>
+              <div class="ticker-row"><span>0050</span>
+                <svg class="spark" viewBox="0 0 60 18" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,13 10,11 20,14 30,8 40,9 50,5 60,3" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                <span class="up">▲ +1.2%</span></div>
+              <div class="ticker-row"><span>0056</span>
+                <svg class="spark" viewBox="0 0 60 18" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,6 10,8 20,5 30,10 40,9 50,13 60,12" fill="none" stroke="#F44336" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                <span class="dn">▼ -0.4%</span></div>
+              <div class="ticker-row"><span>0052</span>
+                <svg class="spark" viewBox="0 0 60 18" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,12 10,13 20,9 30,10 40,6 50,7 60,4" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                <span class="up">▲ +0.8%</span></div>
               <div class="ticker-cap">模擬行情・非即時報價</div>
             </div>
           </div>
@@ -800,7 +818,15 @@
             <p>把錢存進銀行，每兩週結算一次利息。「複利」不用背公式——看著存款自己長大，就懂了。</p>
             <div class="ui-strip">
               <div class="mini-row"><span class="mini-label">儲蓄總額</span><span class="pill-btn">存款</span><span class="pill-btn alt">提款</span></div>
-              <p class="mini-note">利息結算後自動滾入儲蓄總額</p>
+              <div class="grow" aria-hidden="true">
+                <span class="gbar" style="height:34%"></span>
+                <span class="gbar" style="height:46%"></span>
+                <span class="gbar" style="height:58%"></span>
+                <span class="gbar" style="height:72%"></span>
+                <span class="gbar" style="height:88%"></span>
+                <span class="gbar on" style="height:100%"></span>
+              </div>
+              <p class="mini-note">每兩週結算一次，利息直接滾入儲蓄總額——放著不動，它自己會長。<br>連平台都誠實標了一句：利息不滿 1 金幣時不發放。</p>
             </div>
           </div>
           <div class="card">
