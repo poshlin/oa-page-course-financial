@@ -1,6 +1,6 @@
-# oa-page-fin-platform — 財商學習平台 landing page
+# oa-page-fin-platform — 橘蘋財商素養課程 landing page
 
-橘子蘋果「財商學習平台」（內部代號 Coin Quest）的官網銷售頁。留單導向（data-oa-cta modal，母站提供）、不放價格。比照 classroom：自包含單一 `index.html`，注入 orangeapple.co，不自帶 header/footer。
+橘子蘋果「橘蘋財商素養課程」（課程搭配「財商學習平台」；內部代號 Coin Quest）的官網銷售頁。留單導向（data-oa-cta modal，母站提供）、不放價格。比照 classroom：自包含單一 `index.html`，注入 orangeapple.co，不自帶 header/footer。
 
 - 建立：2026-08-11（Claude ＋ 保旭）
 - 內容事實來源：`~/Documents/oa-coin-quest/research/`（`deck-transcript.md` 簡報 32 張逐字稿＋`staging-inventory.md` staging 17 畫面盤點）
@@ -15,8 +15,13 @@
 - 試聽＝50 分鐘（體驗課程、平台、雙師模式），**不含財商議題課**；CTA 文案由「免費諮詢」升級「預約免費試聽」
 - 純平台方案（不含課）暫時拿掉，僅老師方案無法成交時才可能拆賣——**頁面不得出現任何暗示可單買平台的句子**
 
+**2026-08-12 命名與 hero 調整（保旭指示）**：
+- **課程名＝「橘蘋財商素養課程」**（H1／title／og／schema `Course.name`）；**平台名＝「財商學習平台」**（schema `alternateName`、hero mockup 視窗標題）。兩者是不同層級：賣的是課程，孩子用的是平台，**勿再混用或統一**。
+- **不自帶麵包屑**：body 直接從 hero 開始（母站 shell 提供導覽）。JSON-LD 的 `BreadcrumbList` **刻意保留**——它描述頁面在網站層級的位置、非可見元件，稽核時勿判為「schema 與可見內容不符」。
+- **hero chips 移除「中英日三語」「瀏覽器即用免安裝」**：對台灣家長非賣點，佔掉 hero 注意力。三語僅保留在 `Course.inLanguage`（事實性後設資料）。「適合誰」原「在哪裡都能上」改為「不限地區」（線上上課、全台可參加）。
+
 **2026-08-11（仍有效）**：
-1. 對外名稱＝「財商學習平台」
+1. 對外名稱＝「財商學習平台」→ **已由 2026-08-12 更新為課程／平台雙層命名，見上**
 2. CTA＝留單（官網試聽 modal 機制，data-oa-cta）
 3. 部署比照 classroom（OrangeApple-Lab → 數位長注入）
 4. 堂數結構（45 堂）可放；**價格與 SKU 組合不放**（Albert 修正中）
