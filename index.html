@@ -485,6 +485,9 @@
 
     /* 02 機制 */
     .loop { background: var(--cream-2); }
+    .sub-head { max-width: 760px; margin: 60px 0 26px; }
+    .sub-head h3 { font-size: clamp(21px, 2.5vw, 28px); font-weight: 800; }
+    .sub-head p { margin-top: 8px; color: var(--text-2); }
     .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
     .flow .card { position: relative; padding-top: 34px; }
     .step-num { position: absolute; top: -18px; left: 20px; background: var(--primary); color: var(--text); font-weight: 800; font-size: 0.9rem; border-radius: 10px; padding: 4px 12px; box-shadow: var(--shadow); }
@@ -781,11 +784,10 @@
       </button>
       <div class="section-nav-links" id="navLinks">
         <a href="#why" data-section="why">為什麼需要</a>
+        <a href="#syllabus" data-section="syllabus">學什麼</a>
         <a href="#class" data-section="class">上課方式</a>
-        <a href="#how" data-section="how">平台機制</a>
-        <a href="#course" data-section="course">課程內容</a>
-        <a href="#syllabus" data-section="syllabus">完整課表</a>
-        <a href="#world" data-section="world">課堂之外</a>
+        <a href="#course" data-section="course">孩子怎麼學</a>
+        <a href="#practice" data-section="practice">課後練習</a>
         <a href="#report" data-section="report">學習週報</a>
         <a href="#faq" data-section="faq">常見問題</a>
       </div>
@@ -891,209 +893,11 @@
       </div>
     </section>
 
-    <!-- 02 上課方式 -->
-    <section id="class">
+    <!-- 02 學什麼 -->
+    <section class="loop" id="syllabus">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker">02・一堂課怎麼上</p>
-          <h2 class="h2">每週一堂 90 分鐘：老師帶著上，議題一起想</h2>
-          <p class="lead">這套財商課程共 45 堂、每週一堂。前 50 分鐘跟著老師上課實作，後 40 分鐘是整堂課最值錢的部分：財商議題課。</p>
-        </div>
-        <div class="timeline reveal" aria-hidden="true">
-          <span class="tl-seg tl-a">0–40 分・雙師上課</span>
-          <span class="tl-seg tl-b">41–50</span>
-          <span class="tl-seg tl-c">51–90 分・財商議題課</span>
-        </div>
-        <div class="grid-3">
-          <div class="card">
-            <span class="tl-dot tl-a" aria-hidden="true"></span>
-            <h3>雙師上課・平台實作</h3>
-            <p>課程影片講觀念，真人老師全程看得到每個孩子的畫面——發現卡住，老師會主動開啟通話；孩子有問題，也能舉手發問、依序輔導。</p>
-          </div>
-          <div class="card">
-            <span class="tl-dot tl-b" aria-hidden="true"></span>
-            <h3>進度確認</h3>
-            <p>最後十分鐘，老師逐一記錄每個孩子今天走到哪、下一堂從哪裡接著走。</p>
-          </div>
-          <div class="card">
-            <span class="tl-dot tl-c" aria-hidden="true"></span>
-            <h3>每週財商議題</h3>
-            <p>切換到線上會議室，老師帶著談當週的財商議題，也邀請孩子分享自己的觀察與想法。金錢的「判斷力」，是在對話裡長出來的。</p>
-          </div>
-        </div>
-        <p class="center-note">— 財商議題課在孩子的課表上，有個更好懂的名字：「動腦時間」。</p>
-      </div>
-    </section>
-
-    <!-- 03 機制 -->
-    <section class="loop" id="how">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="kicker">03・平台怎麼運作</p>
-          <h2 class="h2">課後，一場會發生後果的理財經營遊戲</h2>
-          <p class="lead">課堂上老師帶著學，課後這個世界 24 小時開放。孩子在平台裡過一個縮小版的金錢人生：有收入、有選擇、有意外，也有保障。</p>
-        </div>
-        <div class="reveal flow">
-          <div class="card">
-            <span class="step-num">01</span>
-            <h3>上課，賺經驗</h3>
-            <p>觀看課程、回答題目，是累積經驗值的唯一途徑。</p>
-          </div>
-          <div class="card">
-            <span class="step-num">02</span>
-            <h3>升級，加薪</h3>
-            <p>經驗值滿了就升級，從「打工新手」一路往上，等級越高、日薪越多。「懂得越多、賺得越多」是這個世界的底層規則。</p>
-            <div class="ui-strip">
-              <div class="mini-row"><span class="mini-label">Lv.1 打工新手・日薪 1,000</span><span class="mini-sub">→ Lv.2 資深打工族・日薪 1,200</span></div>
-              <div class="xp" aria-hidden="true"><i></i></div>
-            </div>
-          </div>
-          <div class="card">
-            <span class="step-num">03</span>
-            <h3>簽到，領日薪</h3>
-            <p>每天簽到領取當天薪水，自然養成每天回來學習的習慣。</p>
-            <div class="ui-strip">
-              <div class="cal-month" aria-hidden="true">
-                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">6</span><span class="cd">7</span>
-                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">11</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">14</span>
-                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd today">今</span><span class="cd f">18</span><span class="cd f">19</span><span class="cd f">20</span><span class="cd f">21</span>
-              </div>
-              <p class="insider"><b>一天只能簽一次，忘記按就沒有了。</b>平台真的這樣設計——錯過就是錯過，這是孩子第一次體會「機會成本」。</p>
-            </div>
-          </div>
-          <div class="card">
-            <span class="step-num">04</span>
-            <h3>決定錢的去向</h3>
-            <p>花掉？存進銀行生利息？拿去投資？還是買一份保險？每一筆都自己決定。</p>
-          </div>
-          <div class="card">
-            <span class="step-num">05</span>
-            <h3>命運卡：隨機發生的人生</h3>
-            <p>簽到時抽一張命運卡：可能中獎、可能沒事，也可能「重感冒住院」，要付一筆醫藥費。</p>
-          </div>
-          <div class="card">
-            <span class="step-num">06</span>
-            <h3>保險，在意外之前</h3>
-            <p>有買對應的保險，意外來了有理賠；沒買，就自己付。「風險」兩個字，從此不用解釋。</p>
-          </div>
-        </div>
-        <p class="fate-cap">同一張命運卡，兩種結果</p>
-        <div class="reveal fate-row">
-          <div class="fate-card risk">
-            <p class="fate-h">命運一抽</p>
-            <p class="fate-title">「重感冒發燒住院」</p>
-            <p class="fate-amt minus">-3,000</p>
-            <p class="fate-note">沒買保險的人：醫藥費自己付。</p>
-          </div>
-          <div class="fate-card">
-            <p class="fate-h">保險理賠</p>
-            <p class="fate-title">有「醫療險」的人<span class="badge-active">享有保障</span></p>
-            <p class="fate-amt plus">+3,000</p>
-            <p class="fate-note">先花小錢買保障，這一刻它替你扛。</p>
-          </div>
-        </div>
-        <p class="center-note">— 平台內實際事件與理賠設定（皆為模擬金幣）</p>
-        <p class="loop-note"><strong>而且每一筆錢都有紀錄。</strong>平台內建完整的收支明細，每筆錢的來龍去脈都查得到——記帳不是回家作業，是遊戲的一部分。</p>
-      </div>
-    </section>
-
-    <!-- 04 課程 -->
-    <section id="course">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="kicker">04・課程內容</p>
-          <h2 class="h2">45 堂課，把觀念拆成一關一關玩過去</h2>
-          <p class="lead">課程共 45 堂，依序解鎖。每一堂再拆成數個關卡，孩子沿著課程地圖一站一站往前走——光是體驗課「支出與公益」就有 18 關。</p>
-        </div>
-        <div class="reveal map">
-          <div class="map-head">
-            <span class="map-title">體驗課「支出與公益」</span>
-            <span class="map-count">共 18 關・完成一關，才解鎖下一關</span>
-          </div>
-          <ol class="map-path">
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小故事</span><span class="map-name">好想要買一台新筆電</span></li>
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小知識</span><span class="map-name">這是需要還是想要呢？</span></li>
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小測驗</span><span class="map-name">是需要還是想要呢？</span></li>
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小遊戲</span><span class="map-name">波比的白日夢泡泡</span></li>
-            <li class="map-node current"><span class="map-dot">5</span><span class="map-type">小故事</span><span class="map-name">我的錢都到哪去了？</span></li>
-            <li class="map-node locked"><span class="map-dot">6</span><span class="map-type">小知識</span><span class="map-name">為什麼要記帳呢？</span></li>
-            <li class="map-node locked"><span class="map-dot">⋯</span><span class="map-type">&nbsp;</span><span class="map-name">&nbsp;</span></li>
-            <li class="map-node locked"><span class="map-dot">15</span><span class="map-type">小議題</span><span class="map-name">小心！拿鐵因子</span></li>
-          </ol>
-          <p class="map-note">課程地圖示意，關卡皆為平台實際內容（節選）。18 關是體驗課的關卡數，各堂不盡相同。跟著地圖走，一關一關把觀念收進口袋。</p>
-        </div>
-        <p class="type-line" id="lesson-types">一堂課裡有四種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住）。</p>
-        <div class="reveal showcase">
-          <figure class="scene">
-            <span class="scene-tag">小故事・我的錢都到哪去了？</span>
-            <div class="scene-chars">
-              <img src="assets/popi-sad.webp" alt="波比（白色小鳥）：故事主角，正為零用錢用光而沮喪" loading="lazy">
-              <img src="assets/rubi-talk.webp" alt="露比（戴眼鏡的紅貓熊）：故事夥伴，正在說話" loading="lazy">
-            </div>
-            <div class="scene-dialog">
-              <span class="scene-speaker">波比</span>
-              <p class="scene-line">「露比，我的零用錢又用光了！」</p>
-            </div>
-            <div class="scene-dialog">
-              <span class="scene-speaker">露比</span>
-              <p class="scene-line">「或許你會發現你每次都多買了幾包零食，錢就這樣不見了！」</p>
-            </div>
-            <div class="scene-bar" aria-hidden="true"><span>▸</span><span class="bar-line"><i></i></span><span>1:26</span></div>
-          </figure>
-          <figure class="game-scene">
-            <span class="game-hud" aria-hidden="true"><span>做夢時間</span><span>理智積分</span><span>連擊</span></span>
-            <div class="bubbles">
-              <span class="bubble" style="top:6%;left:4%"><img src="assets/item-apple.webp" alt="需要泡泡：蘋果" loading="lazy"></span>
-              <span class="bubble" style="top:48%;left:22%"><img src="assets/item-water.webp" alt="需要泡泡：水瓶" loading="lazy"></span>
-              <span class="bubble want" style="top:10%;left:50%"><img src="assets/item-crown.webp" alt="想要泡泡：皇冠" loading="lazy"></span>
-              <span class="bubble want" style="top:54%;left:60%"><img src="assets/item-gameboy.webp" alt="想要泡泡：掌上遊戲機" loading="lazy"></span>
-            </div>
-            <img class="game-popi" src="assets/game-popi-awake.webp" alt="遊戲中的波比：驚醒表情" loading="lazy">
-            <p class="game-title">小遊戲・波比的白日夢泡泡</p>
-            <p class="game-rule">戳破「想要」、讓「需要」安全升空——理智積分歸零就失敗。</p>
-          </figure>
-        </div>
-        <p class="center-note">— 以上畫面以平台實際課程素材重現：角色、道具、場景、對白皆為課程原件</p>
-        <div class="reveal char-band">
-          <div class="card char-card">
-            <span class="stage t-teal"><img src="assets/popi-talk.webp" alt="波比：白色小鳥，故事關卡主角" loading="lazy"></span>
-            <p class="char-name">波比｜故事主角</p>
-            <p class="char-role">會衝動、會想買「開機會發光」的筆電——跟你家孩子一樣。金錢的難題，由牠先替孩子踩一次。</p>
-          </div>
-          <div class="card char-card">
-            <span class="stage t-gold"><img src="assets/rubi-talk.webp" alt="露比：戴眼鏡的紅貓熊，故事裡的夥伴" loading="lazy"></span>
-            <p class="char-name">露比｜故事裡的夥伴</p>
-            <p class="char-role">總在旁邊一句話點破盲點：「你要不要試著記帳看看？」</p>
-          </div>
-          <div class="card char-card">
-            <span class="stage t-coral"><img src="assets/kdding-point.webp" alt="叩叮：海獺，橘子蘋果吉祥物，知識關卡講師" loading="lazy"></span>
-            <p class="char-name">叩叮｜知識講師</p>
-            <p class="char-role">橘子蘋果的吉祥物海獺，小知識影片親自出鏡，把觀念講到孩子聽得懂。</p>
-          </div>
-        </div>
-        <div class="lesson-path">
-          <p class="lesson-path-title">體驗課之後，正式課這樣開場</p>
-          <ol class="lesson-steps">
-            <li><span>第 1 堂</span>古代貨幣</li>
-            <li><span>第 2 堂</span>現代貨幣與支付工具</li>
-            <li><span>第 3 堂</span>發票與未來貨幣</li>
-          </ol>
-        </div>
-        <div class="lesson-tags">
-          <span class="lesson-tag">「好想要買一台新筆電」</span>
-          <span class="lesson-tag">「我的錢都到哪去了？」</span>
-          <span class="lesson-tag">「為什麼要記帳呢？」</span>
-          <span class="lesson-tag">「小心！拿鐵因子」</span>
-        </div>
-        <p class="lesson-src">— 以上皆為平台內實際課程與關卡名稱。從「需要與想要」一路講到「拿鐵因子」，用孩子的語言，教真正的理財概念。</p>
-      </div>
-    </section>
-
-    <!-- 05 完整課表 -->
-    <section id="syllabus">
-      <div class="wrap">
-        <div class="sec-head">
-          <p class="kicker">05・完整課表</p>
+          <p class="kicker">02・學什麼</p>
           <h2 class="h2">45 堂，從自己的零用錢一路講到全球供應鏈</h2>
           <p class="lead">三個階段像同心圓往外放大：先看懂自己口袋裡的錢，再看懂銀行、信用與投資，最後看懂國家與世界怎麼運轉。每階段 15 堂，依序解鎖。</p>
         </div>
@@ -1261,13 +1065,204 @@
       </div>
     </section>
 
-    <!-- 06 模組 -->
-    <section class="loop" id="world">
+    <!-- 03 上課方式 -->
+    <section id="class">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker">06・課堂之外</p>
-          <h2 class="h2">一個完整的經濟世界</h2>
-          <p class="lead">學到的每個觀念，馬上有地方用。</p>
+          <p class="kicker">03・一堂課怎麼上</p>
+          <h2 class="h2">每週一堂 90 分鐘：老師帶著上，議題一起想</h2>
+          <p class="lead">這套財商課程共 45 堂、每週一堂。前 50 分鐘跟著老師上課實作，後 40 分鐘是整堂課最值錢的部分：財商議題課。</p>
+        </div>
+        <div class="timeline reveal" aria-hidden="true">
+          <span class="tl-seg tl-a">0–40 分・雙師上課</span>
+          <span class="tl-seg tl-b">41–50</span>
+          <span class="tl-seg tl-c">51–90 分・財商議題課</span>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <span class="tl-dot tl-a" aria-hidden="true"></span>
+            <h3>雙師上課・平台實作</h3>
+            <p>課程影片講觀念，真人老師全程看得到每個孩子的畫面——發現卡住，老師會主動開啟通話；孩子有問題，也能舉手發問、依序輔導。</p>
+          </div>
+          <div class="card">
+            <span class="tl-dot tl-b" aria-hidden="true"></span>
+            <h3>進度確認</h3>
+            <p>最後十分鐘，老師逐一記錄每個孩子今天走到哪、下一堂從哪裡接著走。</p>
+          </div>
+          <div class="card">
+            <span class="tl-dot tl-c" aria-hidden="true"></span>
+            <h3>每週財商議題</h3>
+            <p>切換到線上會議室，老師帶著談當週的財商議題，也邀請孩子分享自己的觀察與想法。金錢的「判斷力」，是在對話裡長出來的。</p>
+          </div>
+        </div>
+        <p class="center-note">— 財商議題課在孩子的課表上，有個更好懂的名字：「動腦時間」。</p>
+      </div>
+    </section>
+
+    <!-- 04 孩子怎麼學 -->
+    <section id="course">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">04・孩子怎麼學</p>
+          <h2 class="h2">一堂課裡，孩子是這樣走過來的</h2>
+          <p class="lead">剛才那 45 堂，孩子實際上是這樣走過去的：每一堂再拆成數個關卡，沿著課程地圖一站一站往前——光是體驗課「支出與公益」就有 18 關。</p>
+        </div>
+        <div class="reveal map">
+          <div class="map-head">
+            <span class="map-title">體驗課「支出與公益」</span>
+            <span class="map-count">共 18 關・完成一關，才解鎖下一關</span>
+          </div>
+          <ol class="map-path">
+            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小故事</span><span class="map-name">好想要買一台新筆電</span></li>
+            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小知識</span><span class="map-name">這是需要還是想要呢？</span></li>
+            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小測驗</span><span class="map-name">是需要還是想要呢？</span></li>
+            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小遊戲</span><span class="map-name">波比的白日夢泡泡</span></li>
+            <li class="map-node current"><span class="map-dot">5</span><span class="map-type">小故事</span><span class="map-name">我的錢都到哪去了？</span></li>
+            <li class="map-node locked"><span class="map-dot">6</span><span class="map-type">小知識</span><span class="map-name">為什麼要記帳呢？</span></li>
+            <li class="map-node locked"><span class="map-dot">⋯</span><span class="map-type">&nbsp;</span><span class="map-name">&nbsp;</span></li>
+            <li class="map-node locked"><span class="map-dot">15</span><span class="map-type">小議題</span><span class="map-name">小心！拿鐵因子</span></li>
+          </ol>
+          <p class="map-note">課程地圖示意，關卡皆為平台實際內容（節選）。18 關是體驗課的關卡數，各堂不盡相同。跟著地圖走，一關一關把觀念收進口袋。</p>
+        </div>
+        <p class="type-line" id="lesson-types">一堂課裡有四種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住）。</p>
+        <div class="reveal showcase">
+          <figure class="scene">
+            <span class="scene-tag">小故事・我的錢都到哪去了？</span>
+            <div class="scene-chars">
+              <img src="assets/popi-sad.webp" alt="波比（白色小鳥）：故事主角，正為零用錢用光而沮喪" loading="lazy">
+              <img src="assets/rubi-talk.webp" alt="露比（戴眼鏡的紅貓熊）：故事夥伴，正在說話" loading="lazy">
+            </div>
+            <div class="scene-dialog">
+              <span class="scene-speaker">波比</span>
+              <p class="scene-line">「露比，我的零用錢又用光了！」</p>
+            </div>
+            <div class="scene-dialog">
+              <span class="scene-speaker">露比</span>
+              <p class="scene-line">「或許你會發現你每次都多買了幾包零食，錢就這樣不見了！」</p>
+            </div>
+            <div class="scene-bar" aria-hidden="true"><span>▸</span><span class="bar-line"><i></i></span><span>1:26</span></div>
+          </figure>
+          <figure class="game-scene">
+            <span class="game-hud" aria-hidden="true"><span>做夢時間</span><span>理智積分</span><span>連擊</span></span>
+            <div class="bubbles">
+              <span class="bubble" style="top:6%;left:4%"><img src="assets/item-apple.webp" alt="需要泡泡：蘋果" loading="lazy"></span>
+              <span class="bubble" style="top:48%;left:22%"><img src="assets/item-water.webp" alt="需要泡泡：水瓶" loading="lazy"></span>
+              <span class="bubble want" style="top:10%;left:50%"><img src="assets/item-crown.webp" alt="想要泡泡：皇冠" loading="lazy"></span>
+              <span class="bubble want" style="top:54%;left:60%"><img src="assets/item-gameboy.webp" alt="想要泡泡：掌上遊戲機" loading="lazy"></span>
+            </div>
+            <img class="game-popi" src="assets/game-popi-awake.webp" alt="遊戲中的波比：驚醒表情" loading="lazy">
+            <p class="game-title">小遊戲・波比的白日夢泡泡</p>
+            <p class="game-rule">戳破「想要」、讓「需要」安全升空——理智積分歸零就失敗。</p>
+          </figure>
+        </div>
+        <p class="center-note">— 以上畫面以平台實際課程素材重現：角色、道具、場景、對白皆為課程原件</p>
+        <div class="reveal char-band">
+          <div class="card char-card">
+            <span class="stage t-teal"><img src="assets/popi-talk.webp" alt="波比：白色小鳥，故事關卡主角" loading="lazy"></span>
+            <p class="char-name">波比｜故事主角</p>
+            <p class="char-role">會衝動、會想買「開機會發光」的筆電——跟你家孩子一樣。金錢的難題，由牠先替孩子踩一次。</p>
+          </div>
+          <div class="card char-card">
+            <span class="stage t-gold"><img src="assets/rubi-talk.webp" alt="露比：戴眼鏡的紅貓熊，故事裡的夥伴" loading="lazy"></span>
+            <p class="char-name">露比｜故事裡的夥伴</p>
+            <p class="char-role">總在旁邊一句話點破盲點：「你要不要試著記帳看看？」</p>
+          </div>
+          <div class="card char-card">
+            <span class="stage t-coral"><img src="assets/kdding-point.webp" alt="叩叮：海獺，橘子蘋果吉祥物，知識關卡講師" loading="lazy"></span>
+            <p class="char-name">叩叮｜知識講師</p>
+            <p class="char-role">橘子蘋果的吉祥物海獺，小知識影片親自出鏡，把觀念講到孩子聽得懂。</p>
+          </div>
+        </div>
+        <div class="lesson-path">
+          <p class="lesson-path-title">體驗課之後，正式課這樣開場</p>
+          <ol class="lesson-steps">
+            <li><span>第 1 堂</span>古代貨幣</li>
+            <li><span>第 2 堂</span>現代貨幣與支付工具</li>
+            <li><span>第 3 堂</span>發票與未來貨幣</li>
+          </ol>
+        </div>
+        <div class="lesson-tags">
+          <span class="lesson-tag">「好想要買一台新筆電」</span>
+          <span class="lesson-tag">「我的錢都到哪去了？」</span>
+          <span class="lesson-tag">「為什麼要記帳呢？」</span>
+          <span class="lesson-tag">「小心！拿鐵因子」</span>
+        </div>
+        <p class="lesson-src">— 以上皆為平台內實際課程與關卡名稱。從「需要與想要」一路講到「拿鐵因子」，用孩子的語言，教真正的理財概念。</p>
+      </div>
+    </section>
+
+    <!-- 05 課後練習場 -->
+    <section class="loop" id="practice">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker">05・課後的練習場</p>
+          <h2 class="h2">課後，一場會發生後果的理財經營遊戲</h2>
+          <p class="lead">課堂上老師帶著學，課後這個世界 24 小時開放。孩子在平台裡過一個縮小版的金錢人生：有收入、有選擇、有意外，也有保障。</p>
+        </div>
+        <div class="reveal flow">
+          <div class="card">
+            <span class="step-num">01</span>
+            <h3>上課，賺經驗</h3>
+            <p>觀看課程、回答題目，是累積經驗值的唯一途徑。</p>
+          </div>
+          <div class="card">
+            <span class="step-num">02</span>
+            <h3>升級，加薪</h3>
+            <p>經驗值滿了就升級，從「打工新手」一路往上，等級越高、日薪越多。「懂得越多、賺得越多」是這個世界的底層規則。</p>
+            <div class="ui-strip">
+              <div class="mini-row"><span class="mini-label">Lv.1 打工新手・日薪 1,000</span><span class="mini-sub">→ Lv.2 資深打工族・日薪 1,200</span></div>
+              <div class="xp" aria-hidden="true"><i></i></div>
+            </div>
+          </div>
+          <div class="card">
+            <span class="step-num">03</span>
+            <h3>簽到，領日薪</h3>
+            <p>每天簽到領取當天薪水，自然養成每天回來學習的習慣。</p>
+            <div class="ui-strip">
+              <div class="cal-month" aria-hidden="true">
+                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">6</span><span class="cd">7</span>
+                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">11</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">14</span>
+                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd today">今</span><span class="cd f">18</span><span class="cd f">19</span><span class="cd f">20</span><span class="cd f">21</span>
+              </div>
+              <p class="insider"><b>一天只能簽一次，忘記按就沒有了。</b>平台真的這樣設計——錯過就是錯過，這是孩子第一次體會「機會成本」。</p>
+            </div>
+          </div>
+          <div class="card">
+            <span class="step-num">04</span>
+            <h3>決定錢的去向</h3>
+            <p>花掉？存進銀行生利息？拿去投資？還是買一份保險？每一筆都自己決定。</p>
+          </div>
+          <div class="card">
+            <span class="step-num">05</span>
+            <h3>命運卡：隨機發生的人生</h3>
+            <p>簽到時抽一張命運卡：可能中獎、可能沒事，也可能「重感冒住院」，要付一筆醫藥費。</p>
+          </div>
+          <div class="card">
+            <span class="step-num">06</span>
+            <h3>保險，在意外之前</h3>
+            <p>有買對應的保險，意外來了有理賠；沒買，就自己付。「風險」兩個字，從此不用解釋。</p>
+          </div>
+        </div>
+        <p class="fate-cap">同一張命運卡，兩種結果</p>
+        <div class="reveal fate-row">
+          <div class="fate-card risk">
+            <p class="fate-h">命運一抽</p>
+            <p class="fate-title">「重感冒發燒住院」</p>
+            <p class="fate-amt minus">-3,000</p>
+            <p class="fate-note">沒買保險的人：醫藥費自己付。</p>
+          </div>
+          <div class="fate-card">
+            <p class="fate-h">保險理賠</p>
+            <p class="fate-title">有「醫療險」的人<span class="badge-active">享有保障</span></p>
+            <p class="fate-amt plus">+3,000</p>
+            <p class="fate-note">先花小錢買保障，這一刻它替你扛。</p>
+          </div>
+        </div>
+        <p class="center-note">— 平台內實際事件與理賠設定（皆為模擬金幣）</p>
+        <p class="loop-note"><strong>而且每一筆錢都有紀錄。</strong>平台內建完整的收支明細，每筆錢的來龍去脈都查得到——記帳不是回家作業，是遊戲的一部分。</p>
+        <div class="sub-head">
+          <h3>學到的每個觀念，馬上有地方用</h3>
+          <p>銀行、保險、投資、商城、排行榜——課堂上講過的每一件事，平台裡都有一個對應的地方可以動手。</p>
         </div>
         <div class="reveal modules">
           <div class="card mod-invest">
@@ -1361,12 +1356,12 @@
       </div>
     </section>
 
-    <!-- 07 週報 -->
+    <!-- 06 週報 -->
     <section class="report" id="report">
       <div class="wrap">
         <div class="reveal report-grid">
           <div>
-            <p class="kicker">07・家長看得到</p>
+            <p class="kicker">06・家長看得到</p>
             <h2 class="h2">孩子在玩，<br>你看得到他學了什麼</h2>
             <ul>
               <li>每週整理一份，記錄孩子上一週的學習與理財狀況</li>
@@ -1415,11 +1410,11 @@
       </div>
     </section>
 
-    <!-- 08 適合誰 -->
+    <!-- 07 適合誰 -->
     <section id="fit">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker">08・適合誰</p>
+          <p class="kicker">07・適合誰</p>
           <h2 class="h2">為這樣的孩子與家庭設計</h2>
           <p class="lead">3-7 年級正是零用錢開始變多、金錢觀成形的階段，也是兒童理財課最有效的時候。課程用動畫故事、語音講解與遊戲關卡帶著走，孩子看得懂、玩得動。</p>
         </div>
@@ -1432,11 +1427,11 @@
       </div>
     </section>
 
-    <!-- 09 FAQ -->
+    <!-- 08 FAQ -->
     <section class="loop" id="faq">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker">09・常見問題</p>
+          <p class="kicker">08・常見問題</p>
           <h2 class="h2">家長最常問的問題</h2>
         </div>
         <div class="reveal faq-list">
