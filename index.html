@@ -296,7 +296,8 @@
 
     /* 01 痛點 */
     .pain-punch { margin-top: 32px; font-size: clamp(18px, 2.4vw, 22px); font-weight: 800; text-align: center; }
-    .pain-punch em { font-style: normal; border-bottom: 6px solid var(--primary); }
+    /* 螢光筆式底線：border-bottom 換行時會斷成長短不一的兩截，改用漸層背景＋clone 才能跨行連續 */
+    .pain-punch em { font-style: normal; background: linear-gradient(transparent 62%, var(--primary) 62%, var(--primary) 94%, transparent 94%); -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 2px; }
 
     /* 02 機制 */
     .loop { background: var(--cream-2); }
@@ -309,9 +310,9 @@
     /* 上課方式時間軸 */
     .timeline { display: flex; gap: 4px; margin-bottom: 28px; }
     .tl-seg { font-size: 0.72rem; font-weight: 800; text-align: center; padding: 9px 4px; border-radius: 8px; white-space: nowrap; overflow: hidden; }
-    .tl-seg.tl-a { background: var(--primary); color: var(--text); }
-    .tl-seg.tl-b { background: var(--cream-2); color: var(--text); border: 2px solid var(--gold); }
-    .tl-seg.tl-c { background: var(--teal); color: var(--text); }
+    .tl-seg.tl-a { flex: 40; background: var(--primary); color: var(--text); }
+    .tl-seg.tl-b { flex: 10; background: var(--cream-2); color: var(--text); border: 2px solid var(--gold); }
+    .tl-seg.tl-c { flex: 40; background: var(--teal); color: var(--text); }
     .tl-dot { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-bottom: 8px; }
     .tl-dot.tl-a { background: var(--primary); }
     .tl-dot.tl-b { background: var(--cream-2); border: 2px solid var(--gold); }
@@ -351,7 +352,7 @@
     .ui-strip { margin-top: 16px; border-top: 2px dashed var(--gold); padding-top: 12px; }
     .mini-note { font-size: 0.75rem; color: var(--text-2); margin-top: 8px; }
     .mini-sub { font-size: 0.75rem; color: var(--text-2); }
-    .center-note { text-align: center; font-size: 0.78rem; color: var(--text-2); margin-top: 12px; }
+    .center-note { text-align: center; font-size: 0.78rem; color: var(--text-2); margin-top: 12px; text-wrap: pretty; }
     .mini-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
     .mini-label { font-size: 0.8rem; font-weight: 800; }
     .pill-btn { display: inline-block; background: var(--teal); color: var(--text); font-size: 0.75rem; font-weight: 800; border-radius: 10px; padding: 4px 14px; box-shadow: var(--shadow-soft); }
@@ -474,7 +475,10 @@
 
     /* FAQ */
     /* 兩欄：8 題收合列直向堆疊是長度主因，改雙欄減半（加寬本身省不到，因為收合列固定一行高） */
+    /* 兩個「獨立直欄」而非 grid 儲存格：grid 會讓同列兩題高度互綁，
+       一邊展開就在另一邊下方留一塊空洞；各自堆疊才不互相牽動 */
     .faq-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+    .faq-col { display: flex; flex-direction: column; gap: 14px; }
     details.faq { background: var(--card); border: 2px solid var(--gold); border-radius: var(--r); overflow: hidden; }
     details.faq summary { list-style: none; cursor: pointer; font-weight: 800; padding: 18px 22px; position: relative; padding-right: 48px; }
     details.faq summary::-webkit-details-marker { display: none; }
@@ -496,6 +500,12 @@
       section { padding: 56px 0; }
       .hero-grid, .report-grid, .mod-invest, .mod-shop, .fate-row { grid-template-columns: 1fr; }
       .grid-3, .grid-4, .flow, .modules, .showcase, .char-band, .faq-list { grid-template-columns: 1fr; }
+      /* 時間軸：手機改直向堆疊。40/10/40 的橫向比例會把中段壓到放不下字 */
+      .timeline { flex-direction: column; gap: 6px; }
+      .tl-seg { flex: none; padding: 11px 12px; text-align: left; }
+      .tl-seg.tl-b::after { content: " 分・進度確認"; }
+      /* 置中短句在窄螢幕容易掉孤字，改左對齊 */
+      .center-note, .map-note, .lesson-src { text-align: left; }
       .section-nav-inner { flex-wrap: wrap; padding: 0 16px; }
       .section-nav-brand { display: none; }
       .section-nav-toggle { flex: 1; min-height: 52px; display: flex; align-items: center; gap: 8px; background: none; border: 0; cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 800; color: var(--text); }
@@ -641,9 +651,9 @@
           <p class="lead">課程共 45 堂、每週一堂。前 50 分鐘跟著老師上課實作，後 40 分鐘是整堂課最值錢的部分——財商議題課。</p>
         </div>
         <div class="timeline" aria-hidden="true">
-          <span class="tl-seg tl-a" style="flex:40">0–40 分・雙師上課</span>
-          <span class="tl-seg tl-b" style="flex:10">41–50</span>
-          <span class="tl-seg tl-c" style="flex:40">51–90 分・財商議題課</span>
+          <span class="tl-seg tl-a">0–40 分・雙師上課</span>
+          <span class="tl-seg tl-b">41–50</span>
+          <span class="tl-seg tl-c">51–90 分・財商議題課</span>
         </div>
         <div class="grid-3">
           <div class="card">
@@ -1032,6 +1042,7 @@
           <h2 class="h2">家長最常問的問題</h2>
         </div>
         <div class="faq-list">
+          <div class="faq-col">
           <details class="faq" open>
             <summary>這麼小就讓孩子接觸股票投資，會不會太早？</summary>
             <div class="faq-a">平台裡的投資全程使用模擬金幣，行情擬真，但沒有任何真實金錢交易。孩子在沒有真實損失的環境裡先體驗漲跌、損益與風險，將來面對真實金錢時才不會是第一次。排行榜比的也是「這期進步多少」而非資產多寡，孩子不會被推向「錢越多越贏」的價值觀。</div>
@@ -1048,6 +1059,8 @@
             <summary>需要準備什麼設備？</summary>
             <div class="faq-a">打開電腦瀏覽器就能上課，不需安裝任何軟體。建議準備耳機麥克風，課堂上與老師通話、參加議題討論會用到。</div>
           </details>
+          </div>
+          <div class="faq-col">
           <details class="faq">
             <summary>適合幾年級的孩子？</summary>
             <div class="faq-a">課程為 3 到 7 年級設計。課程影片以動畫故事搭配語音講解，課堂上有真人老師看著每個孩子的進度——跟不上，不會被丟下。</div>
@@ -1068,6 +1081,7 @@
             <summary>橘子蘋果不是教程式的嗎？為什麼做財商？</summary>
             <div class="faq-a">橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，財商也是。</div>
           </details>
+          </div>
         </div>
       </div>
     </section>
