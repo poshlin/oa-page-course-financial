@@ -528,6 +528,8 @@
     .phase-goals { list-style: none; margin-top: 10px; }
     .phase-goals li { position: relative; padding-left: 24px; margin-bottom: 8px; font-size: 0.94rem; break-inside: avoid; }
     .phase-goals li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--coral-ink); font-weight: 800; }
+    /* 階段卡的「學習重點＋課表」外層：桌機恆開（隱藏開關），手機收合以縮短頁面 */
+    details.phase-more > summary { display: none; }
     details.syllabus { margin-top: 22px; border-top: 2px solid var(--gold); }
     details.syllabus summary { list-style: none; cursor: pointer; font-weight: 800; padding: 16px 30px 14px 0; position: relative; }
     details.syllabus summary::-webkit-details-marker { display: none; }
@@ -717,6 +719,12 @@
     @media (max-width: 860px) {
       section { padding: 56px 0; }
       .hero-grid, .report-grid, .mod-invest, .mod-shop, .mod-rank, .fate-row { grid-template-columns: 1fr; }
+      details.phase-more { margin-top: 20px; }
+      details.phase-more > summary { display: block; list-style: none; cursor: pointer; font-weight: 800; padding: 15px 30px 14px 0; position: relative; border-top: 2px solid var(--gold); }
+      details.phase-more > summary::-webkit-details-marker { display: none; }
+      details.phase-more > summary::after { content: "▸"; position: absolute; right: 4px; top: 15px; color: var(--primary); transition: transform .15s ease; }
+      details.phase-more[open] > summary::after { transform: rotate(90deg); }
+      details.phase-more > .phase-el { margin-top: 16px; }
       .grid-3, .grid-4, .flow, .modules, .showcase, .char-band, .faq-list { grid-template-columns: 1fr; }
       /* 場景卡：手機對話框會佔到 185px，把 104px 的角色遮掉約 3/4。
          加高場景並把角色帶上抬，讓角色與對話各有地盤（不縮對白、不砍句子） */
@@ -941,39 +949,42 @@
             </div>
             <h3>看懂日常生活裡的錢</h3>
             <p class="phase-sum">從「需要與想要」開始，走進家裡的帳本，再走進商店——看穿折扣、定價與「免費」背後的算計。</p>
-            <div class="phase-el">
-              <span>貨幣演變與現代金融</span>
-              <span>家庭財務與收入來源</span>
-              <span>商業行銷與定價秘密</span>
-              <span>聰明消費與網購安全</span>
-            </div>
-            <p class="phase-goals-t">上完這個階段，孩子會——</p>
-            <ul class="phase-goals">
-              <li>分辨「需要」與「想要」，建立消費的價值判斷</li>
-              <li>認識貨幣的演變，一路到今天的電子支付與數位貨幣</li>
-              <li>了解收入從哪裡來，家裡的錢又花去哪裡</li>
-              <li>看穿折扣、定價策略與「免費」的行銷手法</li>
-              <li>辨識消費陷阱與網路購物的風險</li>
-            </ul>
-            <details class="syllabus">
-              <summary>展開第一階段 15 堂完整課表</summary>
-              <ol class="syl">
-                <li><b>第 1 堂</b><i>古代貨幣</i><em>從以物易物到金屬貨幣，錢是怎麼出現的</em></li>
-                <li><b>第 2 堂</b><i>現代貨幣與支付工具</i><em>現金、電子支付與行動支付</em></li>
-                <li><b>第 3 堂</b><i>發票與未來貨幣</i><em>統一發票的意義，以及數位貨幣</em></li>
-                <li><b>第 4 堂</b><i>家庭的必要開銷</i><em>家裡每個月的錢，實際花在哪裡</em></li>
-                <li><b>第 5 堂</b><i>家庭支出的選擇</i><em>預算有限時，怎麼取捨</em></li>
-                <li><b>第 6 堂</b><i>錢從哪裡來</i><em>收入的各種來源</em></li>
-                <li><b>第 7 堂</b><i>主動收入</i><em>用時間與能力換錢</em></li>
-                <li><b>第 8 堂</b><i>店家折扣揭密</i><em>買一送一與限時特價帶來的心理壓力</em></li>
-                <li><b>第 9 堂</b><i>店家小巧思</i><em>「尾數 9」定價策略與賣場的設計</em></li>
-                <li><b>第 10 堂</b><i>生活經濟學</i><em>供給、需求與機會成本</em></li>
-                <li><b>第 11 堂</b><i>免費的秘密</i><em>訂閱制、共享經濟，「免費」到底怎麼賺錢</em></li>
-                <li><b>第 12 堂</b><i>價格競爭</i><em>削價、群眾募資與競爭策略</em></li>
-                <li><b>第 13 堂</b><i>影響商品的價格因素</i><em>成本、稀缺性與品牌</em></li>
-                <li><b>第 14 堂</b><i>網路購物</i><em>機率型商品的賭博性質、免費寶物詐騙</em></li>
-                <li><b>第 15 堂</b><i>聰明消費</i><em>把前面十四堂，變成自己的判斷力</em></li>
-              </ol>
+            <details class="phase-more" open>
+              <summary>看學習重點與 15 堂課表</summary>
+              <div class="phase-el">
+                <span>貨幣演變與現代金融</span>
+                <span>家庭財務與收入來源</span>
+                <span>商業行銷與定價秘密</span>
+                <span>聰明消費與網購安全</span>
+              </div>
+              <p class="phase-goals-t">上完這個階段，孩子會——</p>
+              <ul class="phase-goals">
+                <li>分辨「需要」與「想要」，建立消費的價值判斷</li>
+                <li>認識貨幣的演變，一路到今天的電子支付與數位貨幣</li>
+                <li>了解收入從哪裡來，家裡的錢又花去哪裡</li>
+                <li>看穿折扣、定價策略與「免費」的行銷手法</li>
+                <li>辨識消費陷阱與網路購物的風險</li>
+              </ul>
+              <details class="syllabus">
+                <summary>展開第一階段 15 堂完整課表</summary>
+                <ol class="syl">
+                  <li><b>第 1 堂</b><i>古代貨幣</i><em>從以物易物到金屬貨幣，錢是怎麼出現的</em></li>
+                  <li><b>第 2 堂</b><i>現代貨幣與支付工具</i><em>現金、電子支付與行動支付</em></li>
+                  <li><b>第 3 堂</b><i>發票與未來貨幣</i><em>統一發票的意義，以及數位貨幣</em></li>
+                  <li><b>第 4 堂</b><i>家庭的必要開銷</i><em>家裡每個月的錢，實際花在哪裡</em></li>
+                  <li><b>第 5 堂</b><i>家庭支出的選擇</i><em>預算有限時，怎麼取捨</em></li>
+                  <li><b>第 6 堂</b><i>錢從哪裡來</i><em>收入的各種來源</em></li>
+                  <li><b>第 7 堂</b><i>主動收入</i><em>用時間與能力換錢</em></li>
+                  <li><b>第 8 堂</b><i>店家折扣揭密</i><em>買一送一與限時特價帶來的心理壓力</em></li>
+                  <li><b>第 9 堂</b><i>店家小巧思</i><em>「尾數 9」定價策略與賣場的設計</em></li>
+                  <li><b>第 10 堂</b><i>生活經濟學</i><em>供給、需求與機會成本</em></li>
+                  <li><b>第 11 堂</b><i>免費的秘密</i><em>訂閱制、共享經濟，「免費」到底怎麼賺錢</em></li>
+                  <li><b>第 12 堂</b><i>價格競爭</i><em>削價、群眾募資與競爭策略</em></li>
+                  <li><b>第 13 堂</b><i>影響商品的價格因素</i><em>成本、稀缺性與品牌</em></li>
+                  <li><b>第 14 堂</b><i>網路購物</i><em>機率型商品的賭博性質、免費寶物詐騙</em></li>
+                  <li><b>第 15 堂</b><i>聰明消費</i><em>把前面十四堂，變成自己的判斷力</em></li>
+                </ol>
+              </details>
             </details>
           </article>
 
@@ -984,39 +995,42 @@
             </div>
             <h3>看懂銀行、信用與投資</h3>
             <p class="phase-sum">錢放進銀行會發生什麼事？借錢的代價是什麼？保險為什麼有用？——大人天天在用、卻沒人教過的金融工具，一件一件拆開。</p>
-            <div class="phase-el">
-              <span>銀行運作與儲蓄規劃</span>
-              <span>信用管理與債務風險</span>
-              <span>投資工具與市場運作</span>
-              <span>投資策略與防詐意識</span>
-            </div>
-            <p class="phase-goals-t">上完這個階段，孩子會——</p>
-            <ul class="phase-goals">
-              <li>認識銀行的運作，理解利息與複利的威力，養成有計畫的儲蓄習慣</li>
-              <li>建立正確的信用觀念，分辨良性與惡性債務，看懂信用卡與貸款的成本</li>
-              <li>理解保險「風險分擔」的核心價值，認識常見險種與規劃原則</li>
-              <li>認識多元投資工具，建立長期持有、分散風險的穩健心態</li>
-              <li>辨識金融詐騙，並知道遇到時該怎麼處理</li>
-            </ul>
-            <details class="syllabus">
-              <summary>展開第二階段 15 堂完整課表</summary>
-              <ol class="syl">
-                <li><b>第 16 堂</b><i>銀行的功能</i><em>銀行的六大功能、活存與定存的差別</em></li>
-                <li><b>第 17 堂</b><i>儲蓄計畫</i><em>六罐子理財法，設定具體的儲蓄目標</em></li>
-                <li><b>第 18 堂</b><i>債務的代價</i><em>利息是使用金錢的租金；金錢往來對友誼的影響</em></li>
-                <li><b>第 19 堂</b><i>認識信用卡</i><em>分期付款與循環利息的陷阱、信用評分</em></li>
-                <li><b>第 20 堂</b><i>預支的貸款</i><em>房貸、車貸、學貸與還款能力評估</em></li>
-                <li><b>第 21 堂</b><i>保險防護罩</i><em>集眾人之力分擔風險，認識常見險種</em></li>
-                <li><b>第 22 堂</b><i>保險規劃</i><em>理賠流程、人情保單的迷思、雙十原則</em></li>
-                <li><b>第 23 堂</b><i>投資概念</i><em>通膨讓錢縮水，複利獎勵早開始的人</em></li>
-                <li><b>第 24 堂</b><i>投資規劃</i><em>設定財務目標，分辨合理的報酬與風險</em></li>
-                <li><b>第 25 堂</b><i>金融詐騙</i><em>龐氏騙局、假投資群組、一頁式廣告與網路釣魚</em></li>
-                <li><b>第 26 堂</b><i>投資工具</i><em>股票、基金、ETF、債券、黃金與虛擬貨幣</em></li>
-                <li><b>第 27 堂</b><i>股票的概念</i><em>公司為什麼發行股票，股東有什麼權利</em></li>
-                <li><b>第 28 堂</b><i>選股的眼光</i><em>什麼是護城河，怎麼避開誠信不佳的公司</em></li>
-                <li><b>第 29 堂</b><i>股票交易</i><em>零股交易，手續費與證交稅等隱形成本</em></li>
-                <li><b>第 30 堂</b><i>股票投資的心態</i><em>長期持有、定期定額與分散風險</em></li>
-              </ol>
+            <details class="phase-more" open>
+              <summary>看學習重點與 15 堂課表</summary>
+              <div class="phase-el">
+                <span>銀行運作與儲蓄規劃</span>
+                <span>信用管理與債務風險</span>
+                <span>投資工具與市場運作</span>
+                <span>投資策略與防詐意識</span>
+              </div>
+              <p class="phase-goals-t">上完這個階段，孩子會——</p>
+              <ul class="phase-goals">
+                <li>認識銀行的運作，理解利息與複利的威力，養成有計畫的儲蓄習慣</li>
+                <li>建立正確的信用觀念，分辨良性與惡性債務，看懂信用卡與貸款的成本</li>
+                <li>理解保險「風險分擔」的核心價值，認識常見險種與規劃原則</li>
+                <li>認識多元投資工具，建立長期持有、分散風險的穩健心態</li>
+                <li>辨識金融詐騙，並知道遇到時該怎麼處理</li>
+              </ul>
+              <details class="syllabus">
+                <summary>展開第二階段 15 堂完整課表</summary>
+                <ol class="syl">
+                  <li><b>第 16 堂</b><i>銀行的功能</i><em>銀行的六大功能、活存與定存的差別</em></li>
+                  <li><b>第 17 堂</b><i>儲蓄計畫</i><em>六罐子理財法，設定具體的儲蓄目標</em></li>
+                  <li><b>第 18 堂</b><i>債務的代價</i><em>利息是使用金錢的租金；金錢往來對友誼的影響</em></li>
+                  <li><b>第 19 堂</b><i>認識信用卡</i><em>分期付款與循環利息的陷阱、信用評分</em></li>
+                  <li><b>第 20 堂</b><i>預支的貸款</i><em>房貸、車貸、學貸與還款能力評估</em></li>
+                  <li><b>第 21 堂</b><i>保險防護罩</i><em>集眾人之力分擔風險，認識常見險種</em></li>
+                  <li><b>第 22 堂</b><i>保險規劃</i><em>理賠流程、人情保單的迷思、雙十原則</em></li>
+                  <li><b>第 23 堂</b><i>投資概念</i><em>通膨讓錢縮水，複利獎勵早開始的人</em></li>
+                  <li><b>第 24 堂</b><i>投資規劃</i><em>設定財務目標，分辨合理的報酬與風險</em></li>
+                  <li><b>第 25 堂</b><i>金融詐騙</i><em>龐氏騙局、假投資群組、一頁式廣告與網路釣魚</em></li>
+                  <li><b>第 26 堂</b><i>投資工具</i><em>股票、基金、ETF、債券、黃金與虛擬貨幣</em></li>
+                  <li><b>第 27 堂</b><i>股票的概念</i><em>公司為什麼發行股票，股東有什麼權利</em></li>
+                  <li><b>第 28 堂</b><i>選股的眼光</i><em>什麼是護城河，怎麼避開誠信不佳的公司</em></li>
+                  <li><b>第 29 堂</b><i>股票交易</i><em>零股交易，手續費與證交稅等隱形成本</em></li>
+                  <li><b>第 30 堂</b><i>股票投資的心態</i><em>長期持有、定期定額與分散風險</em></li>
+                </ol>
+              </details>
             </details>
           </article>
 
@@ -1027,40 +1041,43 @@
             </div>
             <h3>看懂國家與世界怎麼運轉</h3>
             <p class="phase-sum">視野再放大：稅收與國家預算、匯率與進出口、供應鏈與碳足跡，最後回到孩子自己身上——如果我想做一個東西賣出去，該從哪裡開始？</p>
-            <div class="phase-el">
-              <span>國家財政與稅務</span>
-              <span>貨幣與經濟指標</span>
-              <span>全球貿易與環境</span>
-              <span>經濟歷史與心理</span>
-              <span>創業思維與實務</span>
-            </div>
-            <p class="phase-goals-t">上完這個階段，孩子會——</p>
-            <ul class="phase-goals">
-              <li>認識總體經濟，了解國家財政、稅收、GDP 與貨幣政策怎麼運作</li>
-              <li>掌握全球貿易脈絡：匯率、進出口、供應鏈與地緣對經濟的影響</li>
-              <li>認識經濟泡沫的歷史，學會避開盲從的方法</li>
-              <li>建立綠色消費與循環經濟的永續概念</li>
-              <li>培養創業家思維，從發想到商業模式，學習產品開發、行銷與風險管理</li>
-            </ul>
-            <details class="syllabus">
-              <summary>展開第三階段 15 堂完整課表</summary>
-              <ol class="syl">
-                <li><b>第 31 堂</b><i>國家的收入</i><em>稅收、國營事業、公債與公益彩券盈餘</em></li>
-                <li><b>第 32 堂</b><i>國家的支出</i><em>教育、國防、交通與社會福利的分配</em></li>
-                <li><b>第 33 堂</b><i>政府的稅收</i><em>所得稅、消費稅、財產稅與遺產贈與稅</em></li>
-                <li><b>第 34 堂</b><i>誰管理國家的錢</i><em>財政部與央行的分工；隨意印鈔票會怎樣</em></li>
-                <li><b>第 35 堂</b><i>金錢流動讓經濟成長</i><em>從一家麵包店看懂 GDP 與失業率</em></li>
-                <li><b>第 36 堂</b><i>不同國家的貨幣</i><em>匯率、歐元，換匯時的買入價與賣出價</em></li>
-                <li><b>第 37 堂</b><i>進口與出口</i><em>貿易順逆差、關稅保護與公平貿易</em></li>
-                <li><b>第 38 堂</b><i>經濟差異的自然因素</i><em>地理、氣候與天然資源如何決定貧富</em></li>
-                <li><b>第 39 堂</b><i>經濟差異的人文因素</i><em>法治、人口結構與科技創新的影響</em></li>
-                <li><b>第 40 堂</b><i>全球化與供應鏈</i><em>蘇伊士運河事件、碳足跡與食物里程</em></li>
-                <li><b>第 41 堂</b><i>經濟泡沫與歷史</i><em>鬱金香狂熱、羊群效應與價值投資</em></li>
-                <li><b>第 42 堂</b><i>創業的第一步</i><em>微創業、合夥關係與良心賺錢的價值觀</em></li>
-                <li><b>第 43 堂</b><i>商品開發</i><em>商業模式畫布、設計思考與最小可行性產品</em></li>
-                <li><b>第 44 堂</b><i>商品銷售與行銷</i><em>銷售通路、品牌信任與庫存問題</em></li>
-                <li><b>第 45 堂</b><i>創業風險與管理</i><em>商標與專利等智慧財產權，面對失敗的心態</em></li>
-              </ol>
+            <details class="phase-more" open>
+              <summary>看學習重點與 15 堂課表</summary>
+              <div class="phase-el">
+                <span>國家財政與稅務</span>
+                <span>貨幣與經濟指標</span>
+                <span>全球貿易與環境</span>
+                <span>經濟歷史與心理</span>
+                <span>創業思維與實務</span>
+              </div>
+              <p class="phase-goals-t">上完這個階段，孩子會——</p>
+              <ul class="phase-goals">
+                <li>認識總體經濟，了解國家財政、稅收、GDP 與貨幣政策怎麼運作</li>
+                <li>掌握全球貿易脈絡：匯率、進出口、供應鏈與地緣對經濟的影響</li>
+                <li>認識經濟泡沫的歷史，學會避開盲從的方法</li>
+                <li>建立綠色消費與循環經濟的永續概念</li>
+                <li>培養創業家思維，從發想到商業模式，學習產品開發、行銷與風險管理</li>
+              </ul>
+              <details class="syllabus">
+                <summary>展開第三階段 15 堂完整課表</summary>
+                <ol class="syl">
+                  <li><b>第 31 堂</b><i>國家的收入</i><em>稅收、國營事業、公債與公益彩券盈餘</em></li>
+                  <li><b>第 32 堂</b><i>國家的支出</i><em>教育、國防、交通與社會福利的分配</em></li>
+                  <li><b>第 33 堂</b><i>政府的稅收</i><em>所得稅、消費稅、財產稅與遺產贈與稅</em></li>
+                  <li><b>第 34 堂</b><i>誰管理國家的錢</i><em>財政部與央行的分工；隨意印鈔票會怎樣</em></li>
+                  <li><b>第 35 堂</b><i>金錢流動讓經濟成長</i><em>從一家麵包店看懂 GDP 與失業率</em></li>
+                  <li><b>第 36 堂</b><i>不同國家的貨幣</i><em>匯率、歐元，換匯時的買入價與賣出價</em></li>
+                  <li><b>第 37 堂</b><i>進口與出口</i><em>貿易順逆差、關稅保護與公平貿易</em></li>
+                  <li><b>第 38 堂</b><i>經濟差異的自然因素</i><em>地理、氣候與天然資源如何決定貧富</em></li>
+                  <li><b>第 39 堂</b><i>經濟差異的人文因素</i><em>法治、人口結構與科技創新的影響</em></li>
+                  <li><b>第 40 堂</b><i>全球化與供應鏈</i><em>蘇伊士運河事件、碳足跡與食物里程</em></li>
+                  <li><b>第 41 堂</b><i>經濟泡沫與歷史</i><em>鬱金香狂熱、羊群效應與價值投資</em></li>
+                  <li><b>第 42 堂</b><i>創業的第一步</i><em>微創業、合夥關係與良心賺錢的價值觀</em></li>
+                  <li><b>第 43 堂</b><i>商品開發</i><em>商業模式畫布、設計思考與最小可行性產品</em></li>
+                  <li><b>第 44 堂</b><i>商品銷售與行銷</i><em>銷售通路、品牌信任與庫存問題</em></li>
+                  <li><b>第 45 堂</b><i>創業風險與管理</i><em>商標與專利等智慧財產權，面對失敗的心態</em></li>
+                </ol>
+              </details>
             </details>
           </article>
 
@@ -1068,6 +1085,18 @@
         <p class="syl-note">課程大綱由橘子蘋果教學部編訂，為達最佳學習成效將不定期調整。第一階段無需任何基礎；第二、三階段需完整修畢前一階段，或通過測驗。</p>
       </div>
     </section>
+    <script>
+      /* 階段卡預設 open（無 JS 時全部展開＝安全降級），窄螢幕才收合，縮短手機頁長。
+         就地執行於區塊之後，避免先展開再收合的閃動。 */
+      (function () {
+        var mq = window.matchMedia && window.matchMedia('(max-width: 860px)');
+        if (!mq) return;
+        var list = document.querySelectorAll('#syllabus details.phase-more');
+        function apply() { for (var i = 0; i < list.length; i++) list[i].open = !mq.matches; }
+        apply();
+        if (mq.addEventListener) mq.addEventListener('change', apply);
+      })();
+    </script>
 
     <!-- 03 上課方式 -->
     <section id="class">
