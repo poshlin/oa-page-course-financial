@@ -13,7 +13,8 @@
 
   <!-- 上線前為 noindex；上線時換成 index, follow, max-image-preview:large, max-snippet:-1（見 README 待辦） -->
   <meta name="robots" content="noindex, nofollow">
-  <!-- URL 占位 /fin-platform/，正式路徑拍板後 canonical / og:url / schema @id 一併改（見 README 待辦） -->
+  <!-- 正式路徑已定案 /courses/financial/（保旭 2026-08-13）：canonical / og:url / schema 四個 @id 已同步。
+       尾斜線是官網慣例（classroom、minecraft_python、math 皆然），勿拿掉——見 README 對照表 -->
   <link rel="canonical" href="https://orangeapple.co/courses/financial/">
 
   <!-- Open Graph（og:image 待製作 1200×630 後補上，見 README 待辦） -->
@@ -311,7 +312,9 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     /* 字級基準對齊官網既有頁（classroom／about 皆為 18px / 手機 17px），
        未設時瀏覽器預設 16px，會讓本頁所有 rem 值比其他頁小 12.5% */
-    html { scroll-behavior: smooth; font-size: 18px; }
+    html { font-size: 18px; }
+    /* 平滑捲動只給沒有減少動態需求的人：索引列跳章節會長距離捲動，對前庭敏感者是負擔 */
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     body {
       font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
       color: var(--text);
@@ -1242,7 +1245,7 @@
           <h2 class="h2">課後，一場會發生後果的理財經營遊戲</h2>
           <p class="lead">課堂上老師帶著學，課後這個世界 24 小時開放。孩子在平台裡過一個縮小版的金錢人生：有收入、有選擇、有意外，也有保障。</p>
         </div>
-        <div class="reveal flow swipe" role="group" tabindex="0" aria-label="賺取金幣的前三個步驟，可左右捲動">
+        <div class="reveal flow swipe" data-swipe-label="賺取金幣的前三個步驟，可左右捲動">
           <div class="card">
             <span class="step-num">01</span>
             <h3>上課，賺經驗</h3>
@@ -1334,7 +1337,7 @@
               <div class="ticker-cap">模擬行情・非即時報價</div>
             </div>
           </div>
-          <div class="mod-swipe swipe" role="group" tabindex="0" aria-label="平台的其他四個模組，可左右捲動">
+          <div class="mod-swipe swipe" data-swipe-label="平台的其他四個模組，可左右捲動">
             <div class="card">
               <h3>銀行儲蓄</h3>
               <p>把錢存進銀行，每兩週結算一次利息。「複利」不用背公式，看著存款自己長大，就懂了。</p>
@@ -1408,6 +1411,33 @@
         <p class="swipe-hint">左右滑動，看其他四個模組 →</p>
       </div>
     </section>
+    <script>
+      /* 橫向滑動列只在手機成形（桌機 .flow 是 grid、.mod-swipe 是 display:contents）。
+         鍵盤可達性（WCAG 2.1.1）只在真的可捲動時才需要，故 role/tabindex/aria-label
+         一律由 JS 依斷點掛載——否則桌機會多出兩個沒作用的 Tab 停留點，
+         其中 .mod-swipe 因 display:contents 盒子為 0×0，焦點框根本畫不出來。 */
+      (function () {
+        var mq = window.matchMedia && window.matchMedia('(max-width: 860px)');
+        if (!mq) return;
+        var rows = document.querySelectorAll('#practice .swipe[data-swipe-label]');
+        function apply() {
+          for (var i = 0; i < rows.length; i++) {
+            var el = rows[i];
+            if (mq.matches) {
+              el.setAttribute('role', 'group');
+              el.setAttribute('tabindex', '0');
+              el.setAttribute('aria-label', el.getAttribute('data-swipe-label'));
+            } else {
+              el.removeAttribute('role');
+              el.removeAttribute('tabindex');
+              el.removeAttribute('aria-label');
+            }
+          }
+        }
+        apply();
+        if (mq.addEventListener) mq.addEventListener('change', apply);
+      })();
+    </script>
 
     <!-- 06 週報 -->
     <section class="report" id="report">
