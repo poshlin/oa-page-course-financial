@@ -79,7 +79,7 @@
         "@type": "WebPage",
         "@id": "https://orangeapple.co/courses/financial/",
         "name": "橘蘋財商素養課程｜橘子蘋果程式學苑",
-        "description": "為 3-7 年級設計的兒童財商課程：每週一堂 90 分鐘雙師課程＋財商議題課，課後搭配理財經營遊戲練習，家長每週收到學習週報。全程模擬金幣、非真實金錢。",
+        "description": "為 3-7 年級設計的兒童財商／理財課程：每週一堂 90 分鐘雙師課程＋財商議題課，課後搭配理財經營遊戲練習，家長每週收到學習週報。全程模擬金幣、非真實金錢。",
         "url": "https://orangeapple.co/courses/financial/",
         "isPartOf": { "@id": "https://orangeapple.co/#website" },
         "about": { "@id": "https://orangeapple.co/#organization" },
@@ -90,7 +90,7 @@
         "dateModified": "2026-08-11",
         "speakable": {
           "@type": "SpeakableSpecification",
-          "cssSelector": ["#tldr", "h1"]
+          "cssSelector": ["#tldr", "h1", "#faq .faq-a"]
         }
       },
       {
@@ -98,7 +98,7 @@
         "@id": "https://orangeapple.co/courses/financial/#course",
         "name": "橘蘋財商素養課程",
         "alternateName": "財商學習平台",
-        "description": "為台灣 3-7 年級學生設計的線上財商課程：每週一堂 90 分鐘——前 50 分鐘雙師模式（課程影片＋真人輔導老師）上課實作，後 40 分鐘「財商議題課」由老師帶領當週議題討論；課後在理財經營遊戲中練習記帳、儲蓄、投資與風險管理，家長每週收到學習週報。共 45 堂。全程使用模擬金幣，非真實金錢。",
+        "description": "為台灣 3-7 年級學生設計的線上兒童財商・理財課程：每週一堂 90 分鐘——前 50 分鐘雙師模式（課程影片＋真人輔導老師）上課實作，後 40 分鐘「財商議題課」由老師帶領當週議題討論；課後在理財經營遊戲中練習記帳、儲蓄、投資與風險管理，家長每週收到學習週報。共 45 堂。全程使用模擬金幣，非真實金錢。",
         "courseWorkload": "每週一堂 90 分鐘，共 45 堂",
         "provider": { "@id": "https://orangeapple.co/#organization" },
         "image": "https://orangeapple.co/courses/financial/assets/og-financial.jpg",
@@ -116,6 +116,13 @@
         "hasCourseInstance": {
           "@type": "CourseInstance",
           "courseMode": "online",
+          "courseWorkload": "PT90M",
+          "courseSchedule": {
+            "@type": "Schedule",
+            "repeatFrequency": "P1W",
+            "repeatCount": 45,
+            "duration": "PT90M"
+          },
           "inLanguage": "zh-TW",
           "location": {
             "@type": "VirtualLocation",
@@ -682,14 +689,14 @@
 
     <!-- TLDR 結論先行 -->
     <div class="wrap">
-      <p class="tldr" id="tldr"><strong>「橘蘋財商素養課程」是橘子蘋果程式學苑為 3-7 年級孩子設計的財商課程，搭配專屬的「財商學習平台」練習。</strong>每週一堂 90 分鐘：前 50 分鐘雙師模式：課程影片講觀念、真人老師看著每個孩子的操作；後 40 分鐘「財商議題課」，老師帶著討論當週議題。課後平台開放，孩子在理財經營遊戲中領日薪、記帳、儲蓄生息、模擬投資、用保險面對突發風險；家長每週收到學習週報。課程共 45 堂。課程由深耕台灣兒童與青少年程式教育 14 年的橘子蘋果推出。平台內所有金幣皆為模擬貨幣，非真實金錢，也不涉及任何真實金融交易或投資建議。</p>
+      <p class="tldr" id="tldr"><strong>「橘蘋財商素養課程」是橘子蘋果程式學苑為 3-7 年級孩子設計的兒童理財課，搭配專屬的「財商學習平台」練習。</strong>每週一堂 90 分鐘：前 50 分鐘雙師模式：課程影片講觀念、真人老師看著每個孩子的操作；後 40 分鐘「財商議題課」，老師帶著討論當週議題。課後平台開放，孩子在理財經營遊戲中領日薪、記帳、儲蓄生息、模擬投資、用保險面對突發風險；家長每週收到學習週報。課程共 45 堂。課程由深耕台灣兒童與青少年程式教育 14 年的橘子蘋果推出。平台內所有金幣皆為模擬貨幣，非真實金錢，也不涉及任何真實金融交易或投資建議。</p>
     </div>
 
     <!-- 01 痛點 -->
     <section id="why">
       <div class="wrap">
         <div class="sec-head">
-          <p class="kicker">01・為什麼需要財商</p>
+          <p class="kicker">01・為什麼需要兒童理財教育</p>
           <h2 class="h2">關於錢，孩子遇到的三個困境</h2>
         </div>
         <div class="grid-3">
@@ -716,7 +723,7 @@
         <div class="sec-head">
           <p class="kicker">02・一堂課怎麼上</p>
           <h2 class="h2">每週一堂 90 分鐘：老師帶著上，議題一起想</h2>
-          <p class="lead">課程共 45 堂、每週一堂。前 50 分鐘跟著老師上課實作，後 40 分鐘是整堂課最值錢的部分：財商議題課。</p>
+          <p class="lead">這套財商課程共 45 堂、每週一堂。前 50 分鐘跟著老師上課實作，後 40 分鐘是整堂課最值錢的部分：財商議題課。</p>
         </div>
         <div class="timeline" aria-hidden="true">
           <span class="tl-seg tl-a">0–40 分・雙師上課</span>
@@ -1088,7 +1095,7 @@
         <div class="grid-3">
           <div class="card">
             <h3>3-7 年級</h3>
-            <p>動畫故事、語音講解、遊戲關卡三管齊下，這個年齡段的孩子看得懂、玩得動、能獨立完成。</p>
+            <p>這個年紀正是零用錢開始變多、金錢觀成形的階段，也是兒童理財課最有效的時候。動畫故事、語音講解、遊戲關卡三管齊下，孩子看得懂、玩得動。</p>
           </div>
           <div class="card">
             <h3>每週一堂，天天都能練</h3>
@@ -1147,7 +1154,7 @@
           </details>
           <details class="faq">
             <summary>橘子蘋果不是教程式的嗎？為什麼做財商？</summary>
-            <div class="faq-a">橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，財商也是。</div>
+            <div class="faq-a"><a href="/about/">橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員</a>，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，財商也是。</div>
           </details>
           </div>
         </div>
