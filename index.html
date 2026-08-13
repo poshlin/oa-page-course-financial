@@ -250,8 +250,19 @@
     .hero-trust { font-size: 0.85rem; color: var(--text); margin-top: 16px; padding-top: 14px; border-top: 2px dashed var(--gold); }
     .hero-trust strong { font-weight: 800; }
 
+    /* 螢光筆標記：跨行連續（border-bottom 換行會斷成兩截） */
+    .hl { font-style: normal; background: linear-gradient(transparent 62%, var(--primary) 62%, var(--primary) 94%, transparent 94%); -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 2px; }
+
     /* Hero */
-    .hero { padding: 36px 0 80px; }
+    .hero { padding: 36px 0 80px; position: relative; overflow: hidden; }
+    /* 背景裝飾：平台首頁原件（淡橘線稿），只放在無文字的角落、不影響任何對比 */
+    .hero-deco { position: absolute; pointer-events: none; user-select: none; z-index: 0; }
+    .hero-deco.d-money { top: -34px; right: -40px; width: 210px; opacity: .5; transform: rotate(8deg); }
+    .hero-deco.d-piggy { bottom: -46px; left: -52px; width: 230px; opacity: .42; }
+    .hero .wrap { position: relative; z-index: 1; }
+    /* 故事主角波比：站在平台畫面左下角，讓 mockup 看起來「有人在用」 */
+    .hero-visual { position: relative; }
+    .hero-popi { position: absolute; left: -74px; bottom: -30px; width: 132px; height: auto; filter: drop-shadow(0 7px 9px rgba(0,0,0,.2)); }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; margin-top: 28px; }
     .hero-tagline { font-size: clamp(19px, 2.4vw, 24px); font-weight: 700; margin: 18px 0 12px; }
     .hero p.lead { margin-bottom: 22px; }
@@ -503,6 +514,25 @@
       section { padding: 56px 0; }
       .hero-grid, .report-grid, .mod-invest, .mod-shop, .fate-row { grid-template-columns: 1fr; }
       .grid-3, .grid-4, .flow, .modules, .showcase, .char-band, .faq-list { grid-template-columns: 1fr; }
+      /* mockup 模擬的是 App 介面、本來就該比內文小；17px 根字級下若不縮，
+         「財商學習平台」「小明」「簽到」在 375px 都會斷行 */
+      .mock-bar { gap: 6px; padding: 8px 10px; }
+      .mock-bar-title { font-size: 0.66rem; }
+      .stat-pill { font-size: 0.64rem; padding: 2px 8px 2px 4px; }
+      .stat-pill img { width: 16px; height: 16px; }
+      .mock-user { font-size: 0.62rem; white-space: nowrap; }
+      .mock-avatar { width: 24px; height: 24px; }
+      .mock-body { gap: 8px; padding: 12px; }
+      .mock-h, .mock-task-row { font-size: 0.68rem; }
+      .mock-num { font-size: 1.4rem; }
+      .mock-alloc { font-size: 0.64rem; }
+      .mock-salary { font-size: 0.72rem; }
+      .mock-badge { font-size: 0.68rem; padding: 5px 10px; white-space: nowrap; }
+      .mock-caption { font-size: 0.64rem; }
+      /* 手機：波比縮小並收進畫面內，桌機那組負值會被切掉一半 */
+      .hero-popi { left: -16px; bottom: -24px; width: 104px; }
+      .hero-deco.d-money { width: 150px; top: -20px; right: -32px; }
+      .hero-deco.d-piggy { width: 160px; bottom: -30px; left: -40px; }
       /* 時間軸：手機改直向堆疊。40/10/40 的橫向比例會把中段壓到放不下字 */
       .timeline { flex-direction: column; gap: 6px; }
       .tl-seg { flex: none; padding: 11px 12px; text-align: left; }
@@ -553,6 +583,8 @@
   <main id="main">
     <!-- Hero -->
     <section class="hero">
+      <img class="hero-deco d-money" src="assets/deco-money.png" alt="" aria-hidden="true">
+      <img class="hero-deco d-piggy" src="assets/deco-piggy.png" alt="" aria-hidden="true">
       <div class="wrap">
         <div class="hero-grid">
           <div>
@@ -561,7 +593,7 @@
               <span class="eyebrow eyebrow-online">兒童財商教育・不限地區</span>
             </div>
             <h1>橘蘋財商素養課程</h1>
-            <p class="hero-tagline">金錢觀不是用聽的，是用「經歷」學會的。</p>
+            <p class="hero-tagline">金錢觀不是用聽的，是用<em class="hl">「經歷」</em>學會的。</p>
             <p class="lead">每週一堂，老師帶著孩子上課、想議題；課後的世界 24 小時開放——賺薪水、記帳、儲蓄、投資，自己決定怎麼用錢。想亂花錢？可以。突然生病卻沒買保險？自己付。所有後果都發生在遊戲裡——犯錯的成本是零，學到的教訓是真的。</p>
             <div class="chips">
               <span class="chip">3-7 年級適齡</span>
@@ -572,7 +604,8 @@
             <p class="cta-note">50 分鐘試聽：實際體驗雙師上課與平台操作。留下資料，課程顧問將與您聯繫安排。</p>
             <p class="hero-trust">橘子蘋果程式學苑出品｜深耕兒童與青少年程式教育 <strong>14 年</strong>・服務超過 <strong>10 萬名</strong>學員</p>
           </div>
-          <div>
+          <div class="hero-visual">
+            <img class="hero-popi" src="assets/popi-talk.gif" alt="課程故事主角波比" loading="eager">
             <div class="mock" role="img" aria-label="平台首頁功能示意：今日任務、每日簽到與資產總額">
               <div class="mock-bar">
                 <span class="mock-bar-title" aria-hidden="true">財商學習平台</span>
