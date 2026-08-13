@@ -321,7 +321,8 @@
     .card p { font-size: 0.95rem; color: var(--text-2); }
 
     /* 01 痛點 */
-    .pain-punch { margin-top: 32px; font-size: clamp(18px, 2.4vw, 22px); font-weight: 800; text-align: center; }
+    /* 刻意在破折號後斷行：鋪陳一行、結論一行，中途斷句會洩掉力道 */
+    .pain-punch { margin-top: 32px; font-size: clamp(18px, 2.4vw, 22px); font-weight: 800; text-align: center; line-height: 1.9; text-wrap: balance; }
     /* 螢光筆式底線：border-bottom 換行時會斷成長短不一的兩截，改用漸層背景＋clone 才能跨行連續 */
     .pain-punch em { font-style: normal; background: linear-gradient(transparent 62%, var(--primary) 62%, var(--primary) 94%, transparent 94%); -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 2px; }
 
@@ -693,7 +694,7 @@
             <p>你說「要存錢」，他聽到的是「不能買」。道理講一百次，不如讓他自己經歷一次。</p>
           </div>
         </div>
-        <p class="pain-punch">所以我們不講道理——<em>我們給孩子一個「會發生後果」的世界。</em></p>
+        <p class="pain-punch">所以我們不講道理——<br><em>我們給孩子一個「會發生後果」的世界。</em></p>
       </div>
     </section>
 
