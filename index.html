@@ -470,7 +470,12 @@
     .insider b { font-weight: 800; }
 
     /* ③ 卡片分級：次要資訊用輕卡，別讓每張卡都一樣重 */
-    .card-lite { background: transparent; border: 0; box-shadow: none; padding: 0 0 0 18px; border-left: 3px solid var(--gold); border-radius: 0; }
+    .mod-rank { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.05fr; gap: 26px; align-items: center; }
+    .rank-stage { display: flex; align-items: flex-end; justify-content: center; gap: 14px; }
+    .rank-stage i { width: 78px; border-radius: 10px 10px 0 0; background: var(--cream-2); border: 3px solid var(--gold); border-bottom-width: 0; display: flex; align-items: flex-start; justify-content: center; padding-top: 8px; font-style: normal; font-weight: 800; font-size: 1.05rem; color: var(--text); }
+    .rank-stage .r1 { height: 112px; background: var(--primary); }
+    .rank-stage .r2 { height: 82px; }
+    .rank-stage .r3 { height: 60px; }
 
     /* 01 痛點 */
     /* 刻意在破折號後斷行：鋪陳一行、結論一行，中途斷句會洩掉力道 */
@@ -692,7 +697,6 @@
     /* 兩個「獨立直欄」而非 grid 儲存格：grid 會讓同列兩題高度互綁，
        一邊展開就在另一邊下方留一塊空洞；各自堆疊才不互相牽動 */
     .faq-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
-    .faq-col { display: flex; flex-direction: column; gap: 14px; }
     details.faq { background: var(--card); border: 2px solid var(--gold); border-radius: var(--r); overflow: hidden; }
     details.faq summary { list-style: none; cursor: pointer; font-weight: 800; padding: 18px 22px; position: relative; padding-right: 48px; }
     details.faq summary::-webkit-details-marker { display: none; }
@@ -713,7 +717,7 @@
     @media (max-width: 768px) { html { font-size: 17px; } }
     @media (max-width: 860px) {
       section { padding: 56px 0; }
-      .hero-grid, .report-grid, .mod-invest, .mod-shop, .fate-row { grid-template-columns: 1fr; }
+      .hero-grid, .report-grid, .mod-invest, .mod-shop, .mod-rank, .fate-row { grid-template-columns: 1fr; }
       .grid-3, .grid-4, .flow, .modules, .showcase, .char-band, .faq-list { grid-template-columns: 1fr; }
       /* 場景卡：手機對話框會佔到 185px，把 104px 的角色遮掉約 3/4。
          加高場景並把角色帶上抬，讓角色與對話各有地盤（不縮對白、不砍句子） */
@@ -1343,15 +1347,15 @@
               </figure>
             </div>
           </div>
-          <div class="card card-lite">
-            <h3>排行榜</h3>
-            <p>比的是「這期進步多少」，不是誰的錢多。晚加入的孩子，一樣有機會站上頒獎台。</p>
-            <div class="ui-strip">
-              <div class="mini-row">
-                <div class="podium" aria-hidden="true"><i class="p2"></i><i class="p1"></i><i class="p3"></i></div>
-                <span class="mini-sub">每月結算的成長排行榜<br>每期重新起跑</span>
+          <div class="card mod-rank">
+            <div>
+              <h3>排行榜</h3>
+              <p>比的是「這期進步多少」，不是誰的錢多。晚加入的孩子，一樣有機會站上頒獎台。</p>
+              <div class="ui-strip">
+                <p class="mini-note">每月結算的成長排行榜，每期重新起跑</p>
               </div>
             </div>
+            <div class="rank-stage" aria-hidden="true"><i class="r2">2</i><i class="r1">1</i><i class="r3">3</i></div>
           </div>
         </div>
       </div>
@@ -1436,7 +1440,6 @@
           <h2 class="h2">家長最常問的問題</h2>
         </div>
         <div class="reveal faq-list">
-          <div class="faq-col">
           <details class="faq" open>
             <summary>這麼小就讓孩子接觸股票投資，會不會太早？</summary>
             <div class="faq-a">平台裡的投資全程使用模擬金幣，行情擬真，但沒有任何真實金錢交易。孩子在沒有真實損失的環境裡先體驗漲跌、損益與風險，將來面對真實金錢時才不會是第一次。排行榜比的也是「這期進步多少」而非資產多寡，孩子不會被推向「錢越多越贏」的價值觀。</div>
@@ -1453,8 +1456,6 @@
             <summary>需要準備什麼設備？</summary>
             <div class="faq-a">打開電腦瀏覽器就能上課，不需安裝任何軟體，但電腦要跑得動：作業系統需 Windows 10 或 macOS 10.14 以上，處理器 Intel Core i3-3210 或 AMD A8-7600 以上，記憶體 8GB 以上、可用空間 20GB 以上，並準備一個慣用的滑鼠；建議使用近三年出產的機器。另建議準備耳機麥克風，課堂上與老師通話、參加議題討論會用到。</div>
           </details>
-          </div>
-          <div class="faq-col">
           <details class="faq">
             <summary>適合幾年級的孩子？</summary>
             <div class="faq-a">課程為 3 到 7 年級設計。課程影片以動畫故事搭配語音講解，課堂上有真人老師看著每個孩子的進度——跟不上，不會被丟下。</div>
@@ -1479,7 +1480,6 @@
             <summary>橘子蘋果不是教程式的嗎？為什麼做財商？</summary>
             <div class="faq-a"><a href="/about/">橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員</a>，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，財商也是。</div>
           </details>
-          </div>
         </div>
       </div>
     </section>
