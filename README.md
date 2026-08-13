@@ -38,7 +38,7 @@
 
 - [x] **正式 URL 已定案（保旭 2026-08-13）**：`https://orangeapple.co/courses/financial/` — canonical／og:url／schema 四個 @id／oa.config.json 已全部同步。⚠️ 保旭原話未帶尾斜線，我依官網慣例補上（classroom、minecraft_python、math 皆尾斜線；trailing slash 遷移曾造成 30% 淨損，勿再變動）——交數位長時請確認 Rails 路由採哪一種
 - [ ] **移除 noindex**：上線時把 robots 換成 `index, follow, max-image-preview:large, max-snippet:-1`
-- [ ] **og:image**：1200×630 尚未製作（head 目前刻意不放 og:image tag，補圖時一併加）
+- [x] **og:image 已完成（2026-08-13）**：`assets/og-financial.jpg` 1200×630／105KB，**本機以真素材合成、非 AI 生成**（平台裝飾原件＋課程角色波比＋登入頁四色波浪＋方格底紋；字型 Heiti TC 確保繁體標點置中）。og:image／twitter:card 相關 tag 已補齊；⚠️ 正式站部署時 `assets/` 需一併上傳，否則分享卡開天窗
 - [ ] **真實素材**：課堂實境區已用平台課程原件（`assets/`，2026-08-11 自 staging 下載）；hero 與週報區仍為 CSS mockup，平台正式環境開放後決定換真截圖或保留。上線前與正式環境比對 assets 素材版本
 - [ ] favicon（注入母站後沿用官網，獨立預覽時缺）
 - [ ] git init ＋ commit → preflight（hook 強制）→ push `OrangeApple-Lab/oa-page-fin-platform`
@@ -89,6 +89,8 @@
 | 頂欄經驗值 290 | staging §二-10（該帳號簽到前經驗值） |
 | 9 種保險名稱與理賠額（意外 $5,000／醫療 $3,000／住宅 $12,000／租客 $10,000／汽車責任 $20,000／汽車車體 $15,000／旅行不便 $4,000／手機 $3,000／寵物 $4,000） | staging §二-14（9 商品逐字，2026-08-11 盤點） |
 | 造型品項與價格：白色學校制服（已擁有）／白色廚師服 900・Lv.2／白色太空裝 1,800・Lv.4 | 2026-08-12 實測平台 `/shop` 商品卡原文（名稱＋價格＋等級門檻） |
+| `assets/og-financial.jpg` 分享圖 | 本機 PIL 合成：deco 原件＋波比＋平台登入頁四色波浪（#FF7B54/#FFAD60/#FCD667/#4ECDC4）＋方格底紋；文案取自頁面既有內容，無新增聲稱 |
+| hero 方格底紋與四色波浪 | 平台登入頁 `/welcome` 實測（2026-08-13）：grid `rgba(245,166,35,.08) 1px`、wave SVG viewBox 1440×420 四層路徑 |
 | `assets/deco-money.png`／`deco-piggy.png` hero 背景裝飾 | 平台首頁原件 `asset-overrides/home/`（2026-08-13 下載縮圖）；純裝飾、alt 空值＋aria-hidden |
 | hero 波比 `popi-talk.gif` | 課程原件（assets-manifest §一），置於平台畫面左下角 |
 | `assets/look-uniform.png`／`look-chef.png`／`look-space.png` | 平台原件合成（`_base`＋各 `cos_top_*`＋雀斑＋綠蘑菇髮，透明底），本機 PIL 疊圖後縮至 260px |
