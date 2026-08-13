@@ -27,10 +27,31 @@
 
 **禁用**：`#999999` 做任何文字（白底僅 2.85，AA 大字都不過；平台內部有用，landing 不跟）。
 
+### Hero 專用（取自平台登入頁 `/welcome`，2026-08-13 實測）
+
+| 用途 | 值 |
+|---|---|
+| 方格紙底紋 | `linear-gradient(rgba(245,166,35,.08) 1px, transparent 1px)` 雙向，`background-size: 26px` |
+| 四色波浪（由上而下） | `#FF7B54` 珊瑚 → `#FFAD60` 橘 → `#FCD667` 黃 → `#4ECDC4` 青 |
+
+波浪為**純裝飾**：內嵌 SVG（不增加請求）、`aria-hidden`、其上不放任何文字，故無對比要求。**四色只用於這條波浪**，不得挪作按鈕或文字色（`#FFAD60`／`#FCD667` 在淺底上做文字皆不過 AA）。
+
+### 圓形舞台漸層（`.stage`）
+
+| class | 徑向漸層 | 用途 |
+|---|---|---|
+| `t-teal` | `#E6F7F5 → #B4E5DE` | 波比、廚師服 |
+| `t-gold` | `#FFF7E6 → #FFE0A6` | 露比、學校制服 |
+| `t-coral` | `#FFF1EA → #FFD0BB` | 叩叮 |
+| `t-sky` | `#EEF3FF → #C4D5F3` | 太空裝 |
+
 ## 字體
 
 - `font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif`
-- 內文 16px／1.75 行高；小字最小 12px；H1 clamp(34px→52px)；區塊標 clamp(26px→36px)
+- 根字級 **18px（手機 17px）**，對齊 classroom／about；`body` 用 `1rem` 繼承，勿寫死 px
+- 行高 1.75；H1 clamp(34px→52px)；區塊標 clamp(26px→36px)
+- **小字下限 12px**，且必須在**手機 17px 根字級下**仍成立 → rem 值不得低於 `0.71rem`
+- **唯一例外：mockup 內部的介面模擬文字**（`.mock-*`、`.wr-*`、`.scene-bar`、`.game-hud` 等，皆 `aria-hidden`）。它們模擬的是 App UI、本來就比內文小，且在 375px 若不縮會斷行破版。此例外僅限裝飾性 mockup，真實頁面文字一律守 12px。
 - 字重：內文 400、強調與數字 700、標題 800
 
 ## 圓角・陰影・邊框
@@ -61,6 +82,10 @@
 - 底色用**徑向漸層**（中心亮、邊緣深），四種色調對應不同角色／情境：`t-teal`（波比、廚師服）、`t-gold`（露比、制服）、`t-coral`（叩叮）、`t-sky`（太空裝）
 - 角色圖寬 88%、加 `filter: drop-shadow(0 5px 7px rgba(0,0,0,.18))` 讓它從舞台浮起來
 - 舞台是裝飾層、其上不放文字，故無 WCAG 對比要求；但邊框色須維持 `--gold` 與全站一致
+
+## 圖片格式
+
+除 `og-financial.jpg` 外，**所有圖片一律 WebP**（含 3 幀動畫角色，animated WebP 保留動畫）。2026-08-13 全面轉換：716KB → 170KB。og:image 維持 JPEG——社群爬蟲對 WebP 的支援不穩，分享卡會開天窗。
 
 ## 產品元素 mockup 規範
 
