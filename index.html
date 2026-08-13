@@ -309,7 +309,8 @@
     .mock-caption { font-size: 0.75rem; color: var(--text-2); text-align: center; padding: 8px 12px 12px; }
 
     /* TLDR（結論先行） */
-    .tldr { background: var(--task); border: 4px solid var(--gold); border-radius: var(--r); padding: 24px 28px; margin-top: -24px; }
+    /* 正值間距：舊的 -24px 是 hero 尚無波浪時為了上貼而設，加了波浪後會把框拉進波浪裡 */
+    .tldr { background: var(--task); border: 4px solid var(--gold); border-radius: var(--r); padding: 24px 28px; margin-top: 52px; }
     .tldr strong { font-weight: 800; }
 
     /* 卡片通用 */
@@ -565,7 +566,7 @@
       .mod-invest { grid-column: auto; }
       .flow .card { padding-top: 30px; }
       .sticky-cta:not([hidden]) { display: block; }
-      .tldr { margin-top: 0; }
+      .tldr { margin-top: 36px; }
     }
   </style>
 </head>
