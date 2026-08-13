@@ -547,6 +547,14 @@
     }
 
     /* 04 模組 */
+    /* 橫向滑動：僅手機生效。桌機時 .swipe 不做任何事，.mod-swipe 用 display:contents
+       讓四張卡直接參與 .modules 的兩欄 grid（維持 mod-shop / mod-rank 的滿版設定）。 */
+    .mod-swipe { display: contents; }
+    .swipe-hint { display: none; }
+    /* 步驟 04-06 獨立成第二個 .flow：桌機視覺與原本的 3 欄 × 2 列完全相同（gap 20px），
+       手機則讓前三張（皆含 mockup、等高）走滑動、後三張維持直排——
+       高度差 2.4 倍的卡片不放同一條滑動列，否則短卡會空掉大半。 */
+    .flow-2 { margin-top: 20px; }
     .modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .mod-invest { grid-column: 1 / -1; background: var(--dark); border-color: var(--dark); color: #FFF9F0; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
     .mod-invest h3 { color: var(--invest-orange); }
@@ -719,6 +727,23 @@
     @media (max-width: 860px) {
       section { padding: 56px 0; }
       .hero-grid, .report-grid, .mod-invest, .mod-shop, .mod-rank, .fate-row { grid-template-columns: 1fr; }
+      /* 橫向滑動列：負邊距讓卡片貼齊視窗兩側，露出下一張的邊緣當作可滑的提示 */
+      .swipe { display: flex; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain;
+               scroll-snap-type: x mandatory; scroll-padding-left: 20px; -webkit-overflow-scrolling: touch;
+               margin: 0 -20px; padding: 4px 20px 14px; }
+      .swipe > * { flex: 0 0 84%; scroll-snap-align: start; }
+      /* 模組卡內含 mockup（商城三個造型、保險 9 顆 chips），太窄會瘋狂換行反而變高，
+         故給更寬的基準；露出的下一張仍有約 30px 足以提示可滑。 */
+      .mod-swipe.swipe > * { flex: 0 0 92%; }
+      /* 排行榜內容最少，等高列裡會多出約 218px。把頒獎台推到卡片底部，
+         留白落在文字與圖之間＝看起來是刻意的版面，而不是內容不足。 */
+      .mod-swipe .mod-rank { align-content: space-between; }
+      .swipe:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+      /* 步驟卡長短差很多（有 mockup 的近 460px、純文字的不到 200px），等高列裡短卡會留白。
+         內容一律貼齊頂端：編號徽章釘在卡片上緣，標題必須緊接其下，
+         留白落在下方才讀得像「卡片有餘裕」；若改成垂直置中，徽章與內容中間會斷開。 */
+      .flow.swipe > .card { display: block; }
+      .swipe-hint { display: block; margin-top: 2px; font-size: 0.8rem; font-weight: 800; color: var(--coral-ink); }
       details.phase-more { margin-top: 20px; }
       details.phase-more > summary { display: block; list-style: none; cursor: pointer; font-weight: 800; padding: 15px 30px 14px 0; position: relative; border-top: 2px solid var(--gold); }
       details.phase-more > summary::-webkit-details-marker { display: none; }
@@ -1217,7 +1242,7 @@
           <h2 class="h2">課後，一場會發生後果的理財經營遊戲</h2>
           <p class="lead">課堂上老師帶著學，課後這個世界 24 小時開放。孩子在平台裡過一個縮小版的金錢人生：有收入、有選擇、有意外，也有保障。</p>
         </div>
-        <div class="reveal flow">
+        <div class="reveal flow swipe" role="group" tabindex="0" aria-label="賺取金幣的前三個步驟，可左右捲動">
           <div class="card">
             <span class="step-num">01</span>
             <h3>上課，賺經驗</h3>
@@ -1249,6 +1274,9 @@
               <p class="insider"><b>一天只能簽一次，忘記按就沒有了。</b>平台真的這樣設計——錯過就是錯過，這是孩子第一次體會「機會成本」。</p>
             </div>
           </div>
+        </div>
+        <p class="swipe-hint">左右滑動 →</p>
+        <div class="reveal flow flow-2">
           <div class="card">
             <span class="step-num">04</span>
             <h3>決定錢的去向</h3>
@@ -1306,75 +1334,78 @@
               <div class="ticker-cap">模擬行情・非即時報價</div>
             </div>
           </div>
-          <div class="card">
-            <h3>銀行儲蓄</h3>
-            <p>把錢存進銀行，每兩週結算一次利息。「複利」不用背公式，看著存款自己長大，就懂了。</p>
-            <div class="ui-strip">
-              <div class="mini-row"><span class="mini-label">儲蓄總額</span><span class="pill-btn">存款</span><span class="pill-btn alt">提款</span></div>
-              <div class="grow" aria-hidden="true">
-                <span class="gbar" style="height:34%"></span>
-                <span class="gbar" style="height:46%"></span>
-                <span class="gbar" style="height:58%"></span>
-                <span class="gbar" style="height:72%"></span>
-                <span class="gbar" style="height:88%"></span>
-                <span class="gbar on" style="height:100%"></span>
-              </div>
-              <p class="mini-note">每兩週結算一次，利息直接滾入儲蓄總額——放著不動，它自己會長。</p>
-              <p class="insider">平台上白紙黑字寫著一句：<b>利息不滿 1 金幣時不發放。</b>連小數點後的誠實都寫進去了，孩子學到的複利才是真的。</p>
-            </div>
-          </div>
-          <div class="card">
-            <h3>保險</h3>
-            <p>醫療險、意外險、手機險、寵物險……9 種保險商品。先花一小筆錢換一份保障，值不值得？讓孩子自己算。<strong>前面那張「重感冒住院」的命運卡，買了醫療險的孩子就是在這裡把錢賠回來的。</strong></p>
-            <div class="ui-strip ins-chips">
-              <span class="ins-chip">意外險<b>$5,000</b></span>
-              <span class="ins-chip">醫療險<b>$3,000</b></span>
-              <span class="ins-chip">住宅險<b>$12,000</b></span>
-              <span class="ins-chip">租客險<b>$10,000</b></span>
-              <span class="ins-chip">汽車責任險<b>$20,000</b></span>
-              <span class="ins-chip">汽車車體險<b>$15,000</b></span>
-              <span class="ins-chip">旅行不便險<b>$4,000</b></span>
-              <span class="ins-chip">手機險<b>$3,000</b></span>
-              <span class="ins-chip">寵物險<b>$4,000</b></span>
-            </div>
-            <p class="mini-note">9 種商品與理賠金額皆為平台實際設定（模擬金幣）</p>
-          </div>
-          <div class="card mod-shop">
-            <div>
-              <h3>造型商城</h3>
-              <p>賺來的金幣有地方花：幫角色治裝，先試穿再決定。但越想要的越貴，還得先升到那個等級：想穿太空裝，得先存到 1,800 金幣、也得先上到 Lv.4。</p>
+          <div class="mod-swipe swipe" role="group" tabindex="0" aria-label="平台的其他四個模組，可左右捲動">
+            <div class="card">
+              <h3>銀行儲蓄</h3>
+              <p>把錢存進銀行，每兩週結算一次利息。「複利」不用背公式，看著存款自己長大，就懂了。</p>
               <div class="ui-strip">
-                <div class="shop-tabs" aria-hidden="true"><span class="on">衣服</span><span>髮型</span><span>頭飾</span><span>背景</span></div>
-                <p class="shop-item">造型單品 100–1,800 金幣<span class="tag-lv">Lv.2 起逐步解鎖</span></p>
-                <p class="mini-note">分類頁籤為平台商城節選</p>
+                <div class="mini-row"><span class="mini-label">儲蓄總額</span><span class="pill-btn">存款</span><span class="pill-btn alt">提款</span></div>
+                <div class="grow" aria-hidden="true">
+                  <span class="gbar" style="height:34%"></span>
+                  <span class="gbar" style="height:46%"></span>
+                  <span class="gbar" style="height:58%"></span>
+                  <span class="gbar" style="height:72%"></span>
+                  <span class="gbar" style="height:88%"></span>
+                  <span class="gbar on" style="height:100%"></span>
+                </div>
+                <p class="mini-note">每兩週結算一次，利息直接滾入儲蓄總額——放著不動，它自己會長。</p>
+                <p class="insider">平台上白紙黑字寫著一句：<b>利息不滿 1 金幣時不發放。</b>連小數點後的誠實都寫進去了，孩子學到的複利才是真的。</p>
               </div>
             </div>
-            <div class="looks">
-              <figure class="look">
-                <span class="stage t-gold"><img src="assets/look-uniform.webp" alt="平台角色穿著白色學校制服" loading="lazy"></span>
-                <figcaption>白色學校制服<b>已擁有</b></figcaption>
-              </figure>
-              <figure class="look">
-                <span class="stage t-teal"><img src="assets/look-chef.webp" alt="平台角色穿著白色廚師服" loading="lazy"></span>
-                <figcaption>白色廚師服<b>900 金幣・Lv.2</b></figcaption>
-              </figure>
-              <figure class="look">
-                <span class="stage t-sky"><img src="assets/look-space.webp" alt="平台角色穿著白色太空裝" loading="lazy"></span>
-                <figcaption>白色太空裝<b>1,800 金幣・Lv.4</b></figcaption>
-              </figure>
+            <div class="card">
+              <h3>保險</h3>
+              <p>醫療險、意外險、手機險、寵物險……9 種保險商品。先花一小筆錢換一份保障，值不值得？讓孩子自己算。<strong>前面那張「重感冒住院」的命運卡，買了醫療險的孩子就是在這裡把錢賠回來的。</strong></p>
+              <div class="ui-strip ins-chips">
+                <span class="ins-chip">意外險<b>$5,000</b></span>
+                <span class="ins-chip">醫療險<b>$3,000</b></span>
+                <span class="ins-chip">住宅險<b>$12,000</b></span>
+                <span class="ins-chip">租客險<b>$10,000</b></span>
+                <span class="ins-chip">汽車責任險<b>$20,000</b></span>
+                <span class="ins-chip">汽車車體險<b>$15,000</b></span>
+                <span class="ins-chip">旅行不便險<b>$4,000</b></span>
+                <span class="ins-chip">手機險<b>$3,000</b></span>
+                <span class="ins-chip">寵物險<b>$4,000</b></span>
+              </div>
+              <p class="mini-note">9 種商品與理賠金額皆為平台實際設定（模擬金幣）</p>
             </div>
-          </div>
-          <div class="card mod-rank">
-            <div>
-              <h3>排行榜</h3>
-              <p>比的是「這期進步多少」，不是誰的錢多。晚加入的孩子，一樣有機會站上頒獎台。</p>
-              <div class="ui-strip">
-                <p class="mini-note">每月結算的成長排行榜，每期重新起跑</p>
+            <div class="card mod-shop">
+              <div>
+                <h3>造型商城</h3>
+                <p>賺來的金幣有地方花：幫角色治裝，先試穿再決定。但越想要的越貴，還得先升到那個等級：想穿太空裝，得先存到 1,800 金幣、也得先上到 Lv.4。</p>
+                <div class="ui-strip">
+                  <div class="shop-tabs" aria-hidden="true"><span class="on">衣服</span><span>髮型</span><span>頭飾</span><span>背景</span></div>
+                  <p class="shop-item">造型單品 100–1,800 金幣<span class="tag-lv">Lv.2 起逐步解鎖</span></p>
+                  <p class="mini-note">分類頁籤為平台商城節選</p>
+                </div>
+              </div>
+              <div class="looks">
+                <figure class="look">
+                  <span class="stage t-gold"><img src="assets/look-uniform.webp" alt="平台角色穿著白色學校制服" loading="lazy"></span>
+                  <figcaption>白色學校制服<b>已擁有</b></figcaption>
+                </figure>
+                <figure class="look">
+                  <span class="stage t-teal"><img src="assets/look-chef.webp" alt="平台角色穿著白色廚師服" loading="lazy"></span>
+                  <figcaption>白色廚師服<b>900 金幣・Lv.2</b></figcaption>
+                </figure>
+                <figure class="look">
+                  <span class="stage t-sky"><img src="assets/look-space.webp" alt="平台角色穿著白色太空裝" loading="lazy"></span>
+                  <figcaption>白色太空裝<b>1,800 金幣・Lv.4</b></figcaption>
+                </figure>
               </div>
             </div>
-            <div class="rank-stage" aria-hidden="true"><i class="r2">2</i><i class="r1">1</i><i class="r3">3</i></div>
+            <div class="card mod-rank">
+              <div>
+                <h3>排行榜</h3>
+                <p>比的是「這期進步多少」，不是誰的錢多。晚加入的孩子，一樣有機會站上頒獎台。</p>
+                <div class="ui-strip">
+                  <p class="mini-note">每月結算的成長排行榜，每期重新起跑</p>
+                </div>
+              </div>
+              <div class="rank-stage" aria-hidden="true"><i class="r2">2</i><i class="r1">1</i><i class="r3">3</i></div>
+            </div>
           </div>
         </div>
+        <p class="swipe-hint">左右滑動，看其他四個模組 →</p>
       </div>
     </section>
 
