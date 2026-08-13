@@ -281,20 +281,24 @@
       background-size: 26px 26px; }
     .hero-wave { position: absolute; left: -6%; right: -6%; bottom: 0; width: 112%; height: 132px; z-index: 0; pointer-events: none; display: block; }
 
-    /* ⑤ 動效：全部本地實作，不引任何外部庫；一律受 prefers-reduced-motion 管制 */
+    /* ⑤ 動效：全部本地實作，零外部庫。做法沿用 oa-page-ai-thinking 的已驗證版本：
+       隱藏優先 → 進場淡入一次（不閃）；CSS 內建 6s 保險絲，observer 全掛也最遲 6s 自動顯示（純 CSS 不靠 JS）；
+       無 JS／爬蟲 → 沒有 html.js → 內容立即可見 */
+    @keyframes oaReveal   { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
+    @keyframes oaFailsafe { to { opacity: 1; } }
+    html.js .reveal { opacity: 0; animation: oaFailsafe .01s linear 6s forwards; }
+    /* 進場時換成另一個動畫名，才會從頭播、位移才真的跑 */
+    html.js .reveal.is-visible { animation: oaReveal 800ms ease-out both; }
     @media (prefers-reduced-motion: no-preference) {
-      /* 捲動進場：基準狀態＝完全可見，動效只在 .is-in 播放一次。
-         刻意不用「opacity:0 當基準」——那種寫法只要 JS/IO 任一環出錯，內容就永久隱形 */
-      .reveal.is-in { animation: revealUp .55s cubic-bezier(.22,.9,.3,1) both; }
-      @keyframes revealUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-      /* 波浪極慢橫移，像水在動而不是圖片 */
+      /* 波浪極慢橫移，像水在動而不是一張圖 */
       .hero-wave { animation: waveDrift 26s ease-in-out infinite alternate; }
       @keyframes waveDrift { from { transform: translateX(0); } to { transform: translateX(-4%); } }
-      /* 命運卡進場時輕輕翻一下，呼應「抽一張卡」 */
+      /* 命運卡進場輕輕翻一下，呼應「抽一張卡」 */
       .fate-card.risk { transform-origin: 50% 60%; }
-      .reveal.is-in .fate-card.risk { animation: cardFlip .7s cubic-bezier(.3,1.4,.5,1) .15s both; }
+      html.js .reveal.is-visible .fate-card.risk { animation: cardFlip .7s cubic-bezier(.3,1.4,.5,1) .2s both; }
       @keyframes cardFlip { from { transform: rotateY(-16deg) translateY(6px); } to { transform: none; } }
     }
+    @media (prefers-reduced-motion: reduce) { html.js .reveal { opacity: 1 !important; animation: none !important; } }
     /* 背景裝飾：平台首頁原件（淡橘線稿），只放在無文字的角落、不影響任何對比 */
     .hero-deco { position: absolute; pointer-events: none; user-select: none; z-index: 0; }
     .hero-deco.d-money { top: -28px; right: -34px; width: 224px; opacity: .78; transform: rotate(8deg); }
@@ -1188,21 +1192,20 @@
 
   <script>
     /* 捲動進場：IntersectionObserver 本地實作，不引外部庫。
-       使用者若在系統開啟「減少動態效果」，CSS 那層就不會有位移，這裡只負責加 class */
+       CSS 已內建 6s 保險絲，這裡只負責在進入視窗時加 class */
     (function () {
       var els = document.querySelectorAll('.reveal');
       if (!els.length) return;
       if (!('IntersectionObserver' in window)) {
-        Array.prototype.forEach.call(els, function (el) { el.classList.add('is-in'); });
+        Array.prototype.forEach.call(els, function (el) { el.classList.add('is-visible'); });
         return;
       }
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
         });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      }, { threshold: 0, rootMargin: '0px 0px -80px 0px' });
       Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-
     })();
 
     /* 長頁浮動索引：捲過 hero CTA 後出現、標示目前章節、到最終 CTA 隱藏、手機下拉 */
