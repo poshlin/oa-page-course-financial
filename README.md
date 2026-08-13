@@ -3,7 +3,8 @@
 橘子蘋果「橘蘋財商素養課程」（課程搭配「財商學習平台」；內部代號 Coin Quest）的官網銷售頁。留單導向（data-oa-cta modal，母站提供）、不放價格。比照 classroom：自包含單一 `index.html`，注入 orangeapple.co，不自帶 header/footer。
 
 - 建立：2026-08-11（Claude ＋ 保旭）
-- 內容事實來源：`~/Documents/oa-coin-quest/research/`（`deck-transcript.md` 簡報 32 張逐字稿＋`staging-inventory.md` staging 17 畫面盤點）
+- 內容事實來源：`~/Documents/oa-coin-quest/research/`（`deck-transcript.md` 簡報 32 張逐字稿＋`staging-inventory.md` staging 17 畫面盤點＋**`course-outline.md` 教學部 45 堂官方大綱**）
+- ⚠️ **權威順序**：`course-outline.md`（教學部課程概要 PDF）> `deck-transcript.md`（銷售簡報）。課程結構、堂數、堂次編號、年級、設備需求一律以前者為準。
 - 設計系統：`DESIGN.md`（Coin Quest 平台實測 token，非官網亮橘系）
 - 平台 staging 環境與測試帳號：不寫入本 repo（公開），詳見內部記憶 `project_oa_coin_quest_site` 與 `~/Documents/oa-coin-quest/research/`
 
@@ -49,7 +50,7 @@
 | 頁面聲稱 | 來源 |
 |---|---|
 | 45 堂課程 | deck 第 28/30 張＋知識庫 §5.3；保旭 2026-08-11 核可堂數可放 |
-| 3-7 年級 | deck 第 30 張＋知識庫 §5.3 |
+| 3-7 年級 | deck 第 30 張＋知識庫 §5.3。🔴 **與教學部課程概要衝突**：三份 PDF 一致寫「3 年級至 6 年級」（`course-outline.md` §一）。保旭 2026-08-13 決定先向教學部爭取改為 3-7；**在回覆之前頁面維持 3-7 不動**。若爭取失敗，需同步改：title／og:title／twitter:title／og:image:alt／schema `description`×2 與 `educationalLevel`／hero chip／tldr／fit 區 lead／FAQ「適合幾年級」（可見＋schema），**並重新生成 `assets/og-financial.jpg`（圖內烙有「3–7 年級」）** |
 | 超過 1,300 檔台股／ETF | staging `/market`「共 1363 筆」（盤點 §二-9） |
 | 9 種保險商品 | staging `/insurance`（盤點 §二-14，9 商品逐字） |
 | 每兩週結算利息 | staging `/savings` 原句（盤點 §二-13） |
@@ -59,13 +60,20 @@
 | 每週學習週報／親子對話建議 | 報告**內容**＝staging `/weekly-report`（盤點 §二-17，平台每週一自動產生的那份）。⚠️ **頻率另有依據**：寄給家長的學習週報因各班上課時間不同、**寄送日不統一**，對外只寫「每週」（保旭 2026-08-12）。兩份報告的關係（直接給 or 融合進老師報告）教學部討論中，故頁面不聲稱由誰產出 |
 | 模擬金幣免責 | staging 週報原句「以下皆為平台模擬金幣，並非真實金錢」 |
 | 14 年／10 萬+ 學員 | 記憶 project_oa_brand_facts |
-| 第 1 堂「支出與公益」拆成 18 關 | course-content.md §一（2026-08-11 真 Chrome 實測，修正舊盤點的 12 關） |
+| **體驗課**「支出與公益」拆成 18 關 | 關卡數＝course-content.md §一（2026-08-11 真 Chrome 實測，修正舊盤點的 12 關）；**定位為「體驗課」而非「第 1 堂」＝`course-outline.md` §一**（官方大綱體驗課獨立於堂次 1–15 之外）。⚠️ 體驗課是否等同免費試聽上的內容，**尚未向教學部確認**，故頁面只稱「體驗課」、不與「免費試聽」畫等號 |
 | 投資模組安全聲明（模擬資料非即時報價／不連結真實帳戶／不推薦個股／不提供投資建議） | 產品事實：staging `/market` 為模擬交易（盤點 §二-9）；聲明刻意置於投資卡內部，使單獨截圖也帶脈絡 |
 | 上課方式（90 分鐘：0-50 雙師／41-50 進度確認／51-90 議題課）、老師主動開通話與舉手排隊、每週一堂 | 保旭 2026-08-12 對話原文（上課方式規格） |
 | 「財商議題課」／「動腦時間」雙層命名 | 保旭 2026-08-12 拍板（採 Claude 提案①） |
 | 試聽 50 分鐘＝課程＋平台＋雙師模式、不含議題課 | 保旭 2026-08-12 對話確認 |
 | 雙師＝課程影片＋真人輔導老師（非即時一對一） | 知識庫 OA_Scratch修飾詞策略／記憶 feedback_oa_course_descriptions（既有官方定義） |
-| 課名：支出與公益／古代貨幣／現代貨幣與支付工具 | course-content.md §一（第一階段前三課） |
+| 正式課前三堂：古代貨幣／現代貨幣與支付工具／發票與未來貨幣 | `course-outline.md` §二（官方堂次 1–3；平台實測 course-content.md §一亦相符） |
+| **45 堂完整課表**（堂次、課名、每堂說明） | `course-outline.md` §二／三／四，逐堂抽自教學部三份課程概要 PDF |
+| 三階段「學習元素」標籤（貨幣演變與現代金融…創業思維與實務） | `course-outline.md` 各階段「學習元素」節（PDF 原分類，未改寫） |
+| 三階段「上完這個階段，孩子會」各 5 條 | `course-outline.md` 各階段「課程目的」（PDF 原列 5 條，僅作口語化潤飾、未增減項目） |
+| 疑問句卡 6 題所標堂次（第 9/11/18/19/40/41 堂） | `course-outline.md` 對應堂次的教學點：尾數 9 定價、免費的商業模式、金錢往來與友誼、循環利息陷阱、蘇伊士運河事件、鬱金香狂熱 |
+| 階段銜接條件（二、三階段需修畢前階段或通過測驗） | `course-outline.md` §一「銜接條件」（PDF「課程對象」欄原文） |
+| 設備規格（Win 10／macOS 10.14／i3-3210／A8-7600／8GB／20GB／滑鼠／近三年機器） | `course-outline.md` §一「設備需求」（三份 PDF 完全一致）。⚠️ PDF 未提平板／手機，故頁面**只正面陳述電腦規格、不宣稱平板手機可否使用** |
+| 「課程大綱將不定期調整」免責 | `course-outline.md` 頁尾註記（PDF 原文「為達最佳學習成效, 課程大綱將不定期進行修改」）——**只要頁面公開 45 堂課名，此句必須同時存在** |
 | 波比對白「露比，我的零用錢又用光了！」 | course-content.md §三（第 5 關影片 0:00 幀字幕） |
 | 叩叮對白「今天我們要來聊聊…」 | course-content.md §三（第 2 關影片開場） |
 | 測驗題「下列哪一個不是…需要的物品」 | course-content.md §四（原題照錄） |
