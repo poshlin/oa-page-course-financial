@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+  <script>document.documentElement.classList.add('js');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>橘蘋財商素養課程｜3-7 年級兒童理財課・雙師線上教學 — 橘子蘋果程式學苑</title>
@@ -278,7 +279,22 @@
     .hero { padding: 36px 0 168px; position: relative; overflow: hidden;
       background-image: linear-gradient(rgba(245,166,35,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(245,166,35,.08) 1px, transparent 1px);
       background-size: 26px 26px; }
-    .hero-wave { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 132px; z-index: 0; pointer-events: none; display: block; }
+    .hero-wave { position: absolute; left: -6%; right: -6%; bottom: 0; width: 112%; height: 132px; z-index: 0; pointer-events: none; display: block; }
+
+    /* ⑤ 動效：全部本地實作，不引任何外部庫；一律受 prefers-reduced-motion 管制 */
+    @media (prefers-reduced-motion: no-preference) {
+      /* 捲動進場：基準狀態＝完全可見，動效只在 .is-in 播放一次。
+         刻意不用「opacity:0 當基準」——那種寫法只要 JS/IO 任一環出錯，內容就永久隱形 */
+      .reveal.is-in { animation: revealUp .55s cubic-bezier(.22,.9,.3,1) both; }
+      @keyframes revealUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+      /* 波浪極慢橫移，像水在動而不是圖片 */
+      .hero-wave { animation: waveDrift 26s ease-in-out infinite alternate; }
+      @keyframes waveDrift { from { transform: translateX(0); } to { transform: translateX(-4%); } }
+      /* 命運卡進場時輕輕翻一下，呼應「抽一張卡」 */
+      .fate-card.risk { transform-origin: 50% 60%; }
+      .reveal.is-in .fate-card.risk { animation: cardFlip .7s cubic-bezier(.3,1.4,.5,1) .15s both; }
+      @keyframes cardFlip { from { transform: rotateY(-16deg) translateY(6px); } to { transform: none; } }
+    }
     /* 背景裝飾：平台首頁原件（淡橘線稿），只放在無文字的角落、不影響任何對比 */
     .hero-deco { position: absolute; pointer-events: none; user-select: none; z-index: 0; }
     .hero-deco.d-money { top: -28px; right: -34px; width: 224px; opacity: .78; transform: rotate(8deg); }
@@ -331,6 +347,30 @@
     .card { background: var(--card); border: 4px solid var(--gold); border-radius: var(--r); box-shadow: var(--shadow-soft); padding: 26px 24px; }
     .card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
     .card p { font-size: 0.95rem; color: var(--text-2); }
+
+    /* 01 痛點：對話體，不用卡片格——家長聽過的話 vs 真正在發生的事 */
+    .talk { max-width: 760px; }
+    .talk-q { font-size: clamp(19px, 2.6vw, 25px); font-weight: 800; line-height: 1.6; margin-top: 26px; }
+    .talk-q::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); margin-right: 12px; vertical-align: 3px; }
+    .talk-a { color: var(--text-2); padding-left: 22px; border-left: 3px solid var(--gold); margin-top: 8px; }
+
+    /* 06 適合誰：勾選清單，不用卡片格 */
+    .fitlist { list-style: none; max-width: 780px; margin-top: 26px; }
+    .fitlist li { position: relative; padding: 12px 0 12px 34px; border-bottom: 1px dashed var(--gold); line-height: 1.8; }
+    .fitlist li:last-child { border-bottom: 0; }
+    .fitlist li::before { content: '✓'; position: absolute; left: 0; top: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--teal); color: var(--text); font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .fitlist b { font-weight: 800; }
+
+    /* 03 型態說明：一行帶過，取代四張等重卡 */
+    .type-line { max-width: 820px; margin-top: 26px; color: var(--text-2); }
+    .type-line b { color: var(--text); font-weight: 800; }
+
+    /* ④ 內行細節：只有真的在營運才知道的規則，拉出來當證據 */
+    .insider { margin-top: 14px; padding: 12px 16px; background: var(--task); border-left: 4px solid var(--coral); border-radius: 0 10px 10px 0; font-size: 0.88rem; }
+    .insider b { font-weight: 800; }
+
+    /* ③ 卡片分級：次要資訊用輕卡，別讓每張卡都一樣重 */
+    .card-lite { background: transparent; border: 0; box-shadow: none; padding: 0 0 0 18px; border-left: 3px solid var(--gold); border-radius: 0; }
 
     /* 01 痛點 */
     /* 刻意在破折號後斷行：鋪陳一行、結論一行，中途斷句會洩掉力道 */
@@ -697,21 +737,15 @@
       <div class="wrap">
         <div class="sec-head">
           <p class="kicker">01・為什麼需要兒童理財教育</p>
-          <h2 class="h2">關於錢，孩子遇到的三個困境</h2>
+          <h2 class="h2">這幾句話，你家是不是也講過？</h2>
         </div>
-        <div class="grid-3">
-          <div class="card">
-            <h3>零用錢有去無回</h3>
-            <p>錢一到手就花完。問他花去哪了，他自己也答不出來。</p>
-          </div>
-          <div class="card">
-            <h3>學校不教這件事</h3>
-            <p>數學考一百分，不代表懂得管理自己的錢。金錢教育在課表上，一直是空白的。</p>
-          </div>
-          <div class="card">
-            <h3>說教，孩子聽不進</h3>
-            <p>你說「要存錢」，他聽到的是「不能買」。道理講一百次，不如讓他自己經歷一次。</p>
-          </div>
+        <div class="reveal talk">
+          <p class="talk-q">「錢呢？上禮拜不是才給你？」</p>
+          <p class="talk-a">錢一到手就花完。問他花去哪了，他自己也答不出來。</p>
+          <p class="talk-q">「要存錢啊，不要一直買。」</p>
+          <p class="talk-a">你說「要存錢」，他聽到的是「不能買」。道理講一百次，他點頭，然後照買。</p>
+          <p class="talk-q">「這些學校不會教嗎？」</p>
+          <p class="talk-a">數學考一百分，不代表懂得管理自己的錢。金錢教育在課表上，一直是空白的。</p>
         </div>
         <p class="pain-punch">所以我們不講道理——<br><em>我們給孩子一個「會發生後果」的世界。</em></p>
       </div>
@@ -725,7 +759,7 @@
           <h2 class="h2">每週一堂 90 分鐘：老師帶著上，議題一起想</h2>
           <p class="lead">這套財商課程共 45 堂、每週一堂。前 50 分鐘跟著老師上課實作，後 40 分鐘是整堂課最值錢的部分：財商議題課。</p>
         </div>
-        <div class="timeline" aria-hidden="true">
+        <div class="timeline reveal" aria-hidden="true">
           <span class="tl-seg tl-a">0–40 分・雙師上課</span>
           <span class="tl-seg tl-b">41–50</span>
           <span class="tl-seg tl-c">51–90 分・財商議題課</span>
@@ -759,7 +793,7 @@
           <h2 class="h2">課後，一場會發生後果的理財經營遊戲</h2>
           <p class="lead">課堂上老師帶著學，課後這個世界 24 小時開放。孩子在平台裡過一個縮小版的金錢人生：有收入、有選擇、有意外，也有保障。</p>
         </div>
-        <div class="flow">
+        <div class="reveal flow">
           <div class="card">
             <span class="step-num">01</span>
             <h3>上課，賺經驗</h3>
@@ -784,7 +818,7 @@
                 <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">11</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">14</span>
                 <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd today">今</span><span class="cd f">18</span><span class="cd f">19</span><span class="cd f">20</span><span class="cd f">21</span>
               </div>
-              <p class="mini-note">一天只能簽一次，忘記按就沒有了。</p>
+              <p class="insider"><b>一天只能簽一次，忘記按就沒有了。</b>平台真的這樣設計——錯過就是錯過，這是孩子第一次體會「機會成本」。</p>
             </div>
           </div>
           <div class="card">
@@ -804,7 +838,7 @@
           </div>
         </div>
         <p class="fate-cap">同一張命運卡，兩種結果</p>
-        <div class="fate-row">
+        <div class="reveal fate-row">
           <div class="fate-card risk">
             <p class="fate-h">命運一抽</p>
             <p class="fate-title">「重感冒發燒住院」</p>
@@ -831,7 +865,7 @@
           <h2 class="h2">45 堂課，把觀念拆成一關一關玩過去</h2>
           <p class="lead">課程共 45 堂，依序解鎖。每一堂再拆成數個關卡，孩子沿著課程地圖一站一站往前走——光是第 1 堂「支出與公益」就有 18 關。</p>
         </div>
-        <div class="map">
+        <div class="reveal map">
           <div class="map-head">
             <span class="map-title">第 1 堂「支出與公益」</span>
             <span class="map-count">共 18 關・完成一關，才解鎖下一關</span>
@@ -848,25 +882,8 @@
           </ol>
           <p class="map-note">課程地圖示意，關卡皆為平台實際內容（節選）。18 關是第 1 堂的關卡數，各堂不盡相同。跟著地圖走，一關一關把觀念收進口袋。</p>
         </div>
-        <div class="grid-4" id="lesson-types">
-          <div class="card">
-            <h3>小故事</h3>
-            <p>跟著故事主角波比，遇到每個孩子都熟悉的金錢時刻：「露比，我的零用錢又用光了！」</p>
-          </div>
-          <div class="card">
-            <h3>小知識</h3>
-            <p>吉祥物叩叮親自出鏡：「今天我們要來聊聊『需要』和『想要』這兩個很重要的概念喔！」</p>
-          </div>
-          <div class="card">
-            <h3>小測驗</h3>
-            <p>看完馬上檢核：「下列哪一個不是日常生活中『需要』的物品呢？」</p>
-          </div>
-          <div class="card">
-            <h3>小遊戲</h3>
-            <p>在「波比的白日夢泡泡」裡戳破想要、留下需要——觀念用手玩過一遍，才記得住。</p>
-          </div>
-        </div>
-        <div class="showcase">
+        <p class="type-line" id="lesson-types">一堂課裡有四種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住）。</p>
+        <div class="reveal showcase">
           <figure class="scene">
             <span class="scene-tag">小故事・我的錢都到哪去了？</span>
             <div class="scene-chars">
@@ -897,7 +914,7 @@
           </figure>
         </div>
         <p class="center-note">— 以上畫面以平台實際課程素材重現：角色、道具、場景、對白皆為課程原件</p>
-        <div class="char-band">
+        <div class="reveal char-band">
           <div class="card char-card">
             <span class="stage t-teal"><img src="assets/popi-talk.webp" alt="波比：白色小鳥，故事關卡主角" loading="lazy"></span>
             <p class="char-name">波比｜故事主角</p>
@@ -940,7 +957,7 @@
           <h2 class="h2">一個完整的經濟世界</h2>
           <p class="lead">學到的每個觀念，馬上有地方用。</p>
         </div>
-        <div class="modules">
+        <div class="reveal modules">
           <div class="card mod-invest">
             <div>
               <h3>投資理財<span class="sim-badge">模擬環境</span></h3>
@@ -973,7 +990,8 @@
                 <span class="gbar" style="height:88%"></span>
                 <span class="gbar on" style="height:100%"></span>
               </div>
-              <p class="mini-note">每兩週結算一次，利息直接滾入儲蓄總額——放著不動，它自己會長。<br>連平台都誠實標了一句：利息不滿 1 金幣時不發放。</p>
+              <p class="mini-note">每兩週結算一次，利息直接滾入儲蓄總額——放著不動，它自己會長。</p>
+              <p class="insider">平台上白紙黑字寫著一句：<b>利息不滿 1 金幣時不發放。</b>連小數點後的誠實都寫進去了，孩子學到的複利才是真的。</p>
             </div>
           </div>
           <div class="card">
@@ -1017,7 +1035,7 @@
               </figure>
             </div>
           </div>
-          <div class="card">
+          <div class="card card-lite">
             <h3>排行榜</h3>
             <p>比的是「這期進步多少」，不是誰的錢多。晚加入的孩子，一樣有機會站上頒獎台。</p>
             <div class="ui-strip">
@@ -1034,7 +1052,7 @@
     <!-- 06 週報 -->
     <section class="report" id="report">
       <div class="wrap">
-        <div class="report-grid">
+        <div class="reveal report-grid">
           <div>
             <p class="kicker">06・家長看得到</p>
             <h2 class="h2">孩子在玩，<br>你看得到他學了什麼</h2>
@@ -1091,21 +1109,14 @@
         <div class="sec-head">
           <p class="kicker">07・適合誰</p>
           <h2 class="h2">為這樣的孩子與家庭設計</h2>
+          <p class="lead">3-7 年級正是零用錢開始變多、金錢觀成形的階段，也是兒童理財課最有效的時候。課程用動畫故事、語音講解與遊戲關卡帶著走，孩子看得懂、玩得動。</p>
         </div>
-        <div class="grid-3">
-          <div class="card">
-            <h3>3-7 年級</h3>
-            <p>這個年紀正是零用錢開始變多、金錢觀成形的階段，也是兒童理財課最有效的時候。動畫故事、語音講解、遊戲關卡三管齊下，孩子看得懂、玩得動。</p>
-          </div>
-          <div class="card">
-            <h3>每週一堂，天天都能練</h3>
-            <p>每週 90 分鐘由老師帶課；課後平台隨時開放，每日任務和日薪讓他自己想回來。</p>
-          </div>
-          <div class="card">
-            <h3>不限地區</h3>
-            <p>線上上課，全台各縣市都能參加，家裡就是教室。</p>
-          </div>
-        </div>
+        <ul class="reveal fitlist">
+          <li><b>每週一堂、固定時段</b>由老師帶課，課後平台 24 小時開放，每日任務和日薪讓他自己想回來</li>
+          <li><b>線上上課、不限地區</b>，全台各縣市都能參加，家裡就是教室</li>
+          <li><b>不需要任何程式基礎</b>，也不需要先上過橘子蘋果的其他課</li>
+          <li><b>家長不必懂財商</b>，每週的學習週報會告訴您孩子學到哪、錢怎麼管的</li>
+        </ul>
       </div>
     </section>
 
@@ -1116,7 +1127,7 @@
           <p class="kicker">08・常見問題</p>
           <h2 class="h2">家長最常問的問題</h2>
         </div>
-        <div class="faq-list">
+        <div class="reveal faq-list">
           <div class="faq-col">
           <details class="faq" open>
             <summary>這麼小就讓孩子接觸股票投資，會不會太早？</summary>
@@ -1176,6 +1187,24 @@
   <button type="button" class="sticky-cta" data-oa-cta="sticky" hidden>預約免費試聽<span>50 分鐘・體驗雙師上課與平台</span></button>
 
   <script>
+    /* 捲動進場：IntersectionObserver 本地實作，不引外部庫。
+       使用者若在系統開啟「減少動態效果」，CSS 那層就不會有位移，這裡只負責加 class */
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      if (!('IntersectionObserver' in window)) {
+        Array.prototype.forEach.call(els, function (el) { el.classList.add('is-in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+
+    })();
+
     /* 長頁浮動索引：捲過 hero CTA 後出現、標示目前章節、到最終 CTA 隱藏、手機下拉 */
     (function () {
       var nav = document.querySelector('.section-nav');
