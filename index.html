@@ -221,6 +221,10 @@
 
 
     .eyebrow { display: inline-block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text); background: var(--cream-2); border: 2px solid var(--gold); border-radius: var(--r-pill); padding: 4px 14px; margin-bottom: 18px; }
+    /* 兩顆並排：品牌／品類 ＋ 開課形式（比照麥思頁 hero 左上角的做法） */
+    .eyebrow-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .eyebrow-row .eyebrow { margin-bottom: 0; }
+    .eyebrow-online { background: rgba(78,205,196,.22); border-color: var(--teal); }
     h1 { font-size: clamp(34px, 5vw, 52px); font-weight: 800; line-height: 1.25; letter-spacing: 0.02em; }
     .h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; line-height: 1.35; margin-bottom: 14px; }
     .kicker { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; color: var(--coral-ink); margin-bottom: 8px; }
@@ -534,7 +538,10 @@
       <div class="wrap">
         <div class="hero-grid">
           <div>
-            <span class="eyebrow">橘子蘋果程式學苑｜兒童財商教育</span>
+            <div class="eyebrow-row">
+              <span class="eyebrow">橘子蘋果程式學苑｜兒童財商教育</span>
+              <span class="eyebrow eyebrow-online">僅線上開課・不限地區</span>
+            </div>
             <h1>橘蘋財商素養課程</h1>
             <p class="hero-tagline">金錢觀不是用聽的，是用「經歷」學會的。</p>
             <p class="lead">每週一堂，老師帶著孩子上課、想議題；課後的世界 24 小時開放——賺薪水、記帳、儲蓄、投資，自己決定怎麼用錢。想亂花錢？可以。突然生病卻沒買保險？自己付。所有後果都發生在遊戲裡——犯錯的成本是零，學到的教訓是真的。</p>
