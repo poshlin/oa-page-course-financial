@@ -1213,13 +1213,23 @@
 
     (function () {
       var sticky = document.querySelector('.sticky-cta');
+      var heroCta = document.querySelector('[data-oa-cta="hero"]');
+      var finalCta = document.getElementById('cta');
       if (!sticky) return;
-      var shown = false;
-      window.addEventListener('scroll', function () {
-        var pass = window.scrollY > 600;
-        if (pass && !shown) { sticky.hidden = false; shown = true; }
-        else if (!pass && shown) { sticky.hidden = true; shown = false; }
-      }, { passive: true });
+      var ticking = false;
+      function updateSticky() {
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        // 與浮動索引列同一組判準：捲過 hero CTA 才出現，到最終 CTA 區就收起（避免同畫面兩顆主行動）
+        var passedHero = heroCta ? heroCta.getBoundingClientRect().bottom < 0 : window.scrollY > 600;
+        var reachedFinal = finalCta ? finalCta.getBoundingClientRect().top < vh : false;
+        var show = passedHero && !reachedFinal;
+        if (sticky.hidden === show) sticky.hidden = !show;
+        ticking = false;
+      }
+      function requestSticky() { if (ticking) return; ticking = true; window.requestAnimationFrame(updateSticky); }
+      window.addEventListener('scroll', requestSticky, { passive: true });
+      window.addEventListener('resize', requestSticky);
+      updateSticky();
     })();
   </script>
 </body>
