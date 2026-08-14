@@ -287,6 +287,11 @@
           },
           {
             "@type": "Question",
+            "name": "平台會不會讓孩子沉迷？每天要花很多時間嗎？",
+            "acceptedAnswer": { "@type": "Answer", "text": "平台的設計刻意不獎勵久留：經驗值只有一個來源——上課，掛在平台上並不會增加；每日簽到一天也只有一次，待再久都拿不到更多。課程本身是關卡式的，一堂拆成小故事、小知識、小測驗、小遊戲輪著來，每一段都有明確的結束點，不是沒有盡頭的無限關卡。孩子固定的投入是每週一堂 90 分鐘的課，平台是課後練習的地方。" }
+          },
+          {
+            "@type": "Question",
             "name": "免費試聽會體驗到什麼？",
             "acceptedAnswer": { "@type": "Answer", "text": "50 分鐘，和正式課相同的雙師模式：孩子實際上課、實際操作平台，您可以在旁邊看老師怎麼帶。財商議題課為正式課程內容，試聽不包含。" }
           },
@@ -538,6 +543,12 @@
 
     /* 01 痛點 */
     /* 刻意在破折號後斷行：鋪陳一行、結論一行，中途斷句會洩掉力道 */
+    /* 代價論證：把「當下的小麻煩」接到「將來要用真錢付的學費」，撐起高單價決策的動機。
+       所舉三例皆為課程實際內容（第 19 堂最低應繳、第 25 堂假投資群組、第 14 堂機率型商品），不引用任何統計數字。 */
+    .cost { max-width: 760px; margin: 32px auto 0; background: var(--card); border-left: 6px solid var(--coral); border-radius: 0 var(--r) var(--r) 0; padding: 22px 26px; box-shadow: var(--shadow-soft); }
+    .cost p + p { margin-top: 12px; }
+    .cost-lead { font-weight: 800; font-size: 1.05rem; }
+    .cost strong { font-weight: 800; }
     .pain-punch { margin-top: 32px; font-size: clamp(18px, 2.4vw, 22px); font-weight: 800; text-align: center; line-height: 1.9; text-wrap: balance; }
     /* 螢光筆式底線：border-bottom 換行時會斷成長短不一的兩截，改用漸層背景＋clone 才能跨行連續 */
     .pain-punch em { font-style: normal; background: linear-gradient(transparent 62%, var(--primary) 62%, var(--primary) 94%, transparent 94%); -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 2px; }
@@ -594,11 +605,7 @@
     .phase-goals li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--coral-ink); font-weight: 800; }
     /* 階段卡的「學習重點＋課表」外層：桌機恆開（隱藏開關），手機收合以縮短頁面 */
     details.phase-more > summary { display: none; }
-    details.syllabus { margin-top: 22px; border-top: 2px solid var(--gold); }
-    details.syllabus summary { list-style: none; cursor: pointer; font-weight: 800; padding: 16px 30px 14px 0; position: relative; }
-    details.syllabus summary::-webkit-details-marker { display: none; }
-    details.syllabus summary::after { content: "▸"; position: absolute; right: 4px; top: 16px; color: var(--primary); transition: transform .15s ease; }
-    details.syllabus[open] summary::after { transform: rotate(90deg); }
+    .syl-head { margin-top: 22px; padding-top: 16px; border-top: 2px solid var(--gold); font-weight: 800; }
     .syl { list-style: none; padding-bottom: 6px; }
     .syl li { padding: 9px 12px; border-radius: 8px; break-inside: avoid; }
     .syl li:nth-child(odd) { background: var(--task); }
@@ -917,8 +924,8 @@
               <span class="chip">45 堂課程・關卡式解鎖</span>
             </div>
             <button type="button" class="btn-primary" data-oa-cta="hero">預約免費試聽 →</button>
-            <p class="cta-note">50 分鐘試聽：實際體驗雙師上課與平台操作。留下資料，課程顧問將與您聯繫安排。</p>
-            <p class="hero-trust">橘子蘋果程式學苑出品｜深耕兒童與青少年程式教育 <strong>14 年</strong>・服務超過 <strong>10 萬名</strong>學員</p>
+            <p class="cta-note">50 分鐘試聽：實際體驗雙師上課與平台操作。留下資料，課程顧問將與您聯繫安排——<strong>說明完讓您帶回去考慮，不需要當場決定。</strong></p>
+            <p class="hero-trust">橘子蘋果程式學苑出品｜深耕兒童與青少年程式教育 <strong>14 年</strong>・全台 <strong>12 縣市</strong>設有實體教室・服務超過 <strong>10 萬名</strong>學員</p>
           </div>
           <div class="hero-visual">
             <img decoding="async" width="601" height="600" class="hero-popi" src="assets/popi-talk.webp" alt="課程故事主角波比" loading="eager">
@@ -957,7 +964,7 @@
                   <span class="mock-badge">簽到</span>
                 </div>
               </div>
-              <div class="mock-caption">平台功能示意圖（實際畫面以平台為準）</div>
+              <div class="mock-caption">平台功能示意圖（實際畫面以平台為準）。每日任務每天輪替，畫面中金額皆為平台模擬金幣。</div>
             </div>
           </div>
         </div>
@@ -984,6 +991,11 @@
           <p class="talk-q">「這些學校不會教嗎？」</p>
           <p class="talk-a">數學考一百分，不代表懂得管理自己的錢。金錢教育在課表上，一直是空白的。</p>
         </div>
+        <div class="reveal cost">
+          <p class="cost-lead">而這些判斷，會一路跟著他長大。</p>
+          <p>現在是零用錢提早花完、看到限時特價就想買。等他長大，同樣的判斷會用在別的地方——第一張信用卡帳單上的「最低應繳金額」、同學拉他進去的投資群組、看起來只要再抽一次就會中的機率商品。</p>
+          <p><strong>差別只在於，那時候的學費是真的。</strong>而且沒有人會在他刷下去之前，先提醒他一句。</p>
+        </div>
         <p class="pain-punch">所以我們不講道理——<br><em>我們給孩子一個「會發生後果」的世界。</em></p>
       </div>
     </section>
@@ -1005,35 +1017,35 @@
         <div class="reveal qs">
           <div class="q-card">
             <p class="q-ask">為什麼標價都是 99，不是 100？</p>
-            <span class="q-where">第 9 堂・店家小巧思</span>
+            <span class="q-where">第一階段・第 9 堂・店家小巧思</span>
           </div>
           <div class="q-card">
             <p class="q-ask">手機遊戲裡「免費」的東西，為什麼反而讓人一直花錢？</p>
-            <span class="q-where">第 11 堂・免費的秘密</span>
+            <span class="q-where">第一階段・第 11 堂・免費的秘密</span>
           </div>
           <div class="q-card">
             <p class="q-ask">遊戲裡抽寶物，跟賭博差在哪裡？</p>
-            <span class="q-where">第 14 堂・網路購物</span>
+            <span class="q-where">第一階段・第 14 堂・網路購物</span>
           </div>
           <div class="q-card">
             <p class="q-ask">借錢給朋友，為什麼常常連朋友都做不成？</p>
-            <span class="q-where">第 18 堂・債務的代價</span>
+            <span class="q-where">第二階段・第 18 堂・債務的代價</span>
           </div>
           <div class="q-card">
             <p class="q-ask">信用卡帳單上的「最低應繳金額」，為什麼是陷阱？</p>
-            <span class="q-where">第 19 堂・認識信用卡</span>
+            <span class="q-where">第二階段・第 19 堂・認識信用卡</span>
           </div>
           <div class="q-card">
             <p class="q-ask">政府多印一點鈔票，大家不就都變有錢了？</p>
-            <span class="q-where">第 34 堂・誰管理國家的錢</span>
+            <span class="q-where">第三階段・第 34 堂・誰管理國家的錢</span>
           </div>
           <div class="q-card">
             <p class="q-ask">一艘船卡在運河，為什麼全世界都跟著缺貨？</p>
-            <span class="q-where">第 40 堂・全球化與供應鏈</span>
+            <span class="q-where">第三階段・第 40 堂・全球化與供應鏈</span>
           </div>
           <div class="q-card">
             <p class="q-ask">一朵鬱金香，為什麼曾經比一棟房子還貴？</p>
-            <span class="q-where">第 41 堂・經濟泡沫與歷史</span>
+            <span class="q-where">第三階段・第 41 堂・經濟泡沫與歷史</span>
           </div>
         </div>
         <div class="reveal phases">
@@ -1046,7 +1058,7 @@
             <h3>看懂日常生活裡的錢</h3>
             <p class="phase-sum">從「需要與想要」開始，走進家裡的帳本，再走進商店——看穿折扣、定價與「免費」背後的算計。</p>
             <details class="phase-more" open>
-              <summary>看學習重點與 15 堂課表</summary>
+              <summary>看這個階段的學習重點與完整課表</summary>
               <div class="phase-el">
                 <span>貨幣演變與現代金融</span>
                 <span>家庭財務與收入來源</span>
@@ -1061,8 +1073,7 @@
                 <li>看穿折扣、定價策略與「免費」的行銷手法</li>
                 <li>辨識消費陷阱與網路購物的風險</li>
               </ul>
-              <details class="syllabus">
-                <summary>展開第一階段 15 堂完整課表</summary>
+                <p class="syl-head">15 堂完整課表</p>
                 <ol class="syl">
                   <li><b>第 1 堂</b><i>古代貨幣</i><em>從以物易物到金屬貨幣，錢是怎麼出現的</em></li>
                   <li><b>第 2 堂</b><i>現代貨幣與支付工具</i><em>現金、電子支付與行動支付</em></li>
@@ -1080,7 +1091,6 @@
                   <li><b>第 14 堂</b><i>網路購物</i><em>機率型商品的賭博性質、免費寶物詐騙</em></li>
                   <li><b>第 15 堂</b><i>聰明消費</i><em>把前面十四堂，變成自己的判斷力</em></li>
                 </ol>
-              </details>
             </details>
           </article>
 
@@ -1092,7 +1102,7 @@
             <h3>看懂銀行、信用與投資</h3>
             <p class="phase-sum">錢放進銀行會發生什麼事？借錢的代價是什麼？保險為什麼有用？——大人天天在用、卻沒人教過的金融工具，一件一件拆開。</p>
             <details class="phase-more" open>
-              <summary>看學習重點與 15 堂課表</summary>
+              <summary>看這個階段的學習重點與完整課表</summary>
               <div class="phase-el">
                 <span>銀行運作與儲蓄規劃</span>
                 <span>信用管理與債務風險</span>
@@ -1107,8 +1117,7 @@
                 <li>認識多元投資工具，建立長期持有、分散風險的穩健心態</li>
                 <li>辨識金融詐騙，並知道遇到時該怎麼處理</li>
               </ul>
-              <details class="syllabus">
-                <summary>展開第二階段 15 堂完整課表</summary>
+                <p class="syl-head">15 堂完整課表</p>
                 <ol class="syl">
                   <li><b>第 16 堂</b><i>銀行的功能</i><em>銀行的六大功能、活存與定存的差別</em></li>
                   <li><b>第 17 堂</b><i>儲蓄計畫</i><em>六罐子理財法，設定具體的儲蓄目標</em></li>
@@ -1126,7 +1135,6 @@
                   <li><b>第 29 堂</b><i>股票交易</i><em>零股交易，手續費與證交稅等隱形成本</em></li>
                   <li><b>第 30 堂</b><i>股票投資的心態</i><em>長期持有、定期定額與分散風險</em></li>
                 </ol>
-              </details>
             </details>
           </article>
 
@@ -1138,7 +1146,7 @@
             <h3>看懂國家與世界怎麼運轉</h3>
             <p class="phase-sum">視野再放大：稅收與國家預算、匯率與進出口、供應鏈與碳足跡，最後回到孩子自己身上——如果我想做一個東西賣出去，該從哪裡開始？</p>
             <details class="phase-more" open>
-              <summary>看學習重點與 15 堂課表</summary>
+              <summary>看這個階段的學習重點與完整課表</summary>
               <div class="phase-el">
                 <span>國家財政與稅務</span>
                 <span>貨幣與經濟指標</span>
@@ -1154,8 +1162,7 @@
                 <li>建立綠色消費與循環經濟的永續概念</li>
                 <li>培養創業家思維，從發想到商業模式，學習產品開發、行銷與風險管理</li>
               </ul>
-              <details class="syllabus">
-                <summary>展開第三階段 15 堂完整課表</summary>
+                <p class="syl-head">15 堂完整課表</p>
                 <ol class="syl">
                   <li><b>第 31 堂</b><i>國家的收入</i><em>稅收、國營事業、公債與公益彩券盈餘</em></li>
                   <li><b>第 32 堂</b><i>國家的支出</i><em>教育、國防、交通與社會福利的分配</em></li>
@@ -1173,7 +1180,6 @@
                   <li><b>第 44 堂</b><i>商品銷售與行銷</i><em>銷售通路、品牌信任與庫存問題</em></li>
                   <li><b>第 45 堂</b><i>創業風險與管理</i><em>商標與專利等智慧財產權，面對失敗的心態</em></li>
                 </ol>
-              </details>
             </details>
           </article>
 
@@ -1200,7 +1206,7 @@
         <div class="sec-head">
           <p class="kicker">03・一堂課怎麼上</p>
           <h2 class="h2">每週一堂 90 分鐘：老師帶著上，議題一起想</h2>
-          <p class="lead">課程每週一堂。前 50 分鐘跟著老師上課實作，後 40 分鐘是整堂課最值錢的部分：財商議題課。</p>
+          <p class="lead">課程每週一堂。前 50 分鐘跟著老師上課實作；後 40 分鐘換一種方式學——財商議題課，老師帶著孩子把當週學到的觀念，放到真實情境裡討論一遍。</p>
         </div>
         <div class="timeline reveal" aria-hidden="true">
           <span class="tl-seg tl-a">0–40 分・雙師上課</span>
@@ -1519,7 +1525,7 @@
               <li>雙軌記錄：上課進度（完成單元、活躍天數、升級進度）＋理財行為（資產配置、收支去向、投資／儲蓄／保險動作）</li>
               <li>附「可以和孩子一起聊聊」建議，直接給你開啟餐桌對話的切入點</li>
             </ul>
-            <button type="button" class="btn-primary" data-oa-cta="middle">預約免費試聽・了解更多 →</button>
+            <button type="button" class="btn-primary" data-oa-cta="middle">預約免費試聽 →</button>
           </div>
           <div>
             <div class="wr-card" role="img" aria-label="學習週報功能示意：本週摘要與親子對話建議">
@@ -1597,6 +1603,10 @@
           <details class="faq">
             <summary>上課時家長需要陪在旁邊嗎？</summary>
             <div class="faq-a">不需要。孩子自己上課、自己操作平台，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話。您不需要懂財商，也不必陪讀——每週的學習週報會告訴您孩子學到哪、錢又是怎麼管的。</div>
+          </details>
+          <details class="faq">
+            <summary>平台會不會讓孩子沉迷？每天要花很多時間嗎？</summary>
+            <div class="faq-a">平台的設計刻意不獎勵久留：經驗值只有一個來源——上課，掛在平台上並不會增加；每日簽到一天也只有一次，待再久都拿不到更多。課程本身是關卡式的，一堂拆成小故事、小知識、小測驗、小遊戲輪著來，每一段都有明確的結束點，不是沒有盡頭的無限關卡。孩子固定的投入是每週一堂 90 分鐘的課，平台是課後練習的地方。</div>
           </details>
           <details class="faq">
             <summary>免費試聽會體驗到什麼？</summary>
