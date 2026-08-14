@@ -381,6 +381,11 @@
     .cta-band :focus-visible, .sticky-cta:focus-visible, .mod-invest :focus-visible, .game-scene :focus-visible { outline-color: var(--cream); }
 
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    /* 圖片的 width/height 屬性是給瀏覽器算長寬比、預留空間用的（防 CLS）。
+       但那兩個屬性同時是 presentational hint：只要 CSS 沒明寫 height，
+       height 屬性就會生效、把圖壓成固定高度而變形（hero 兩張裝飾圖踩過）。
+       這條全域 height:auto 蓋掉該 hint，長寬比預留仍然有效。 */
+    img { height: auto; }
     section { padding: 72px 0; }
     section[id] { scroll-margin-top: 76px; }
 
@@ -561,7 +566,7 @@
 
     /* 05 完整課表 */
     /* 定義區塊：AI 引擎最常抓取的就是「X 是什麼」的直接定義，故獨立成塊並置於課表之前 */
-    .defbox { max-width: 820px; background: var(--card); border-left: 6px solid var(--primary); border-radius: 0 var(--r) var(--r) 0; padding: 24px 26px; box-shadow: var(--shadow-soft); margin-bottom: 44px; }
+    .defbox { background: var(--card); border-left: 6px solid var(--primary); border-radius: 0 var(--r) var(--r) 0; padding: 24px 26px; box-shadow: var(--shadow-soft); margin-bottom: 44px; }
     .def-t { font-size: clamp(19px, 2.2vw, 24px); font-weight: 800; margin-bottom: 12px; }
     .defbox p + p { margin-top: 12px; }
     .defbox b { font-weight: 800; }
