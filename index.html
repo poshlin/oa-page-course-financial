@@ -278,7 +278,7 @@
           {
             "@type": "Question",
             "name": "上課是什麼形式？老師會顧到我的孩子嗎？",
-            "acceptedAnswer": { "@type": "Answer", "text": "每週一堂 90 分鐘。前 50 分鐘是雙師模式：課程影片講觀念，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話，孩子也可以舉手發問、依序輔導；最後十分鐘老師逐一確認每個孩子的進度。後 40 分鐘是「財商議題課」，老師帶著討論當週議題。課後平台照常開放，簽到、任務、投資都能玩。" }
+            "acceptedAnswer": { "@type": "Answer", "text": "每週一堂 90 分鐘，一班最多 10 個孩子。前 50 分鐘是雙師模式：課程影片講觀念，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話，孩子也可以舉手發問、依序輔導；最後十分鐘老師逐一確認每個孩子的進度。後 40 分鐘是「財商議題課」，老師帶著討論當週議題。課後平台照常開放，簽到、任務、投資都能玩。" }
           },
           {
             "@type": "Question",
@@ -293,7 +293,7 @@
           {
             "@type": "Question",
             "name": "免費試聽會體驗到什麼？",
-            "acceptedAnswer": { "@type": "Answer", "text": "50 分鐘，和正式課相同的雙師模式：孩子實際上課、實際操作平台，您可以在旁邊看老師怎麼帶。財商議題課為正式課程內容，試聽不包含。" }
+            "acceptedAnswer": { "@type": "Answer", "text": "50 分鐘，和正式課相同的雙師模式。孩子上的是體驗課「支出與公益」——一堂完整的課，不是簡化版：他會實際操作平台、走過其中幾個關卡，您可以在旁邊看老師怎麼帶。財商議題課為正式課程內容，試聽不包含。" }
           },
           {
             "@type": "Question",
@@ -746,11 +746,12 @@
     .stage.t-gold  { background: radial-gradient(circle at 50% 32%, #FFF7E6 0%, #FFE0A6 100%); }
     .stage.t-coral { background: radial-gradient(circle at 50% 32%, #FFF1EA 0%, #FFD0BB 100%); }
     .stage.t-sky   { background: radial-gradient(circle at 50% 32%, #EEF3FF 0%, #C4D5F3 100%); }
-    .char-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
-    .char-card { text-align: center; }
-    .char-card .stage { width: 132px; height: 132px; margin: 0 auto 12px; }
-    .char-name { font-weight: 800; margin-bottom: 6px; }
-    .char-role { font-size: 0.88rem; color: var(--text-2); }
+    /* 角色列：原本是三張等重全置中的卡（AI 味通病），且波比／露比已在上方故事卡以真實對白大圖出現過。
+       壓成一列可省下大半高度，同時保住叩叮——它是品牌吉祥物，且全頁只出現在這裡。 */
+    .char-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 36px; background: var(--card); border: 2px solid var(--gold); border-radius: var(--r); box-shadow: var(--shadow-soft); padding: 18px 22px; }
+    .char-row .stage { width: 84px; height: 84px; flex: 0 0 auto; }
+    .char-line { flex: 1 1 260px; font-size: 0.92rem; color: var(--text-2); }
+    .char-line b { color: var(--text); font-weight: 800; }
 
     /* 05 週報 */
     .report { background: var(--task); }
@@ -823,7 +824,7 @@
       details.phase-more > summary::after { content: "▸"; position: absolute; right: 4px; top: 15px; color: var(--primary); transition: transform .15s ease; }
       details.phase-more[open] > summary::after { transform: rotate(90deg); }
       details.phase-more > .phase-el { margin-top: 16px; }
-      .grid-3, .grid-4, .flow, .modules, .showcase, .char-band, .faq-list { grid-template-columns: 1fr; }
+      .grid-3, .grid-4, .flow, .modules, .showcase, .faq-list { grid-template-columns: 1fr; }
       /* 場景卡：手機對話框會佔到 185px，把 104px 的角色遮掉約 3/4。
          加高場景並把角色帶上抬，讓角色與對話各有地盤（不縮對白、不砍句子） */
       .scene { min-height: 524px; }
@@ -1217,7 +1218,7 @@
           <div class="card">
             <span class="tl-dot tl-a" aria-hidden="true"></span>
             <h3>雙師上課・平台實作</h3>
-            <p>課程影片講觀念，真人老師全程看得到每個孩子的畫面——發現卡住，老師會主動開啟通話；孩子有問題，也能舉手發問、依序輔導。</p>
+            <p><strong>一班最多 10 個孩子。</strong>課程影片講觀念，真人老師全程看得到每個孩子的畫面——發現卡住，老師會主動開啟通話；孩子有問題，也能舉手發問、依序輔導。</p>
           </div>
           <div class="card">
             <span class="tl-dot tl-b" aria-hidden="true"></span>
@@ -1257,7 +1258,7 @@
             <li class="map-node locked"><span class="map-dot">⋯</span><span class="map-type">&nbsp;</span><span class="map-name">&nbsp;</span></li>
             <li class="map-node locked"><span class="map-dot">15</span><span class="map-type">小議題</span><span class="map-name">小心！拿鐵因子</span></li>
           </ol>
-          <p class="map-note">課程地圖示意，關卡皆為平台實際內容（節選）。18 關是體驗課的關卡數，各堂不盡相同。跟著地圖走，一關一關把觀念收進口袋。</p>
+          <p class="map-note">課程地圖示意，關卡皆為平台實際內容（節選）。18 關是體驗課的關卡數，各堂不盡相同。<strong>免費試聽上的就是這一堂。</strong>跟著地圖走，一關一關把觀念收進口袋。</p>
         </div>
         <p class="type-line" id="lesson-types">一堂課裡有四種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住）。</p>
         <div class="reveal showcase">
@@ -1291,22 +1292,11 @@
           </figure>
         </div>
         <p class="center-note">— 以上畫面以平台實際課程素材重現：角色、道具、場景、對白皆為課程原件</p>
-        <div class="reveal char-band">
-          <div class="card char-card">
-            <span class="stage t-teal"><img decoding="async" width="601" height="600" src="assets/popi-talk.webp" alt="波比：白色小鳥，故事關卡主角" loading="lazy"></span>
-            <p class="char-name">波比｜故事主角</p>
-            <p class="char-role">會衝動、會想買「開機會發光」的筆電——跟你家孩子一樣。金錢的難題，由牠先替孩子踩一次。</p>
-          </div>
-          <div class="card char-card">
-            <span class="stage t-gold"><img decoding="async" width="601" height="601" src="assets/rubi-talk.webp" alt="露比：戴眼鏡的紅貓熊，故事裡的夥伴" loading="lazy"></span>
-            <p class="char-name">露比｜故事裡的夥伴</p>
-            <p class="char-role">總在旁邊一句話點破盲點：「你要不要試著記帳看看？」</p>
-          </div>
-          <div class="card char-card">
-            <span class="stage t-coral"><img decoding="async" width="601" height="601" src="assets/kdding-point.webp" alt="叩叮：海獺，橘子蘋果吉祥物，知識關卡講師" loading="lazy"></span>
-            <p class="char-name">叩叮｜知識講師</p>
-            <p class="char-role">橘子蘋果的吉祥物海獺，小知識影片親自出鏡，把觀念講到孩子聽得懂。</p>
-          </div>
+        <div class="reveal char-row">
+          <span class="stage t-teal"><img decoding="async" width="601" height="600" src="assets/popi-talk.webp" alt="波比：白色小鳥，故事關卡主角" loading="lazy"></span>
+          <span class="stage t-gold"><img decoding="async" width="601" height="601" src="assets/rubi-talk.webp" alt="露比：戴眼鏡的紅貓熊，故事裡的夥伴" loading="lazy"></span>
+          <span class="stage t-coral"><img decoding="async" width="601" height="601" src="assets/kdding-point.webp" alt="叩叮：海獺，橘子蘋果吉祥物，知識關卡講師" loading="lazy"></span>
+          <p class="char-line"><b>波比</b>是故事主角，會衝動、會想買「開機會發光」的筆電——金錢的難題由牠先替孩子踩一次；<b>露比</b>總在旁邊一句話點破盲點；<b>叩叮</b>是橘子蘋果的吉祥物海獺，小知識影片親自出鏡，把觀念講到孩子聽得懂。</p>
         </div>
       </div>
     </section>
@@ -1576,7 +1566,7 @@
           <p class="lead">國小 3-6 年級正是零用錢開始變多、金錢觀成形的階段，也是兒童理財課最有效的時候。課程用動畫故事、語音講解與遊戲關卡帶著走，孩子看得懂、玩得動。</p>
         </div>
         <ul class="reveal fitlist">
-          <li><b>每週一堂、固定時段</b>由老師帶課，課後平台 24 小時開放，每日任務和日薪讓他自己想回來</li>
+          <li><b>每週一堂、固定時段</b>由老師帶課，<b>一班最多 10 人</b>；課後平台 24 小時開放，每日任務和日薪讓他自己想回來</li>
           <li><b>線上上課、不限地區</b>，全台各縣市都能參加，家裡就是教室</li>
           <li><b>不需要任何程式基礎</b>，也不需要先上過橘子蘋果的其他課</li>
           <li><b>家長不必懂財商</b>，每週的學習週報會告訴您孩子學到哪、錢怎麼管的</li>
@@ -1598,7 +1588,7 @@
           </details>
           <details class="faq">
             <summary>上課是什麼形式？老師會顧到我的孩子嗎？</summary>
-            <div class="faq-a">每週一堂 90 分鐘。前 50 分鐘是雙師模式：課程影片講觀念，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話，孩子也可以舉手發問、依序輔導；最後十分鐘老師逐一確認每個孩子的進度。後 40 分鐘是「財商議題課」，老師帶著討論當週議題。課後平台照常開放，簽到、任務、投資都能玩。</div>
+            <div class="faq-a">每週一堂 90 分鐘，一班最多 10 個孩子。前 50 分鐘是雙師模式：課程影片講觀念，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話，孩子也可以舉手發問、依序輔導；最後十分鐘老師逐一確認每個孩子的進度。後 40 分鐘是「財商議題課」，老師帶著討論當週議題。課後平台照常開放，簽到、任務、投資都能玩。</div>
           </details>
           <details class="faq">
             <summary>上課時家長需要陪在旁邊嗎？</summary>
@@ -1610,7 +1600,7 @@
           </details>
           <details class="faq">
             <summary>免費試聽會體驗到什麼？</summary>
-            <div class="faq-a">50 分鐘，和正式課相同的雙師模式：孩子實際上課、實際操作平台，您可以在旁邊看老師怎麼帶。財商議題課為正式課程內容，試聽不包含。</div>
+            <div class="faq-a">50 分鐘，和正式課相同的雙師模式。孩子上的是體驗課「支出與公益」——一堂完整的課，不是簡化版：他會實際操作平台、走過其中幾個關卡，您可以在旁邊看老師怎麼帶。財商議題課為正式課程內容，試聽不包含。</div>
           </details>
           <details class="faq">
             <summary>需要準備什麼設備？</summary>
