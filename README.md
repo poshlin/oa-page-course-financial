@@ -63,6 +63,7 @@
 ## 上線前待辦
 
 - [x] **正式 URL 已定案（保旭 2026-08-13）**：`https://orangeapple.co/courses/financial/` — canonical／og:url／schema 四個 @id／oa.config.json 已全部同步。⚠️ 保旭原話未帶尾斜線，我依官網慣例補上（classroom、minecraft_python、math 皆尾斜線；trailing slash 遷移曾造成 30% 淨損，勿再變動）——交數位長時請確認 Rails 路由採哪一種
+- [ ] 🔴 **og:image／twitter:image 改回正式站**：目前暫時指向 `https://poshlin.github.io/oa-page-fin-platform/assets/og-financial.jpg`，因為正式站尚未部署、指過去會 404，貼到 LINE／FB 拿不到縮圖（2026-08-14 實測）。部署當天改回 `https://orangeapple.co/courses/financial/assets/og-financial.jpg`，**否則正式站分享卡會去抓個人 repo 的圖**。canonical 與 og:url 一直是正式站、不用動
 - [ ] **移除 noindex**：上線時把 robots 換成 `index, follow, max-image-preview:large, max-snippet:-1`
 - [x] **og:image 已完成（2026-08-13）**：`assets/og-financial.jpg` 1200×630／105KB，**本機以真素材合成、非 AI 生成**（平台裝飾原件＋課程角色波比＋登入頁四色波浪＋方格底紋；字型 Heiti TC 確保繁體標點置中）。og:image／twitter:card 相關 tag 已補齊；⚠️ 正式站部署時 `assets/` 需一併上傳，否則分享卡開天窗
 - [ ] **真實素材**：課堂實境區已用平台課程原件（`assets/`，2026-08-11 自 staging 下載）；hero 與週報區仍為 CSS mockup，平台正式環境開放後決定換真截圖或保留。上線前與正式環境比對 assets 素材版本
