@@ -75,6 +75,8 @@
 
 | 頁面聲稱 | 來源 |
 |---|---|
+| **平台實拍截圖**（`assets/shot-*.webp`） | 2026-08-17 由影片對話在 staging 擷取（`~/Downloads/oa-coin-quest-video/capture/stills/`），帳號「小明」、乾淨無瀏覽器外框。🔴 **這是頁面上第一批真實產品畫面**，此前所有平台畫面都是我用 CSS 造的 mockup。`shot-map`＝第 1 堂「古代貨幣」的 18 關（**注意：不是體驗課**，體驗課的關卡表在 course-content.md）；`shot-invest`＝投資模組，畫面自帶「共 1370 筆」與「匯率 1 台幣 ＝ 1 金幣」，正好是我們宣稱的視覺證據；`shot-stagemap` 為階段地圖，尚未使用 |
+| hero 今日任務三項 | staging 實拍 `dashboard.png`：每日測驗、**查看可用現金明細**、完成一堂課程。⚠️ 原本寫的「買賣任一股票 +500」是 staging §二-61 另一天的快照——**今日任務是變動任務、每天輪替**。家長稽核指出它與第 30 堂「長期持有、定期定額」自相矛盾，已換成同一畫面上真實出現的另一項 |
 | 45 堂課程 | deck 第 28/30 張＋知識庫 §5.3；保旭 2026-08-11 核可堂數可放 |
 | **國小 3-6 年級** | 教學部三份《財商素養課程》課程概要 PDF 一致寫「3 年級至 6 年級」（`course-outline.md` §一）。**2026-08-14 教學部定案採 3-6**，deck 第 30 張的「3-7 年級」與知識庫 §5.3 的同一說法**一律作廢**。已於 2026-08-14 全面替換 14 處：title／og:title／twitter:title／og:image:alt／meta description／WebPage 與 Course 的 `description`／`educationalLevel`（改「國小三年級至六年級」）／`audience.audienceType`／hero chip／tldr／fit 區 lead／FAQ「適合幾年級」（可見＋schema），**並已修補 `assets/og-financial.jpg` 圖內文字為「3–6 年級」**（STHeiti Medium 26px，與原字逐像素同位置）。同時把「國小」加進 title／description 等處，兼顧語意精確與搜尋詞 |
 | 超過 1,300 檔台股／ETF | staging `/market`「共 1363 筆」（盤點 §二-9） |

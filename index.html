@@ -951,7 +951,7 @@
        高度差 2.4 倍的卡片不放同一條滑動列，否則短卡會空掉大半。 */
     .flow-2 { margin-top: 20px; }
     .modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .mod-invest { grid-column: 1 / -1; background: var(--dark); border-color: var(--dark); color: #FFF9F0; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .mod-invest { grid-column: 1 / -1; background: var(--dark); border-color: var(--dark); color: #FFF9F0; display: grid; grid-template-columns: 1fr; gap: 20px; }
     .mod-invest h3 { color: var(--invest-orange); }
     .mod-invest p { color: #FFF9F0; opacity: 0.92; }
     .ticker { background: #1B1B1B; border-radius: 12px; padding: 14px 16px; font-size: 0.85rem; }
@@ -1007,6 +1007,12 @@
     .fate-amt.plus { color: #2E7D32; }
     .fate-note { font-size: 0.8rem; color: var(--text-2); margin-top: 4px; }
     .badge-active { display: inline-block; font-size: 0.72rem; font-weight: 800; background: var(--teal); color: var(--text); border-radius: 6px; padding: 1px 8px; margin-left: 6px; vertical-align: 2px; }
+    /* 平台實拍：一律用 .shot 包，圖片本身就是產品證據，外框只負責承載與標註來源 */
+    .shot { margin-bottom: 36px; background: var(--card); border: 4px solid var(--gold); border-radius: var(--r); box-shadow: var(--shadow-soft); padding: 10px 10px 0; overflow: hidden; }
+    .shot img { width: 100%; display: block; border-radius: 8px; }
+    .shot figcaption { font-size: 0.8rem; color: var(--text-2); padding: 10px 12px 12px; }
+    .shot-in-dark { background: #1B1B1B; border-color: #3A3A3A; margin-bottom: 0; }
+    .shot-in-dark figcaption { color: #C9C4BC; }
     .map { margin-bottom: 36px; background: var(--card); border: 4px solid var(--gold); border-radius: var(--r); box-shadow: var(--shadow-soft); padding: 22px 24px; }
     .map-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; margin-bottom: 18px; }
     .map-title { font-weight: 800; }
@@ -1266,7 +1272,7 @@
                 <div class="mock-card">
                   <div class="mock-h">今日任務</div>
                   <div class="mock-task-row"><span class="done">✓ 每日測驗</span><span class="pt">+200</span></div>
-                  <div class="mock-task-row"><span>買賣任一股票</span><span class="pt">+500</span></div>
+                  <div class="mock-task-row"><span>查看可用現金明細</span><span class="pt">+300</span></div>
                   <div class="mock-task-row"><span>完成一堂課程</span><span class="pt">+3,000</span></div>
                 </div>
                 <div class="mock-card mock-asset">
@@ -1563,26 +1569,14 @@
         <div class="sec-head">
           <p class="kicker">04・孩子怎麼學</p>
           <h2 class="h2">一堂課裡，孩子是這樣走過來的</h2>
-          <p class="lead">剛才那 45 堂，孩子實際上是這樣走過去的：每一堂再拆成數個關卡，沿著課程地圖一站一站往前——光是體驗課「支出與公益」就有 18 關。</p>
+          <p class="lead">剛才那 45 堂，孩子實際上是這樣走過去的：每一堂再拆成十幾個關卡，沿著課程地圖一站一站往前——光是第 1 堂「古代貨幣」就有 18 關。</p>
         </div>
-        <div class="reveal map">
-          <div class="map-head">
-            <span class="map-title">體驗課「支出與公益」</span>
-            <span class="map-count">共 18 關・完成一關，才解鎖下一關</span>
-          </div>
-          <ol class="map-path">
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小故事</span><span class="map-name">好想要買一台新筆電</span></li>
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小知識</span><span class="map-name">這是需要還是想要呢？</span></li>
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小測驗</span><span class="map-name">是需要還是想要呢？</span></li>
-            <li class="map-node"><span class="map-dot">✓</span><span class="map-type">小遊戲</span><span class="map-name">波比的白日夢泡泡</span></li>
-            <li class="map-node current"><span class="map-dot">5</span><span class="map-type">小故事</span><span class="map-name">我的錢都到哪去了？</span></li>
-            <li class="map-node locked"><span class="map-dot">6</span><span class="map-type">小知識</span><span class="map-name">為什麼要記帳呢？</span></li>
-            <li class="map-node locked"><span class="map-dot">⋯</span><span class="map-type">&nbsp;</span><span class="map-name">&nbsp;</span></li>
-            <li class="map-node locked"><span class="map-dot">15</span><span class="map-type">小議題</span><span class="map-name">小心！拿鐵因子</span></li>
-          </ol>
-          <p class="map-note">課程地圖示意，關卡皆為平台實際內容（節選）。18 關是體驗課的關卡數，各堂不盡相同。<strong>免費試聽上的就是這一堂。</strong>跟著地圖走，一關一關把觀念收進口袋。</p>
-        </div>
-        <p class="type-line" id="lesson-types">一堂課裡有四種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住）。</p>
+        <figure class="reveal shot">
+          <img src="assets/shot-map.webp" width="1560" height="800" decoding="async" loading="lazy"
+               alt="財商學習平台的課程地圖：第 1 堂「古代貨幣」拆成 18 個關卡，依小故事、小知識、小測驗、小遊戲、小議題、議題測驗的順序排成一條路徑">
+          <figcaption>平台實際畫面・第 1 堂「古代貨幣」的 18 關。完成一關，才解鎖下一關；各堂關卡數不盡相同。</figcaption>
+        </figure>
+        <p class="type-line" id="lesson-types">一堂課裡有六種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住），最後收在<b>小議題</b>與<b>議題測驗</b>——把整堂的觀念放回真實情境想一遍。</p>
         <div class="reveal showcase">
           <figure class="scene">
             <span class="scene-tag">小故事・我的錢都到哪去了？</span>
@@ -1710,18 +1704,11 @@
               <p>超過 1,300 檔擬真台股與 ETF 行情、市場新聞、損益追蹤。介面刻意做成正式看盤軟體的樣子——因為這不是玩具，是孩子未來真的會用到的東西。</p>
               <p class="safety-note">畫面中的代號與漲跌皆為<strong>教學用的模擬資料，不是即時報價</strong>。平台不連結任何真實金融帳戶，孩子不會也無法買賣真實股票；課程不推薦任何個股，亦不提供投資建議。</p>
             </div>
-            <div class="ticker" aria-hidden="true">
-              <div class="ticker-row"><span>0050</span>
-                <svg class="spark" viewBox="0 0 60 18" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,13 10,11 20,14 30,8 40,9 50,5 60,3" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-                <span class="up">▲ +1.2%</span></div>
-              <div class="ticker-row"><span>0056</span>
-                <svg class="spark" viewBox="0 0 60 18" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,6 10,8 20,5 30,10 40,9 50,13 60,12" fill="none" stroke="#F44336" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-                <span class="dn">▼ -0.4%</span></div>
-              <div class="ticker-row"><span>0052</span>
-                <svg class="spark" viewBox="0 0 60 18" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,12 10,13 20,9 30,10 40,6 50,7 60,4" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-                <span class="up">▲ +0.8%</span></div>
-              <div class="ticker-cap">模擬行情・非即時報價</div>
-            </div>
+            <figure class="shot shot-in-dark">
+              <img src="assets/shot-invest.webp" width="1400" height="689" decoding="async" loading="lazy"
+                   alt="財商學習平台的投資模組實際畫面：上方為股票總資產與已實現／未實現損益，下方為可搜尋的台股與 ETF 列表，畫面標示「共 1370 筆」與「匯率 1 台幣 = 1 金幣」">
+              <figcaption>平台實際畫面。畫面右下角的「共 1370 筆」即為可交易的擬真標的數量；左上角標示「匯率 1 台幣 ＝ 1 金幣」——全程為模擬金幣。</figcaption>
+            </figure>
           </div>
           <div class="mod-swipe swipe" data-swipe-label="平台的其他四個模組，可左右捲動">
             <div class="card">
