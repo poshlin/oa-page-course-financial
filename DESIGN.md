@@ -134,6 +134,15 @@
 - 檢查法：用 `Range.selectNodeContents(el).getBoundingClientRect()` 量**字墨**框，不要只看 `offsetHeight`（那是行框）。逐一換 PingFang TC／Heiti TC／system-ui／serif 重量，取最小間距
 - 代價：H1 高度 +2.4px、副標 margin 18→22px，全頁長度不變
 
+## 疑問句卡改橫向滑動＋課表後 CTA（2026-08-18）
+
+實測手機（390×844）文字／圖片分布，發現**第 3–9 螢幕連續 7 個螢幕、2,332 字、圖片數 0**——第一張真實產品畫面要到第 10 螢幕。兩項處置：
+
+- **8 張 `.q-card` 加入 `.swipe`**（沿用 05 那套機制，`data-swipe-label` 供鍵盤可達性 JS 掛載）：980px → **147px**，8 題全留。滑動列的 `role/tabindex` JS 選擇器同時由 `#practice .swipe[...]` 放寬為全頁 `.swipe[...]`。
+- **課表結束處補 `.syl-cta`**：原本 CTA 之間隔了 0.7 → 17.2 共 16.5 個螢幕（sticky 之外沒有出口）。45 堂課表是全頁說服力最高的證據，**看完當下必須有出口**。補上後為 0.7 → 6.4 → 16.5 → 20.5。
+
+全頁 21.5 → **20.7 螢幕**。
+
 ## 兩個排版鐵律（2026-08-13 因實際破版補記）
 
 1. **不准手切欄位**。多欄區塊一律用 CSS grid／multi-column 讓瀏覽器自動分配，**禁止用 `.xxx-col` 之類的容器把項目手動分成左右兩堆**——只要有人新增一個項目就會左右不均（FAQ 曾因此變成左 4 右 6）。FAQ 現行做法：13 個 `<details>` 直接放進 `.faq-list`（`grid-template-columns: 1fr 1fr; align-items: start`），奇數列左、偶數列右，永遠不會歪超過一項。
