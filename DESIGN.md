@@ -154,6 +154,23 @@
 - `scroll-snap-type: x mandatory` 搭配 `scroll-padding-left: 20px`，讓吸附位置對齊 `.wrap` 的內距。
 - **`.mod-invest` 永遠不進滑動列**：投資模組的安全聲明必須跟著它一起被看見（見 CLAUDE.md 與 README 對照表）。
 
+## 平台實拍 `.shot`（2026-08-17 起，取代 CSS mockup 的優先選項）
+
+**有真實截圖就用真實截圖，CSS mockup 只是替身**——說服力來自「這就是產品」。
+
+| 變體 | 用途 | 規格 |
+|---|---|---|
+| `.shot` | 滿版區塊（課程地圖、投資模組） | `--card` 底、4px 金邊、圓角 15px、`padding: 10px 10px 0`，內圖 `border-radius: 8px` |
+| `.shot-tight` | 卡片內嵌（卡片自己已有金邊，內框降為 2px、6px padding） | 疊加在 `.shot` 上 |
+| `.shot-in-dark` | 深色卡內（投資卡） | 底 `#1B1B1B`、框 `#3A3A3A`、figcaption `#C9C4BC` |
+
+紀律：
+- **一律附 `figcaption` 標註「平台實際畫面」**——真實性是它存在的理由，要讓讀者知道
+- 截圖**只裁單一 UI 元件**，不放整個瀏覽器視窗；窄容器（≤510px）內的截圖，原圖文字在顯示尺寸下必須可讀
+- 檔名一律 `shot-*.webp`；來源原始檔存 `~/Downloads/oa-coin-quest-video/capture/stills_raw/`
+- 換上 `.shot` 後，被取代的 CSS mockup 樣式**要一併刪除**（勿留 dead CSS）
+- 圖內若含數字（利率、理賠額、筆數），視為對外數字，**須列入 README 對照表**
+
 ## 版式原則
 
 - 淺色奶油底＋高飽和暖色點綴＋粗金邊框＋硬邊陰影＝「兒童遊戲化但不廉價」
