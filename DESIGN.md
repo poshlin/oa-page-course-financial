@@ -178,10 +178,10 @@
 | 檔名 | 位置 | 取代了什麼 |
 |---|---|---|
 | `vid-unit_done` | 04（課程地圖後） | 新增——課程影片實際播放 12 秒 |
-| `vid-checkin` | 05 步驟 03 簽到卡 | CSS 月曆格 |
 | `vid-savings` | 05 銀行卡 | 靜態截圖（改為完整存款操作） |
-| `vid-shop` | 05 商城卡 | 三張造型 figure |
 | `vid-report` | 06 週報 | CSS 週報 mockup |
+
+🔴 **兩處嵌了又回退（2026-08-18，錄了不等於要用）**：①商城卡維持三張造型 figure——「900 金幣・Lv.2 → 1,800 金幣・Lv.4」的價格階梯是卡片文案的論證，影片頁籤掃過即逝反而弱 ②簽到流程卡維持 CSS 月曆——333px 卡內影片文字不可讀。兩段成品在 `capture/web/` 供銷售影片剪輯用。**每段影片必須贏過它取代的東西，否則不上。**
 
 鐵律：
 - 一律 `<video class="pvid" preload="none" muted playsinline loop>` ＋ `poster`（首幀 WebP）＋ `width/height`（防 CLS）＋ `aria-label` 描述內容
