@@ -537,6 +537,76 @@
             ]
           },
           {
+            "@type": "VideoObject",
+            "@id": "https://orangeapple.co/courses/financial/#video-unit-done",
+            "name": "課程影片實際播放：小知識「這是需要還是想要呢？」",
+            "description": "財商素養課程的課程影片片段：動畫角色用「打扮自己的眼鏡」講解「想要」與「需要」的差別，搭配字幕與語音。",
+            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-unit_done.mp4",
+            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-unit_done-poster.webp",
+            "uploadDate": "2026-08-18",
+            "duration": "PT12S",
+            "inLanguage": "zh-TW",
+            "publisher": {
+              "@id": "https://orangeapple.co/#organization"
+            }
+          },
+          {
+            "@type": "VideoObject",
+            "@id": "https://orangeapple.co/courses/financial/#video-savings",
+            "name": "平台實際操作：銀行儲蓄存款",
+            "description": "在財商學習平台的銀行儲蓄模組實際存入 2,000 模擬金幣：開啟存款視窗、輸入金額、確認後總額即時增加。",
+            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-savings.mp4",
+            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-savings-poster.webp",
+            "uploadDate": "2026-08-18",
+            "duration": "PT11S",
+            "inLanguage": "zh-TW",
+            "publisher": {
+              "@id": "https://orangeapple.co/#organization"
+            }
+          },
+          {
+            "@type": "VideoObject",
+            "@id": "https://orangeapple.co/courses/financial/#video-shop",
+            "name": "平台實際畫面：造型商城",
+            "description": "財商學習平台造型商城的分類頁籤切換與試穿預覽，造型單品以模擬金幣計價並依等級解鎖。",
+            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-shop.mp4",
+            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-shop-poster.webp",
+            "uploadDate": "2026-08-18",
+            "duration": "PT12.5S",
+            "inLanguage": "zh-TW",
+            "publisher": {
+              "@id": "https://orangeapple.co/#organization"
+            }
+          },
+          {
+            "@type": "VideoObject",
+            "@id": "https://orangeapple.co/courses/financial/#video-checkin",
+            "name": "平台實際畫面：每日簽到月曆",
+            "description": "財商學習平台的每日簽到月曆，已簽到的日子顯示金幣與勾號；上方為等級與日薪進度。",
+            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-checkin.mp4",
+            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-checkin-poster.webp",
+            "uploadDate": "2026-08-18",
+            "duration": "PT10S",
+            "inLanguage": "zh-TW",
+            "publisher": {
+              "@id": "https://orangeapple.co/#organization"
+            }
+          },
+          {
+            "@type": "VideoObject",
+            "@id": "https://orangeapple.co/courses/financial/#video-report",
+            "name": "平台實際畫面：學習週報",
+            "description": "財商學習平台的學習週報：本週摘要、「可以和孩子一起聊聊」的建議、本週活躍度與金幣收支。",
+            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-report.mp4",
+            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-report-poster.webp",
+            "uploadDate": "2026-08-18",
+            "duration": "PT12S",
+            "inLanguage": "zh-TW",
+            "publisher": {
+              "@id": "https://orangeapple.co/#organization"
+            }
+          },
+          {
             "@type": "FAQPage",
             "@id": "https://orangeapple.co/courses/financial/#faq",
             "isPartOf": {
@@ -1008,6 +1078,9 @@
     .shot { margin-bottom: 36px; background: var(--card); border: 4px solid var(--gold); border-radius: var(--r); box-shadow: var(--shadow-soft); padding: 10px 10px 0; overflow: hidden; }
     .shot img { width: 100%; display: block; border-radius: 8px; }
     .shot figcaption { font-size: 0.8rem; color: var(--text-2); padding: 10px 12px 12px; }
+    /* 平台實錄影片：poster 先行、進視窗才播（JS 掛載）。無 JS 時只顯示 poster，不autoplay */
+    .pvid { width: 100%; height: auto; display: block; border-radius: 8px; }
+    .wr-shot { max-width: 520px; margin-left: auto; }
     .shot-tight { border-width: 2px; padding: 6px 6px 0; margin: 14px 0 0; }
     .shot-in-dark { background: #1B1B1B; border-color: #3A3A3A; margin-bottom: 0; }
     .shot-in-dark figcaption { color: #C9C4BC; }
@@ -1571,6 +1644,13 @@
                alt="財商學習平台的課程地圖：體驗課「支出與公益」拆成 18 個關卡，依序為小故事「好想要買一台新筆電」、小知識「這是需要還是想要呢？」、小測驗、小遊戲「波比的白日夢泡泡」，一路到小議題「小心！拿鐵因子」與「愛心放大鏡」">
           <figcaption>平台實際畫面——<strong>這就是免費試聽當天孩子會走的那一堂</strong>「體驗課：支出與公益」，共 18 關。完成一關，才解鎖下一關；各堂關卡數不盡相同。</figcaption>
         </figure>
+        <figure class="reveal shot">
+          <video class="pvid" width="960" height="518" poster="assets/vid-unit_done-poster.webp" preload="none" muted playsinline loop aria-label="課程影片實際播放畫面：貓咪角色用「打扮自己的眼鏡」講「想要」與「需要」的差別，下方有字幕">
+            <source src="assets/vid-unit_done.mp4" type="video/mp4">
+            您的瀏覽器不支援影片播放。
+          </video>
+          <figcaption>課程影片實際播放中・小知識「這是需要還是想要呢？」——動畫故事搭配字幕與語音，真人老師在課堂上帶著看。</figcaption>
+        </figure>
         <p class="type-line" id="lesson-types">一堂課裡有六種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住），最後收在<b>小議題</b>與<b>議題測驗</b>——把整堂的觀念放回真實情境想一遍。</p>
         <div class="reveal showcase">
           <figure class="scene">
@@ -1644,11 +1724,10 @@
             <h3>簽到，領日薪</h3>
             <p>每天簽到領取當天薪水，自然養成每天回來學習的習慣。</p>
             <div class="ui-strip">
-              <div class="cal-month" aria-hidden="true">
-                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">6</span><span class="cd">7</span>
-                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">11</span><span class="cd done">✓</span><span class="cd done">✓</span><span class="cd">14</span>
-                <span class="cd done">✓</span><span class="cd done">✓</span><span class="cd today">今</span><span class="cd f">18</span><span class="cd f">19</span><span class="cd f">20</span><span class="cd f">21</span>
-              </div>
+              <video class="pvid" width="720" height="392" poster="assets/vid-checkin-poster.webp" preload="none" muted playsinline loop aria-label="平台實際畫面：每日簽到月曆，已簽到的日子有金幣與勾號，今天的格子是簽到按鈕；上方是等級與日薪進度">
+                <source src="assets/vid-checkin.mp4" type="video/mp4">
+                您的瀏覽器不支援影片播放。
+              </video>
               <p class="insider"><b>一天只能簽一次，忘記按就沒有了。</b>平台真的這樣設計——錯過就是錯過，這是孩子第一次體會「機會成本」。</p>
             </div>
           </div>
@@ -1711,9 +1790,11 @@
               <p>把錢存進銀行，每兩週結算一次利息。「複利」不用背公式，看著存款自己長大，就懂了。</p>
               <div class="ui-strip">
               <figure class="shot shot-tight">
-                <img src="assets/shot-savings.webp" width="840" height="826" decoding="async" loading="lazy"
-                     alt="財商學習平台的銀行儲蓄實際畫面：儲蓄總額、「每雙週利率為 0.1%」的提示，與存款、提款兩個按鈕">
-                <figcaption>平台實際畫面・銀行儲蓄。畫面上寫著「每雙週利率為 0.1%」——每兩週結算一次，利息直接滾入總額。</figcaption>
+                <video class="pvid" width="720" height="328" poster="assets/vid-savings-poster.webp" preload="none" muted playsinline loop aria-label="平台實際操作：開啟存款視窗、輸入 2,000 金幣、確認後儲蓄總額即時增加，流水多出一筆存入紀錄">
+                  <source src="assets/vid-savings.mp4" type="video/mp4">
+                  您的瀏覽器不支援影片播放。
+                </video>
+                <figcaption>平台實際操作畫面・存一筆 2,000，看總額跳動。畫面上寫著「每雙週利率為 0.1%」——每兩週結算一次，利息直接滾入總額。</figcaption>
               </figure>
                 <p class="insider">平台上白紙黑字寫著一句：<b>利息不滿 1 金幣時不發放。</b>連小數點後的誠實都寫進去了，孩子學到的複利才是真的。</p>
               </div>
@@ -1737,20 +1818,13 @@
                   <p class="mini-note">分類頁籤為平台商城節選</p>
                 </div>
               </div>
-              <div class="looks">
-                <figure class="look">
-                  <span class="stage t-gold"><img decoding="async" width="260" height="260" src="assets/look-uniform.webp" alt="平台角色穿著白色學校制服" loading="lazy"></span>
-                  <figcaption>白色學校制服<b>已擁有</b></figcaption>
-                </figure>
-                <figure class="look">
-                  <span class="stage t-teal"><img decoding="async" width="260" height="260" src="assets/look-chef.webp" alt="平台角色穿著白色廚師服" loading="lazy"></span>
-                  <figcaption>白色廚師服<b>900 金幣・Lv.2</b></figcaption>
-                </figure>
-                <figure class="look">
-                  <span class="stage t-sky"><img decoding="async" width="260" height="260" src="assets/look-space.webp" alt="平台角色穿著白色太空裝" loading="lazy"></span>
-                  <figcaption>白色太空裝<b>1,800 金幣・Lv.4</b></figcaption>
-                </figure>
-              </div>
+              <figure class="shot shot-tight">
+                <video class="pvid" width="960" height="448" poster="assets/vid-shop-poster.webp" preload="none" muted playsinline loop aria-label="平台實際畫面：造型商城的衣服、髮型、頭飾、裝飾分類頁籤依序切換，含試穿預覽與價格等級">
+                  <source src="assets/vid-shop.mp4" type="video/mp4">
+                  您的瀏覽器不支援影片播放。
+                </video>
+                <figcaption>平台實際畫面・分類頁籤與試穿預覽。</figcaption>
+              </figure>
             </div>
             <div class="card mod-rank">
               <div>
@@ -1810,37 +1884,13 @@
             <button type="button" class="btn-primary" data-oa-cta="middle">預約免費試聽 →</button>
           </div>
           <div>
-            <div class="wr-card" role="img" aria-label="學習週報功能示意：本週摘要與親子對話建議">
-              <div class="wr-head" aria-hidden="true">
-                <span class="wr-en">WEEKLY REPORT</span>
-                <span class="wr-title">學習週報</span>
-              </div>
-              <div aria-hidden="true">
-                <div class="wr-block">
-                  <span class="wr-label">本週摘要</span>
-                  本週完成了 4 個單元，持續在前進。本週有把錢存起來，慢慢養成儲蓄習慣。
-                </div>
-                <div class="wr-block">
-                  <span class="wr-label">可以和孩子一起聊聊</span>
-                  <span class="wr-quote">「大部分的錢放著沒運用，可以聊聊存錢生利息或投資的概念。」</span>
-                </div>
-                <div class="wr-block">
-                  <span class="wr-label">本週活躍度</span>
-                  <div class="wr-days">
-                    <span class="wr-day on"></span><span class="wr-day on"></span><span class="wr-day on"></span><span class="wr-day"></span><span class="wr-day on"></span><span class="wr-day"></span><span class="wr-day on"></span>
-                    <span>一格一天，上線就點亮</span>
-                  </div>
-                </div>
-                <div class="wr-block">
-                  <span class="wr-label">本週金幣收支</span>
-                  <div class="wr-bar-row"><span class="lbl">簽到薪資</span><span class="wr-bar in" style="width:52%"></span></div>
-                  <div class="wr-bar-row"><span class="lbl">課程獎勵</span><span class="wr-bar in" style="width:30%"></span></div>
-                  <div class="wr-bar-row"><span class="lbl">存款</span><span class="wr-bar out" style="width:64%"></span></div>
-                  <div class="wr-bar-row"><span class="lbl">買保險</span><span class="wr-bar out" style="width:38%"></span></div>
-                </div>
-              </div>
-              <div class="mock-caption">週報功能示意圖（實際畫面以平台為準）</div>
-            </div>
+            <figure class="shot wr-shot">
+              <video class="pvid" width="720" height="484" poster="assets/vid-report-poster.webp" preload="none" muted playsinline loop aria-label="財商學習平台學習週報實際畫面：本週摘要、「可以和孩子一起聊聊」的建議、本週活躍度與金幣收支，整頁緩慢捲動">
+                <source src="assets/vid-report.mp4" type="video/mp4">
+                您的瀏覽器不支援影片播放。
+              </video>
+              <figcaption>學習週報實際畫面（測試帳號）。</figcaption>
+            </figure>
           </div>
         </div>
         <div class="disclaimer">
@@ -1933,6 +1983,25 @@
         </div>
       </div>
     </section>
+
+    <script>
+      /* 平台實錄影片：進視窗播放、離開暫停；prefers-reduced-motion 一律不自動播。
+         preload="none" ＋ IntersectionObserver，六段合計 ~900KB 只有捲到才載。 */
+      (function () {
+        var vids = document.querySelectorAll('video.pvid');
+        if (!vids.length) return;
+        var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (rm || !('IntersectionObserver' in window)) return;
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            var v = e.target;
+            if (e.isIntersecting) { v.play().catch(function(){}); }
+            else { v.pause(); }
+          });
+        }, { rootMargin: '80px 0px', threshold: 0.15 });
+        vids.forEach(function (v) { io.observe(v); });
+      })();
+    </script>
 
     <!-- 底部 CTA -->
     <section class="cta-band" id="cta">

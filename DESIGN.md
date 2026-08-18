@@ -171,6 +171,25 @@
 - 換上 `.shot` 後，被取代的 CSS mockup 樣式**要一併刪除**（勿留 dead CSS）
 - 圖內若含數字（利率、理賠額、筆數），視為對外數字，**須列入 README 對照表**
 
+## 平台實錄影片（2026-08-18 新增）
+
+第一批真實平台錄影（Chrome 驅動已登入的 staging、`screencapture` 錄製、ffmpeg 裁切），**取代對應位置的 CSS mockup**。錄製與後製管線見 `~/Documents/oa-coin-quest/video/07_官網用片段規格.md`。
+
+| 檔名 | 位置 | 取代了什麼 |
+|---|---|---|
+| `vid-unit_done` | 04（課程地圖後） | 新增——課程影片實際播放 12 秒 |
+| `vid-checkin` | 05 步驟 03 簽到卡 | CSS 月曆格 |
+| `vid-savings` | 05 銀行卡 | 靜態截圖（改為完整存款操作） |
+| `vid-shop` | 05 商城卡 | 三張造型 figure |
+| `vid-report` | 06 週報 | CSS 週報 mockup |
+
+鐵律：
+- 一律 `<video class="pvid" preload="none" muted playsinline loop>` ＋ `poster`（首幀 WebP）＋ `width/height`（防 CLS）＋ `aria-label` 描述內容
+- **播放由 JS 控制**：IntersectionObserver 進視窗播、離開暫停；`prefers-reduced-motion: reduce` 一律不播（只見 poster）；無 JS 時就是一張 poster 圖——**不寫 `autoplay` 屬性**，方向不可顛倒
+- 單檔 ≤400KB、無音軌、H.264 yuv420p `+faststart`；目前五段合計 ~890KB
+- ⚠️ **preview pane 驗不了自動播放**：Chrome 對背景分頁的省電策略會擋 video-only media（`play()` 直接 reject）。要驗請用前景分頁
+- 投資模組影片待 16:00 開盤錄製；保險卡**刻意保留靜態特寫**（醫療險 $3,000 與命運卡敘事連動，比列表捲動更有說服力）
+
 ## 版式原則
 
 - 淺色奶油底＋高飽和暖色點綴＋粗金邊框＋硬邊陰影＝「兒童遊戲化但不廉價」
