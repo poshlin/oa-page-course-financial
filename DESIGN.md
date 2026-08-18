@@ -126,6 +126,14 @@
 - 課表全展開時 375px **無橫向溢出**（2026-08-13 實測）。
 - 課表旁必附免責句 `.syl-note`（見 CLAUDE.md 4e）。
 
+## 標題行框要容得下字墨（2026-08-18）
+
+中文粗體標題的**字墨高度會超過 `font-size`**：34px／800 字重實測字墨 48px，`line-height: 1.25` 的行框只有 42.5px——**字墨溢出行框 5.5px**。行框一旦比字墨小，下一個元素就只靠 `margin` 撐開間距，換一套字型度量（不同裝置的 fallback 字型）就可能視覺相撞。
+
+- H1 `line-height` **不低於 1.32**（實測五種字型下與副標的淨間距皆 ≥21px；1.25 時只剩 16px）
+- 檢查法：用 `Range.selectNodeContents(el).getBoundingClientRect()` 量**字墨**框，不要只看 `offsetHeight`（那是行框）。逐一換 PingFang TC／Heiti TC／system-ui／serif 重量，取最小間距
+- 代價：H1 高度 +2.4px、副標 margin 18→22px，全頁長度不變
+
 ## 兩個排版鐵律（2026-08-13 因實際破版補記）
 
 1. **不准手切欄位**。多欄區塊一律用 CSS grid／multi-column 讓瀏覽器自動分配，**禁止用 `.xxx-col` 之類的容器把項目手動分成左右兩堆**——只要有人新增一個項目就會左右不均（FAQ 曾因此變成左 4 右 6）。FAQ 現行做法：13 個 `<details>` 直接放進 `.faq-list`（`grid-template-columns: 1fr 1fr; align-items: start`），奇數列左、偶數列右，永遠不會歪超過一項。
