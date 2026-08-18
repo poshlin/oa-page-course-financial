@@ -846,7 +846,8 @@
     .hero .wrap { position: relative; z-index: 1; }
     /* 故事主角波比：站在平台畫面左下角，讓 mockup 看起來「有人在用」 */
     .hero-visual { position: relative; }
-    .hero-popi { position: absolute; left: -74px; bottom: -30px; width: 132px; height: auto; filter: drop-shadow(0 7px 9px rgba(0,0,0,.2)); }
+    /* bottom 要讓角色整個落在卡片基座之下——圖說是滿寬置中文字，角色只要進到卡片內就會壓字 */
+    .hero-popi { position: absolute; left: -74px; bottom: -76px; width: 132px; height: auto; filter: drop-shadow(0 7px 9px rgba(0,0,0,.2)); }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; margin-top: 28px; }
     .hero-tagline { font-size: clamp(19px, 2.4vw, 24px); font-weight: 700; margin: 22px 0 12px; }
     .hero p.lead { margin-bottom: 22px; }
@@ -864,6 +865,7 @@
     .mock-avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: var(--shadow-soft); }
     .mock-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; padding: 16px; }
     .mock-card { background: var(--task); border: 2px solid var(--gold); border-radius: 12px; padding: 12px 14px; }
+    .mock-asset .mock-h { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .mock-h { font-size: 0.78rem; font-weight: 800; margin-bottom: 8px; }
     .mock-task-row { display: flex; justify-content: space-between; gap: 8px; font-size: 0.78rem; padding: 4px 0; border-bottom: 1px dashed var(--gold); }
     .mock-task-row:last-child { border-bottom: 0; }
@@ -871,6 +873,28 @@
     .mock-task-row .pt { font-weight: 700; white-space: nowrap; }
     .mock-asset { grid-column: 2; grid-row: 1 / span 2; display: flex; flex-direction: column; }
     .mock-num { font-size: 1.7rem; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+    /* 半圓環資產配置：平台首頁最具辨識度的元件。用 conic-gradient 畫，
+       零圖檔、任何解析度都銳利，且在 350px 的 hero 欄位裡仍讀得到。
+       角度＝百分比×1.8deg（半圓 180deg）。數值取自 staging 實測快照。 */
+    /* 上下堆疊而非並排：桌機資產欄僅 190px、手機單欄 320px，並排時圖例會被擠成一字一行。 */
+    .mock-donut { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .mock-ring { flex: 0 0 auto; align-self: center; width: 104px; height: 52px; border-radius: 104px 104px 0 0; position: relative;
+      background: conic-gradient(from 270deg,
+        var(--teal) 0deg 68.4deg,
+        var(--primary) 68.4deg 136.8deg,
+        var(--coral) 136.8deg 180deg,
+        transparent 180deg 360deg); }
+    .mock-ring::after { content: ""; position: absolute; left: 26px; top: 26px; width: 52px; height: 26px;
+      border-radius: 52px 52px 0 0; background: var(--task); }
+    .mock-legend { width: 100%; display: flex; flex-direction: column; gap: 4px; font-size: 0.7rem; font-weight: 700; }
+    .mock-legend span { display: flex; align-items: center; gap: 6px; }
+    .mock-legend i { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+    .mock-rank { font-size: 0.68rem; font-weight: 800; background: var(--gold); border-radius: var(--r-pill); padding: 3px 10px; }
+    /* 進入課程票券：平台首頁的主行動，橫幅＋叩叮，是全畫面最有記憶點的一塊 */
+    .mock-enter { display: flex; align-items: center; gap: 10px; background: var(--coral); border-radius: 12px;
+      padding: 8px 14px; box-shadow: var(--shadow); }
+    .mock-enter img { width: 40px; height: auto; flex: 0 0 auto; }
+    .mock-enter b { font-size: 0.92rem; font-weight: 800; color: var(--text); letter-spacing: 0.06em; }
     .mock-alloc { display: flex; flex-direction: column; gap: 6px; font-size: 0.75rem; }
     .mock-alloc-row { display: flex; align-items: center; gap: 8px; }
     .mock-alloc-bar { flex: 1; height: 8px; border-radius: var(--r-pill); background: var(--cream-2); overflow: hidden; }
@@ -1230,7 +1254,11 @@
       .stat-pill img { width: 16px; height: 16px; }
       .mock-user { font-size: 0.62rem; white-space: nowrap; }
       .mock-avatar { width: 24px; height: 24px; }
-      .mock-body { gap: 8px; padding: 12px; }
+      /* 手機：mock-body 從 1.2fr/1fr 兩欄改單欄。兩欄時資產卡只剩約 135px，
+         半圓環 104px 幾乎佔滿，圖例被擠成一字一行；任務標題也會斷在詞中間。
+         單欄後每張卡都有約 320px，環圈與圖例並排讀得到，順序＝任務→資產→簽到→進課程。 */
+      .mock-body { gap: 8px; padding: 12px; grid-template-columns: 1fr; }
+      .mock-asset { grid-column: 1; grid-row: auto; }
       .mock-h, .mock-task-row { font-size: 0.68rem; }
       .mock-num { font-size: 1.4rem; }
       .mock-alloc { font-size: 0.64rem; }
@@ -1238,7 +1266,9 @@
       .mock-badge { font-size: 0.68rem; padding: 5px 10px; white-space: nowrap; }
       .mock-caption { font-size: 0.64rem; }
       /* 手機：波比縮小並收進畫面內，桌機那組負值會被切掉一半 */
-      .hero-popi { left: -16px; bottom: -24px; width: 104px; }
+      /* 2026-08-18：mock-body 改單欄後卡片變高，bottom:-24px 會讓波比壓在圖說上。
+         下移到卡片基座——角色仍「站在平台旁邊」，但不吃到任何文字。 */
+      .hero-popi { left: -14px; bottom: -92px; width: 96px; }
       .hero-deco.d-money { width: 150px; top: -20px; right: -32px; }
       .hero-deco.d-piggy { width: 160px; bottom: -30px; left: -40px; }
       /* 時間軸：手機改直向堆疊。40/10/40 的橫向比例會把中段壓到放不下字 */
@@ -1320,11 +1350,11 @@
           </div>
           <div class="hero-visual">
             <img decoding="async" width="601" height="600" class="hero-popi" src="assets/popi-talk.webp" alt="課程故事主角波比" loading="eager">
-            <div class="mock" role="img" aria-label="平台首頁功能示意：今日任務、每日簽到與資產總額">
+            <div class="mock" role="img" aria-label="平台首頁功能示意：今日任務、每日簽到、進入課程，以及資產總額與資產配置環圈（可用現金 38%、投資理財 38%、銀行儲蓄 24%、持有保險 9 張）">
               <div class="mock-bar">
                 <span class="mock-bar-title" aria-hidden="true">財商學習平台</span>
                 <span class="stat-pill" aria-hidden="true"><img decoding="async" width="48" height="48" src="assets/icon-exp.webp" alt="" loading="lazy">290</span>
-                <span class="stat-pill" aria-hidden="true"><img decoding="async" width="48" height="48" src="assets/icon-coin.webp" alt="" loading="lazy">30,000</span>
+                <span class="stat-pill" aria-hidden="true"><img decoding="async" width="48" height="48" src="assets/icon-coin.webp" alt="" loading="lazy">19,606</span>
                 <span class="mock-user">
                   <img decoding="async" width="96" height="96" class="mock-avatar" src="assets/avatar-student.webp" alt="平台中的學生角色：可自由換裝的造型" loading="lazy">
                   <span aria-hidden="true">小明 ▾</span>
@@ -1338,24 +1368,31 @@
                   <div class="mock-task-row"><span>完成一堂課程</span><span class="pt">+3,000</span></div>
                 </div>
                 <div class="mock-card mock-asset">
-                  <div class="mock-h">資產總額</div>
-                  <div class="mock-num">30,000</div>
-                  <div class="mock-alloc">
-                    <div class="mock-alloc-row"><span>可用現金</span><span class="mock-alloc-bar"><i style="width:70%;background:var(--primary)"></i></span></div>
-                    <div class="mock-alloc-row"><span>投資理財</span><span class="mock-alloc-bar"><i style="width:35%;background:var(--coral)"></i></span></div>
-                    <div class="mock-alloc-row"><span>銀行儲蓄</span><span class="mock-alloc-bar"><i style="width:50%;background:var(--teal)"></i></span></div>
-                    <div class="mock-alloc-row"><span>持有保險</span><span class="mock-alloc-bar"><i style="width:25%;background:var(--gold)"></i></span></div>
+                  <div class="mock-h">資產總額<span class="mock-rank">排名 2</span></div>
+                  <div class="mock-num">51,021</div>
+                  <div class="mock-donut">
+                    <span class="mock-ring"></span>
+                    <span class="mock-legend">
+                      <span><i style="background:var(--teal)"></i>可用現金 38%</span>
+                      <span><i style="background:var(--primary)"></i>投資理財 38%</span>
+                      <span><i style="background:var(--coral)"></i>銀行儲蓄 24%</span>
+                      <span><i style="background:var(--gold)"></i>持有保險 9 張</span>
+                    </span>
                   </div>
                 </div>
                 <div class="mock-card mock-checkin">
                   <div>
                     <div class="mock-h">每日簽到</div>
-                    <div class="mock-salary">日薪 1,000</div>
+                    <div class="mock-salary">日薪 1,600</div>
                   </div>
                   <span class="mock-badge">簽到</span>
                 </div>
+                <div class="mock-enter">
+                  <img decoding="async" width="200" height="200" src="assets/kdding-point.webp" alt="" loading="lazy">
+                  <b>進入課程</b>
+                </div>
               </div>
-              <div class="mock-caption">平台功能示意圖（實際畫面以平台為準）。每日任務每天輪替，畫面中金額皆為平台模擬金幣。</div>
+              <div class="mock-caption">平台首頁示意圖，數值取自平台實際畫面。每日任務每天輪替，畫面中金額皆為平台模擬金幣。</div>
             </div>
           </div>
         </div>
