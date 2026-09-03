@@ -721,11 +721,11 @@
 
   <style>
     :root {
-      /* 內文行長上限：18px 字級下約 48 個中文字。
-         中文舒適區 35–45、可接受到 50；本頁的卡片與網格是 1040px，內文若卡在 720
-         會跟旁邊的滿版元素差 320px，看起來像沒排完——860 是「還讀得動」與
-         「看起來有排滿」的折衷。全頁內文一律用這個值。 */
-      --measure: 860px;
+      /* 🔴 保旭拍板（2026-09-03）：內文不設行長上限，一律撐滿容器。
+         排版慣例會建議中文行長 35–45 字以利閱讀，但本頁的卡片、網格、圖片都是滿版 1040，
+         內文只要收窄就會出現「中間就換行」的觀感。整頁一致優先於單行可讀性。
+         要改回行長控制，只需把這個值改成 px 數，其餘規則都吃這個變數。 */
+      --measure: none;
       --primary: #F5A623;
       --gold: #FFBC57;
       --cream: #FFF9F0;
@@ -803,7 +803,7 @@
     .h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; line-height: 1.35; margin-bottom: 14px; }
     .kicker { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; color: var(--coral-ink); margin-bottom: 8px; }
     .lead { color: var(--text-2); max-width: var(--measure); }
-    .sec-head { max-width: 880px; margin-bottom: 40px; }
+    .sec-head { max-width: var(--measure); margin-bottom: 40px; }
 
     /* CTA — 留單意圖唯一橘實心（DESIGN.md：#F5A623 配深墨、禁白字、border 透明佔位） */
     .btn-primary {
