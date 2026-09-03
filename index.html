@@ -1096,6 +1096,9 @@
     .shot { margin-bottom: 36px; background: var(--card); border: 4px solid var(--gold); border-radius: var(--r); box-shadow: var(--shadow-soft); padding: 10px 10px 0; overflow: hidden; }
     .shot img { width: 100%; display: block; border-radius: 8px; }
     .shot figcaption { font-size: 0.8rem; color: var(--text-2); padding: 10px 12px 12px; }
+    /* 實拍照片：頁面唯一的「人」。與螢幕擷取不同任務——擷取證明產品為真，照片證明有人在用。 */
+    .photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 22px 0 4px; }
+    .photo-pair .shot { margin: 0; }
     /* 平台實錄影片：poster 先行、進視窗才播（JS 掛載）。無 JS 時只顯示 poster，不autoplay */
     .pvid { width: 100%; height: auto; display: block; border-radius: 8px; }
     .wr-shot { max-width: 520px; margin-left: auto; }
@@ -1238,7 +1241,7 @@
       details.phase-more > summary::after { content: "▸"; position: absolute; right: 4px; top: 15px; color: var(--primary); transition: transform .15s ease; }
       details.phase-more[open] > summary::after { transform: rotate(90deg); }
       details.phase-more > .phase-el { margin-top: 16px; }
-      .grid-3, .grid-4, .flow, .modules, .showcase, .faq-list { grid-template-columns: 1fr; }
+      .grid-3, .grid-4, .flow, .modules, .showcase, .faq-list, .photo-pair { grid-template-columns: 1fr; }
       /* 場景卡：手機對話框會佔到 185px，把 104px 的角色遮掉約 3/4。
          加高場景並把角色帶上抬，讓角色與對話各有地盤（不縮對白、不砍句子） */
       .scene { min-height: 524px; }
@@ -1653,6 +1656,11 @@
           <span class="tl-seg tl-b">41–50</span>
           <span class="tl-seg tl-c">51–90 分・財商議題課</span>
         </div>
+        <figure class="reveal shot">
+          <img src="assets/photo-teacher.webp" width="1400" height="788" decoding="async" loading="lazy"
+               alt="線上課的老師端實際畫面：老師戴著耳麥、面對筆記型電腦進行線上授課">
+          <figcaption>線上課的老師端。上課時老師戴著耳麥、看得到每個孩子的畫面——發現卡住就主動開啟通話。圖為財商課程的設計老師；<strong>實際授課老師依班級安排</strong>。</figcaption>
+        </figure>
         <div class="grid-3">
           <div class="card">
             <span class="tl-dot tl-a" aria-hidden="true"></span>
@@ -1690,6 +1698,18 @@
           <figcaption>課程影片實際播放中・小知識「這是需要還是想要呢？」——動畫故事搭配字幕與語音，真人老師在課堂上帶著看。</figcaption>
         </figure>
         <p class="type-line" id="lesson-types">一堂課裡有六種關卡輪著來：<b>小故事</b>（波比遇到每個孩子都熟悉的金錢時刻）、<b>小知識</b>（叩叮親自出鏡把觀念講懂）、<b>小測驗</b>（看完馬上檢核）、<b>小遊戲</b>（觀念用手玩過一遍才記得住），最後收在<b>小議題</b>與<b>議題測驗</b>——把整堂的觀念放回真實情境想一遍。</p>
+        <div class="reveal photo-pair">
+          <figure class="shot">
+            <img src="assets/photo-story.webp" width="1000" height="563" decoding="async" loading="lazy"
+                 alt="孩子以平板操作財商學習平台第 1 課「古代貨幣」的小故事：角色波比在教室裡說「我最寶貝的『幸運自動鉛筆』剛剛摔壞了！」">
+            <figcaption><strong>小故事</strong>・第 1 堂「古代貨幣」——波比最寶貝的自動鉛筆摔壞了。每一堂都從一個孩子熟悉的金錢時刻開始。</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/photo-quiz.webp" width="1000" height="563" decoding="async" loading="lazy"
+                 alt="孩子以平板作答財商學習平台第 5 課「家庭支出的選擇」的小測驗，題目為「為什麼大人們願意花錢讓我們學習？」，選項之一是「因為教育是對未來的投資」">
+            <figcaption><strong>小測驗</strong>・第 5 堂「家庭支出的選擇」——「為什麼大人們願意花錢讓我們學習？」觀念看完，馬上用題目檢核。</figcaption>
+          </figure>
+        </div>
         <div class="reveal showcase">
           <figure class="scene">
             <span class="scene-tag">小故事・我的錢都到哪去了？</span>
@@ -1738,6 +1758,11 @@
           <h2 class="h2">課後，一場會發生後果的理財經營遊戲</h2>
           <p class="lead">課堂上老師帶著學，課後這個世界 24 小時開放。孩子在平台裡過一個縮小版的金錢人生：有收入、有選擇、有意外，也有保障。</p>
         </div>
+        <figure class="reveal shot">
+          <img src="assets/photo-home.webp" width="1400" height="788" decoding="async" loading="lazy"
+               alt="孩子在家中以平板使用財商學習平台，畫面顯示今日任務、每日簽到、資產總額與資產配置環圈">
+          <figcaption>課後在家的樣子——平台 24 小時開放，孩子自己決定什麼時候回來。畫面上是今日任務、簽到領日薪，以及這個月的資產配置。</figcaption>
+        </figure>
         <div class="reveal flow swipe" data-swipe-label="賺取金幣的前三個步驟，可左右捲動">
           <div class="card">
             <span class="step-num">01</span>
@@ -1957,6 +1982,11 @@
           <h2 class="h2">為這樣的孩子與家庭設計</h2>
           <p class="lead">國小 3-6 年級正是零用錢開始變多、金錢觀成形的階段，也是兒童理財課最有效的時候。課程用動畫故事、語音講解與遊戲關卡帶著走，孩子看得懂、玩得動。</p>
         </div>
+        <figure class="reveal shot">
+          <img src="assets/photo-fit.webp" width="1200" height="675" decoding="async" loading="lazy"
+               alt="孩子以手指點選平板上的財商學習平台首頁，畫面顯示今日任務與「進入課程」按鈕">
+          <figcaption>不需要程式基礎，也不需要家長懂財商——孩子自己就點得動。</figcaption>
+        </figure>
         <ul class="reveal fitlist">
           <li><b>每週一堂、固定時段</b>由老師帶課，<b>一班最多 10 人</b>；課後平台 24 小時開放，每日任務和日薪讓他自己想回來</li>
           <li><b>線上上課、不限地區</b>，全台各縣市都能參加，家裡就是教室</li>
