@@ -22,6 +22,7 @@
        LINE／FB 都拿不到縮圖（2026-08-14 實測正式站圖 404、Pages 圖 200）。
        ⚠️ 部署到 orangeapple.co 當天，這兩行必須改回
        https://orangeapple.co/courses/financial/assets/og-financial.jpg
+       🔴 同時要改：4 個 VideoObject 的 contentUrl 與 thumbnailUrl（共 8 個 URL），也全指向 poshlin.github.io
        否則正式站的分享卡會去抓個人 repo 的圖。canonical 與 og:url 維持正式站不動。 -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="橘子蘋果程式學苑">
@@ -121,7 +122,7 @@
             },
             "inLanguage": "zh-TW",
             "datePublished": "2026-08-11",
-            "dateModified": "2026-08-13",
+            "dateModified": "2026-09-03",
             "speakable": {
               "@type": "SpeakableSpecification",
               "cssSelector": [
@@ -129,15 +130,27 @@
                 "h1",
                 "#faq .faq-a"
               ]
-            }
+            },
+            "video": [
+              {
+                "@id": "https://orangeapple.co/courses/financial/#video-unit-done"
+              },
+              {
+                "@id": "https://orangeapple.co/courses/financial/#video-savings"
+              },
+              {
+                "@id": "https://orangeapple.co/courses/financial/#video-report"
+              },
+              {
+                "@id": "https://orangeapple.co/courses/financial/#video-invest"
+              }
+            ]
           },
           {
             "@type": "Course",
             "@id": "https://orangeapple.co/courses/financial/#course",
             "name": "橘蘋財商素養課程",
-            "alternateName": "財商學習平台",
             "description": "為台灣國小 3-6 年級學生設計的線上兒童財商・理財課程：每週一堂 90 分鐘——前 50 分鐘雙師模式（課程影片＋真人輔導老師）上課實作，後 40 分鐘「財商議題課」由老師帶領當週議題討論；課後在理財經營遊戲中練習管理收支、儲蓄、投資與風險，家長每週收到學習週報。共 45 堂。全程使用模擬金幣，非真實金錢。",
-            "courseWorkload": "每週一堂 90 分鐘，共 45 堂",
             "url": "https://orangeapple.co/courses/financial/",
             "timeRequired": "PT67H30M",
             "datePublished": "2026-08-11",
@@ -181,11 +194,7 @@
               "公益與金錢價值觀"
             ],
             "coursePrerequisites": "第一階段無需任何基礎；第二階段需完整修畢第一階段或通過測驗；第三階段需完整修畢第二階段或通過測驗。",
-            "inLanguage": [
-              "zh-TW",
-              "en",
-              "ja"
-            ],
+            "inLanguage": "zh-TW",
             "isAccessibleForFree": false,
             "hasCourseInstance": {
               "@type": "CourseInstance",
@@ -211,7 +220,6 @@
                 "provider": {
                   "@id": "https://orangeapple.co/#organization"
                 },
-                "courseWorkload": "每週一堂 90 分鐘，共 15 堂",
                 "coursePrerequisites": "無需任何基礎",
                 "teaches": [
                   "貨幣演變與現代金融",
@@ -319,7 +327,6 @@
                 "provider": {
                   "@id": "https://orangeapple.co/#organization"
                 },
-                "courseWorkload": "每週一堂 90 分鐘，共 15 堂",
                 "coursePrerequisites": "完整修畢第一階段或通過測驗",
                 "teaches": [
                   "銀行運作與儲蓄規劃",
@@ -412,7 +419,6 @@
                 "provider": {
                   "@id": "https://orangeapple.co/#organization"
                 },
-                "courseWorkload": "每週一堂 90 分鐘，共 15 堂",
                 "coursePrerequisites": "完整修畢第二階段或通過測驗",
                 "teaches": [
                   "國家財政與稅務",
@@ -647,7 +653,7 @@
                 "name": "需要準備什麼設備？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "用筆記型電腦或桌機上課，打開瀏覽器就能開始，不需安裝任何軟體；手機螢幕太小，不建議用手機上課。電腦要跑得動：作業系統需 Windows 10 或 macOS 10.14 以上，處理器 Intel Core i3-3210 或 AMD A8-7600 以上，記憶體 8GB 以上、可用空間 20GB 以上，並準備一個慣用的滑鼠；建議使用近三年出產的機器。另建議準備耳機麥克風，課堂上與老師通話、參加議題討論會用到。"
+                  "text": "平板（iPad）或電腦都可以，打開瀏覽器就能開始，不需安裝任何軟體。用平板可以純觸控上課，不必另外接鍵盤滑鼠；家裡已有鍵盤滑鼠的話，搭配使用操作起來更順。Android 平板目前不支援；手機螢幕太小，也不建議用手機上課。若用電腦：作業系統需 Windows 10 或 macOS 10.14 以上，處理器 Intel Core i3-3210 或 AMD A8-7600 以上，記憶體 8GB 以上、可用空間 20GB 以上，建議使用近三年出產的機器，並準備一個慣用的滑鼠。另建議準備耳機麥克風，課堂上與老師通話、參加議題討論會用到。"
                 }
               },
               {
@@ -1119,6 +1125,16 @@
     .photo-pair .shot { margin: 0; }
     /* 平台實錄影片：poster 先行、進視窗才播（JS 掛載）。無 JS 時只顯示 poster，不autoplay */
     .pvid { width: 100%; height: auto; display: block; border-radius: 8px; }
+    /* WCAG 2.2.2（A）：自動播放且超過 5 秒的動態內容必須提供暫停機制。
+       prefers-reduced-motion 只涵蓋「不要自動播」，不能取代「使用者能按停」。 */
+    .shot { position: relative; }
+    .vid-toggle { position: absolute; top: 10px; right: 10px; z-index: 2;
+      width: 44px; height: 44px; min-height: 44px; border-radius: 50%;
+      border: 2px solid var(--text); background: rgba(255,255,255,.92); color: var(--text);
+      font-size: 14px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+    .vid-toggle:hover { background: #fff; }
+    .vid-toggle:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
     .wr-shot { max-width: 520px; margin-left: auto; }
     .shot-tight { border-width: 2px; padding: 6px 6px 0; margin: 14px 0 0; }
     .shot-in-dark { background: #1B1B1B; border-color: #3A3A3A; margin-bottom: 0; }
@@ -1382,7 +1398,7 @@
             <div class="mock" role="img" aria-label="平台首頁功能示意：今日任務、每日簽到、進入課程，以及資產總額與資產配置環圈（可用現金 38%、投資理財 38%、銀行儲蓄 24%、持有保險 9 張）">
               <div class="mock-bar">
                 <span class="mock-bar-title" aria-hidden="true">財商學習平台</span>
-                <span class="stat-pill" aria-hidden="true"><img decoding="async" width="48" height="48" src="assets/icon-exp.webp" alt="" loading="lazy">290</span>
+                <span class="stat-pill" aria-hidden="true"><img decoding="async" width="48" height="48" src="assets/icon-exp.webp" alt="" loading="lazy">8,990</span>
                 <span class="stat-pill" aria-hidden="true"><img decoding="async" width="48" height="48" src="assets/icon-coin.webp" alt="" loading="lazy">19,606</span>
                 <span class="mock-user">
                   <img decoding="async" width="96" height="96" class="mock-avatar" src="assets/avatar-student.webp" alt="平台中的學生角色：可自由換裝的造型" loading="lazy">
@@ -1691,7 +1707,7 @@
           <figcaption>這 45 堂在平台上不是一份講義——每一堂都拆成十幾個關卡。圖為<strong>免費試聽當天孩子會走的那一堂</strong>「體驗課：支出與公益」，共 18 關；完成一關才解鎖下一關，各堂關卡數不盡相同。</figcaption>
         </figure>
         <div class="syl-cta">
-          <p class="syl-cta-lead">上面那 18 關，孩子在免費試聽當天就會親自走一遍。</p>
+          <p class="syl-cta-lead">上面那一堂，孩子在免費試聽當天就會親自走過其中幾關。</p>
           <button type="button" class="btn-primary" data-oa-cta="syllabus">預約免費試聽 →</button>
           <p class="syl-cta-note">50 分鐘，您在旁邊看老師怎麼帶；說明完讓您帶回去考慮，不需要當場決定。</p>
         </div>
@@ -2055,7 +2071,7 @@
           </details>
           <details class="faq">
             <summary>需要準備什麼設備？</summary>
-            <div class="faq-a">用筆記型電腦或桌機上課，打開瀏覽器就能開始，不需安裝任何軟體；手機螢幕太小，不建議用手機上課。電腦要跑得動：作業系統需 Windows 10 或 macOS 10.14 以上，處理器 Intel Core i3-3210 或 AMD A8-7600 以上，記憶體 8GB 以上、可用空間 20GB 以上，並準備一個慣用的滑鼠；建議使用近三年出產的機器。另建議準備耳機麥克風，課堂上與老師通話、參加議題討論會用到。</div>
+            <div class="faq-a">平板（iPad）或電腦都可以，打開瀏覽器就能開始，不需安裝任何軟體。用平板可以純觸控上課，不必另外接鍵盤滑鼠；家裡已有鍵盤滑鼠的話，搭配使用操作起來更順。Android 平板目前不支援；手機螢幕太小，也不建議用手機上課。若用電腦：作業系統需 Windows 10 或 macOS 10.14 以上，處理器 Intel Core i3-3210 或 AMD A8-7600 以上，記憶體 8GB 以上、可用空間 20GB 以上，建議使用近三年出產的機器，並準備一個慣用的滑鼠。另建議準備耳機麥克風，課堂上與老師通話、參加議題討論會用到。</div>
           </details>
           <details class="faq">
             <summary>適合幾年級的孩子？</summary>
@@ -2075,7 +2091,7 @@
           </details>
           <details class="faq">
             <summary>孩子沒學過程式，可以直接上財商課嗎？</summary>
-            <div class="faq-a">可以，不需要任何程式基礎。財商素養課程是獨立模組課程：不是程式課的前置，也不是程式課的延伸；單獨上財商、或<a href="/campaigns/online">只上程式課</a>都可以，兩邊沒有先後順序。課程用動畫故事與遊戲關卡帶著孩子走，真人老師在旁邊看著操作。</div>
+            <div class="faq-a">可以，不需要任何程式基礎。財商素養課程是獨立模組課程：不是程式課的前置，也不是程式課的延伸；單獨上財商、或<a href="/campaigns/online/">只上程式課</a>都可以，兩邊沒有先後順序。課程用動畫故事與遊戲關卡帶著孩子走，真人老師在旁邊看著操作。</div>
           </details>
           <details class="faq">
             <summary>費用怎麼算？</summary>
@@ -2104,11 +2120,34 @@
         var io = new IntersectionObserver(function (es) {
           es.forEach(function (e) {
             var v = e.target;
-            if (e.isIntersecting) { v.play().catch(function(){}); }
+            /* 使用者手動按停過的影片，不因為捲動又被自動播回去 */
+            if (e.isIntersecting) { if (!v.dataset.userPaused) v.play().catch(function(){}); }
             else { v.pause(); }
           });
         }, { rootMargin: '80px 0px', threshold: 0.15 });
-        vids.forEach(function (v) { io.observe(v); });
+        vids.forEach(function (v) {
+          io.observe(v);
+          var fig = v.closest('figure');
+          if (!fig) return;
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'vid-toggle';
+          var label = (v.getAttribute('aria-label') || '影片').slice(0, 18);
+          function sync() {
+            var paused = v.paused;
+            btn.textContent = paused ? '▶' : '❚❚';
+            btn.setAttribute('aria-label', (paused ? '播放' : '暫停') + '此段影片：' + label);
+          }
+          btn.addEventListener('click', function () {
+            if (v.paused) { delete v.dataset.userPaused; v.play().catch(function(){}); }
+            else { v.dataset.userPaused = '1'; v.pause(); }
+            sync();
+          });
+          v.addEventListener('play', sync);
+          v.addEventListener('pause', sync);
+          sync();
+          fig.appendChild(btn);
+        });
       })();
     </script>
 
