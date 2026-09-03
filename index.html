@@ -55,7 +55,7 @@
               "Orange Apple Coding Academy"
             ],
             "url": "https://orangeapple.co",
-            "logo": "https://orangeapple.co/logo-2023-color.svg",
+            "logo": "https://orangeapple.co/logo.png",
             "foundingDate": "2012",
             "slogan": "學會思考與創造，永遠跟得上時代",
             "description": "橘子蘋果程式學苑成立於 2012 年，是台灣規模最大的兒童與青少年程式教育機構之一，提供 Scratch、Python、JavaScript、AI 等完整程式課程體系，全台 12 縣市均有教學據點，累計超過 10 萬名學生。",
@@ -889,17 +889,22 @@
        角度＝百分比×1.8deg（半圓 180deg）。數值取自 staging 實測快照。 */
     /* 上下堆疊而非並排：桌機資產欄僅 190px、手機單欄 320px，並排時圖例會被擠成一字一行。 */
     .mock-donut { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .mock-ring { flex: 0 0 auto; align-self: center; width: 104px; height: 52px; border-radius: 104px 104px 0 0; position: relative;
+    /* 平台實際是「實心半圓派」不是甜甜圈，扇形之間有白色分隔線；角度＝百分比×1.8deg。
+       分隔線做法：在每個邊界塞一段 2deg 的白色 segment。 */
+    .mock-ring { flex: 0 0 auto; align-self: center; width: 140px; height: 70px; border-radius: 140px 140px 0 0;
       background: conic-gradient(from 270deg,
-        var(--teal) 0deg 68.4deg,
-        var(--primary) 68.4deg 136.8deg,
-        var(--coral) 136.8deg 180deg,
-        transparent 180deg 360deg); }
-    .mock-ring::after { content: ""; position: absolute; left: 26px; top: 26px; width: 52px; height: 26px;
-      border-radius: 52px 52px 0 0; background: var(--task); }
+        var(--teal)    0deg    67.4deg,
+        #fff           67.4deg 69.4deg,
+        var(--primary) 69.4deg 135.8deg,
+        #fff           135.8deg 137.8deg,
+        var(--coral)   137.8deg 180deg,
+        transparent    180deg  360deg); }
     .mock-legend { width: 100%; display: flex; flex-direction: column; gap: 4px; font-size: 0.7rem; font-weight: 700; }
     .mock-legend span { display: flex; align-items: center; gap: 6px; }
     .mock-legend i { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+    /* 持有保險是「張數」不是資產佔比，半圓裡沒有它的扇形——不得給切片色點，
+       否則會變成四個圖例對三個扇形，看起來像圖表壞掉。 */
+    .mock-legend-sep { margin-top: 4px; padding-top: 5px; border-top: 1px dashed var(--gold); color: var(--text-2); }
     .mock-rank { font-size: 0.68rem; font-weight: 800; background: var(--gold); border-radius: var(--r-pill); padding: 3px 10px; }
     /* 進入課程票券：平台首頁的主行動，橫幅＋叩叮，是全畫面最有記憶點的一塊 */
     .mock-enter { display: flex; align-items: center; gap: 10px; background: var(--coral); border-radius: 12px;
@@ -1421,7 +1426,7 @@
                       <span><i style="background:var(--teal)"></i>可用現金 38%</span>
                       <span><i style="background:var(--primary)"></i>投資理財 38%</span>
                       <span><i style="background:var(--coral)"></i>銀行儲蓄 24%</span>
-                      <span><i style="background:var(--gold)"></i>持有保險 9 張</span>
+                      <span class="mock-legend-sep">持有保險 9 張</span>
                     </span>
                   </div>
                 </div>
