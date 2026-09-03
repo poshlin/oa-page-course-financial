@@ -997,7 +997,9 @@
     .defbox p + p { margin-top: 12px; }
     /* 定義框在手機收合：234 字擋在第 4.4 螢幕。文字留在 DOM，AEO／DefinedTermSet 不受影響。
        與階段卡同一套機制——HTML 寫 open，由既有 script 在 ≤860px 關閉，無 JS 時全部展開。 */
-    details.def-more > summary { display: block; list-style: none; cursor: pointer; }
+    /* min-height 44px：WCAG 2.5.5 觸控目標下限（原本 42px 差 2px） */
+    details.def-more > summary { display: block; list-style: none; cursor: pointer;
+                                 min-height: 44px; display: flex; align-items: center; }
     details.def-more > summary::-webkit-details-marker { display: none; }
     details.def-more > summary .def-t { margin: 0; }
     .defbox b { font-weight: 800; }
