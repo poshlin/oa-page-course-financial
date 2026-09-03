@@ -1284,7 +1284,7 @@
       details.phase-more > summary::after { content: "▸"; position: absolute; right: 4px; top: 15px; color: var(--primary); transition: transform .15s ease; }
       details.phase-more[open] > summary::after { transform: rotate(90deg); }
       details.phase-more > .phase-el { margin-top: 16px; }
-      .grid-3, .grid-4, .flow, .modules, .showcase, .faq-list, .photo-pair { grid-template-columns: 1fr; }
+      .grid-3:not(.swipe), .grid-4, .flow, .modules, .showcase, .faq-list, .photo-pair { grid-template-columns: 1fr; }
       /* talk-row 手機改堆疊：並排時文字欄只剩 230px，對話從 346px 被擠到 522px，
          比堆疊(+124px)更糟且行長過短難讀。角色靠右放在對話下方。 */
       .talk-row { grid-template-columns: 1fr; gap: 4px; }
@@ -1500,7 +1500,7 @@
                alt="線上課的老師端實際畫面：老師戴著耳麥、面對筆記型電腦進行線上授課">
           <figcaption>線上課的老師端。上課時老師戴著耳麥、看得到每個孩子的畫面——發現卡住就主動開啟通話。圖為財商課程的設計老師；<strong>實際授課老師依班級安排</strong>。</figcaption>
         </figure>
-        <div class="grid-3">
+        <div class="grid-3 swipe" data-swipe-label="一堂課的三個階段：雙師上課、進度確認、財商議題課，可左右捲動">
           <div class="card">
             <span class="tl-dot tl-a" aria-hidden="true"></span>
             <h3>雙師上課・平台實作</h3>
@@ -1517,6 +1517,7 @@
             <p>切換到線上會議室，老師帶著談當週的財商議題，也邀請孩子分享自己的觀察與想法。金錢的「判斷力」，是在對話裡長出來的。</p>
           </div>
         </div>
+        <p class="swipe-hint">左右滑動，看完三個階段 →</p>
         <p class="center-note">— 財商議題課在孩子的課表上，有個更好懂的名字：「動腦時間」。</p>
       </div>
     </section>
