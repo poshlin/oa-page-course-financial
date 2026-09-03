@@ -917,6 +917,9 @@
     .card p { font-size: 0.95rem; color: var(--text-2); }
 
     /* 01 痛點：對話體，不用卡片格——家長聽過的話 vs 真正在發生的事 */
+    /* 角色與對話並排：grid 1fr/auto ＋ align-items center，角色高度小於對話塊時不增加版面高度 */
+    .talk-row { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; max-width: 860px; }
+    .talk-popi { width: 180px; height: auto; filter: drop-shadow(0 6px 8px rgba(0,0,0,.15)); }
     .talk { max-width: 760px; }
     .talk-q { font-size: clamp(19px, 2.6vw, 25px); font-weight: 800; line-height: 1.6; margin-top: 26px; }
     .talk-q::before { content: ''; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); margin-right: 12px; vertical-align: 3px; }
@@ -984,6 +987,11 @@
     .defbox { background: var(--card); border-left: 6px solid var(--primary); border-radius: 0 var(--r) var(--r) 0; padding: 24px 26px; box-shadow: var(--shadow-soft); margin-bottom: 44px; }
     .def-t { font-size: clamp(19px, 2.2vw, 24px); font-weight: 800; margin-bottom: 12px; }
     .defbox p + p { margin-top: 12px; }
+    /* 定義框在手機收合：234 字擋在第 4.4 螢幕。文字留在 DOM，AEO／DefinedTermSet 不受影響。
+       與階段卡同一套機制——HTML 寫 open，由既有 script 在 ≤860px 關閉，無 JS 時全部展開。 */
+    details.def-more > summary { display: block; list-style: none; cursor: pointer; }
+    details.def-more > summary::-webkit-details-marker { display: none; }
+    details.def-more > summary .def-t { margin: 0; }
     .defbox b { font-weight: 800; }
     .q-lead { max-width: 760px; margin-bottom: 18px; font-weight: 700; }
     /* 8 張卡固定 4／2／1 欄，跳過 3 欄——否則 8 張會排成 3+3+2，最後一列缺角 */
@@ -1235,6 +1243,10 @@
          留白落在下方才讀得像「卡片有餘裕」；若改成垂直置中，徽章與內容中間會斷開。 */
       .flow.swipe > .card { display: block; }
       .swipe-hint { display: block; margin-top: 2px; font-size: 0.8rem; font-weight: 800; color: var(--coral-ink); }
+      details.def-more > summary { position: relative; padding-right: 28px; }
+      details.def-more > summary::after { content: "▸"; position: absolute; right: 2px; top: 50%;
+        transform: translateY(-50%); color: var(--primary); transition: transform .15s ease; }
+      details.def-more[open] > summary::after { transform: translateY(-50%) rotate(90deg); }
       details.phase-more { margin-top: 20px; }
       details.phase-more > summary { display: block; list-style: none; cursor: pointer; font-weight: 800; padding: 15px 30px 14px 0; position: relative; border-top: 2px solid var(--gold); }
       details.phase-more > summary::-webkit-details-marker { display: none; }
@@ -1242,6 +1254,10 @@
       details.phase-more[open] > summary::after { transform: rotate(90deg); }
       details.phase-more > .phase-el { margin-top: 16px; }
       .grid-3, .grid-4, .flow, .modules, .showcase, .faq-list, .photo-pair { grid-template-columns: 1fr; }
+      /* talk-row 手機改堆疊：並排時文字欄只剩 230px，對話從 346px 被擠到 522px，
+         比堆疊(+124px)更糟且行長過短難讀。角色靠右放在對話下方。 */
+      .talk-row { grid-template-columns: 1fr; gap: 4px; }
+      .talk-popi { width: 110px; justify-self: end; margin-right: 8px; }
       /* 場景卡：手機對話框會佔到 185px，把 104px 的角色遮掉約 3/4。
          加高場景並把角色帶上抬，讓角色與對話各有地盤（不縮對白、不砍句子） */
       .scene { min-height: 524px; }
@@ -1414,13 +1430,17 @@
           <p class="kicker">01・為什麼需要兒童理財教育</p>
           <h2 class="h2">這幾句話，你家是不是也講過？</h2>
         </div>
-        <div class="reveal talk">
+        <div class="reveal talk-row">
+          <div class="talk">
           <p class="talk-q">「錢呢？上禮拜不是才給你？」</p>
           <p class="talk-a">錢一到手就花完。問他花去哪了，他自己也答不出來。</p>
           <p class="talk-q">「要存錢啊，不要一直買。」</p>
           <p class="talk-a">你說「要存錢」，他聽到的是「不能買」。道理講一百次，他點頭，然後照買。</p>
           <p class="talk-q">「這些學校不會教嗎？」</p>
           <p class="talk-a">數學考一百分，不代表懂得管理自己的錢。金錢教育在課表上，一直是空白的。</p>
+          </div>
+          <img class="talk-popi" decoding="async" width="601" height="601" src="assets/popi-sad.webp"
+               alt="課程角色波比因為零用錢用光而沮喪" loading="lazy">
         </div>
         <div class="reveal cost">
           <p class="cost-lead">而這些判斷，會一路跟著他長大。</p>
@@ -1439,12 +1459,12 @@
           <h2 class="h2">45 堂，從自己的零用錢一路講到全球供應鏈</h2>
           <p class="lead">三個階段像同心圓往外放大：先看懂自己口袋裡的錢，再看懂銀行、信用與投資，最後看懂國家與世界怎麼運轉。每階段 15 堂，依序解鎖。</p>
         </div>
-        <div class="reveal defbox">
-          <h3 class="def-t">什麼是「財商素養」？</h3>
+        <details class="reveal defbox def-more" open>
+          <summary><h3 class="def-t">什麼是「財商素養」？</h3></summary>
           <p><b>財商素養指的是理解金錢如何運作、並據以做出決定的能力。</b>它包含分辨需要與想要、看穿價格與行銷手法、認識儲蓄與利息、理解風險與保險，以及知道錢在家庭、國家與世界之間怎麼流動。財商素養教的不是怎麼賺錢，而是讓孩子在花錢、存錢與承擔後果之前，先有判斷的依據。</p>
           <p>橘子蘋果把這件事拆成 45 堂課，用<b>雙師模式</b>上：課程影片負責把觀念講清楚，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話。課後再用一套理財經營遊戲，讓觀念在「會發生後果」的環境裡真的練過一遍。</p>
-        </div>
-        <p class="q-lead">這些問題，多數大人也答不出來。課表裡每一題，都有一整堂課在講——</p>
+        </details>
+        <p class="q-lead">先自己試試看：<b>這 8 題，你答得出幾題？</b>多數大人也答不出來——而課表裡每一題，都有一整堂課在講。</p>
         <div class="reveal qs swipe" data-swipe-label="八個孩子會遇到的金錢問題，可左右捲動">
           <div class="q-card">
             <p class="q-ask">為什麼標價都是 99，不是 100？</p>
@@ -1479,7 +1499,7 @@
             <span class="q-where">第三階段・第 41 堂・經濟泡沫與歷史</span>
           </div>
         </div>
-        <p class="swipe-hint">左右滑動，看完八題 →</p>
+        <p class="swipe-hint">左右滑動，看你答得出幾題 →</p>
         <div class="reveal phases">
 
           <article class="phase">
@@ -1636,7 +1656,7 @@
       (function () {
         var mq = window.matchMedia && window.matchMedia('(max-width: 860px)');
         if (!mq) return;
-        var list = document.querySelectorAll('#syllabus details.phase-more');
+        var list = document.querySelectorAll('#syllabus details.phase-more, #syllabus details.def-more');
         function apply() { for (var i = 0; i < list.length; i++) list[i].open = !mq.matches; }
         apply();
         if (mq.addEventListener) mq.addEventListener('change', apply);
