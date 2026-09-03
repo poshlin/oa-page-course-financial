@@ -721,9 +721,11 @@
 
   <style>
     :root {
-      /* 內文行長上限：18px 字級下約 40 個中文字。中文最佳行長 35–45 字。
-         全頁內文一律用這個值，右緣才會對齊成一條線，而不是每塊各自換行。 */
-      --measure: 720px;
+      /* 內文行長上限：18px 字級下約 48 個中文字。
+         中文舒適區 35–45、可接受到 50；本頁的卡片與網格是 1040px，內文若卡在 720
+         會跟旁邊的滿版元素差 320px，看起來像沒排完——860 是「還讀得動」與
+         「看起來有排滿」的折衷。全頁內文一律用這個值。 */
+      --measure: 860px;
       --primary: #F5A623;
       --gold: #FFBC57;
       --cream: #FFF9F0;
@@ -801,7 +803,7 @@
     .h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; line-height: 1.35; margin-bottom: 14px; }
     .kicker { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; color: var(--coral-ink); margin-bottom: 8px; }
     .lead { color: var(--text-2); max-width: var(--measure); }
-    .sec-head { max-width: 720px; margin-bottom: 40px; }
+    .sec-head { max-width: 880px; margin-bottom: 40px; }
 
     /* CTA — 留單意圖唯一橘實心（DESIGN.md：#F5A623 配深墨、禁白字、border 透明佔位） */
     .btn-primary {
@@ -922,8 +924,7 @@
     /* 01 痛點：對話體，不用卡片格——家長聽過的話 vs 真正在發生的事 */
     /* 角色與對話並排：grid 1fr/auto ＋ align-items center，角色高度小於對話塊時不增加版面高度 */
     /* max-width = 行長 + gap 24 + 角色 180，讓「文字欄」寬度剛好等於 --measure，右緣才與其他內文對齊 */
-    .talk-row { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
-                max-width: calc(var(--measure) + 204px); }
+    .talk-row { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
     .talk-popi { width: 180px; height: auto; filter: drop-shadow(0 6px 8px rgba(0,0,0,.15)); }
     .talk { max-width: var(--measure); }
     .talk-q { font-size: clamp(19px, 2.6vw, 25px); font-weight: 800; line-height: 1.6; margin-top: 26px; }
@@ -957,7 +958,7 @@
     /* 刻意在破折號後斷行：鋪陳一行、結論一行，中途斷句會洩掉力道 */
     /* 代價論證：把「當下的小麻煩」接到「將來要用真錢付的學費」，撐起高單價決策的動機。
        所舉三例皆為課程實際內容（第 19 堂最低應繳、第 25 堂假投資群組、第 14 堂機率型商品），不引用任何統計數字。 */
-    .cost { max-width: calc(var(--measure) + 58px); margin: 32px 0 0; background: var(--card); border-left: 6px solid var(--coral); border-radius: 0 var(--r) var(--r) 0; padding: 22px 26px; box-shadow: var(--shadow-soft); }
+    .cost { margin: 32px 0 0; background: var(--card); border-left: 6px solid var(--coral); border-radius: 0 var(--r) var(--r) 0; padding: 22px 26px; box-shadow: var(--shadow-soft); }
     .cost p + p { margin-top: 12px; }
     .cost-lead { font-weight: 800; font-size: 1.05rem; }
     .cost strong { font-weight: 800; }
@@ -989,8 +990,9 @@
 
     /* 05 完整課表 */
     /* 定義區塊：AI 引擎最常抓取的就是「X 是什麼」的直接定義，故獨立成塊並置於課表之前 */
-    /* 有內距者 max-width 需加上內距，對齊的是文字欄不是盒子 */
-    .defbox { background: var(--card); border-left: 6px solid var(--primary); border-radius: 0 var(--r) var(--r) 0; padding: 24px 26px; box-shadow: var(--shadow-soft); margin-bottom: 44px; max-width: calc(var(--measure) + 58px); }
+    /* 🔴 有背景色的盒子＝結構元素，一律滿版；--measure 只管純文字。
+       曾把 .defbox 限成 720+內距，結果它縮到 778px、旁邊的疑問卡卻是滿版 1080，白框看起來像壞掉。 */
+    .defbox { background: var(--card); border-left: 6px solid var(--primary); border-radius: 0 var(--r) var(--r) 0; padding: 24px 26px; box-shadow: var(--shadow-soft); margin-bottom: 44px; }
     .def-t { font-size: clamp(19px, 2.2vw, 24px); font-weight: 800; margin-bottom: 12px; }
     .defbox p + p { margin-top: 12px; }
     /* 定義框在手機收合：234 字擋在第 4.4 螢幕。文字留在 DOM，AEO／DefinedTermSet 不受影響。
