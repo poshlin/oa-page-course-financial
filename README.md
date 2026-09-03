@@ -79,9 +79,16 @@
 - [ ] 🔴 **og:image／twitter:image 改回正式站**：目前暫時指向 `https://poshlin.github.io/oa-page-fin-platform/assets/og-financial.jpg`，因為正式站尚未部署、指過去會 404，貼到 LINE／FB 拿不到縮圖（2026-08-14 實測）。部署當天改回 `https://orangeapple.co/courses/financial/assets/og-financial.jpg`，**否則正式站分享卡會去抓個人 repo 的圖**。canonical 與 og:url 一直是正式站、不用動
 - [ ] **移除 noindex**：上線時把 robots 換成 `index, follow, max-image-preview:large, max-snippet:-1`
 - [x] **og:image 已完成（2026-08-13）**：`assets/og-financial.jpg` 1200×630／105KB，**本機以真素材合成、非 AI 生成**（平台裝飾原件＋課程角色波比＋登入頁四色波浪＋方格底紋；字型 Heiti TC 確保繁體標點置中）。og:image／twitter:card 相關 tag 已補齊；⚠️ 正式站部署時 `assets/` 需一併上傳，否則分享卡開天窗
-- [ ] **真實素材**：課堂實境區已用平台課程原件（`assets/`，2026-08-11 自 staging 下載）；hero 與週報區仍為 CSS mockup，平台正式環境開放後決定換真截圖或保留。上線前與正式環境比對 assets 素材版本
+- [x] **素材需求全部結案（保旭 2026-09-03 拍板）**——以下四項**不再等待、不阻斷上線**：
+  - **上課畫面沿用現況**：03 用線上程式課頁 hero 影片抽幀的老師照（`photo-teacher`），不另拍老師端線上教學畫面。圖說維持「實際授課老師依班級安排」
+  - **財商議題課實際主題不放上頁面**：原訂 9 月向教學部索取當週議題清單一事取消，頁面只保留「財商議題課／動腦時間」的機制說明，不列具體主題
+  - **見證區不做**：等正式開課後再收集學員／家長見證，屆時另開專案新增
+  - **營隊素材已到齊**：營隊已拍完但**沒有平板畫面**，已改由同仁的孩子在家中補拍，即目前頁面上的 `photo-home`／`photo-story`／`photo-quiz`／`photo-fit` 四張。🔴 因此拍攝計畫 `~/Documents/oa-coin-quest/video/08_營隊實拍計畫.md` 與組員版指示已結案，勿再據其索取素材
+- [ ] **hero 與週報區的 CSS mockup**：保留（`vid-report` 已改為真截圖三段淡接；hero 半圓派圖為 CSS 重繪，已依平台實際樣式校正為實心派、三扇形）。上線前與正式環境比對 `assets/` 素材版本
 - [ ] favicon（注入母站後沿用官網，獨立預覽時缺）
-- [ ] git init ＋ commit → preflight（hook 強制）→ push `OrangeApple-Lab/oa-page-fin-platform`
+- [x] git init ＋ commit → preflight（hook 強制）→ push **已完成，但推在 `poshlin/oa-page-fin-platform`（PUBLIC）**
+- [ ] 🔴 **repo 位置待決（2026-09-03 實測發現）**：`OrangeApple-Lab/oa-page-fin-platform` **不存在**；組織底下所有 oa-page-* 都是 PRIVATE，而本頁唯一的家是個人帳號的 PUBLIC repo。依 `reference_orangeapple_github`，OrangeApple-Lab 才是 source of truth（唯一例外是 `poshlin/oa-page-home`）。交接前請決定：轉移到組織、或明列本頁為第二個例外
+- [ ] 🔴 **`v2.html` 與 `DESIGN-v2.md` 是 8/24 的舊草稿**，仍被 git 追蹤、線上回 HTTP 200（167KB）。雖有 `noindex, nofollow` 不會被索引，但交接時若整包部署會把舊版一起推上站。上線前刪除或移入 `_archive/`
 - [ ] 上線日更新 schema `dateModified`
 
 ## 對外數字 → 來源對照
