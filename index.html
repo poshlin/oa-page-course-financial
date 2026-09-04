@@ -11,32 +11,31 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
 
-  <!-- 上線前為 noindex；上線時換成 index, follow, max-image-preview:large, max-snippet:-1（見 README 待辦） -->
-  <meta name="robots" content="noindex, nofollow">
+  <!-- 2026-09-04 已解除 noindex，準備交接數位長部署到 /courses/financial/。
+       在此之前為 noindex, nofollow，避免 GitHub Pages 預覽站被 Google 收錄成未發布的副本。 -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <!-- 正式路徑已定案 /courses/financial/（保旭 2026-08-13）：canonical / og:url / schema 四個 @id 已同步。
        尾斜線是官網慣例（classroom、minecraft_python、math 皆然），勿拿掉——見 README 對照表 -->
   <link rel="canonical" href="https://orangeapple.co/courses/financial/">
 
-  <!-- 🔴🔴 上線切換點：og:image / twitter:image 目前**暫時**指向 GitHub Pages 預覽站。
-       原因＝正式站 /courses/financial/ 尚未部署，指過去會 404，任何人貼連結到
-       LINE／FB 都拿不到縮圖（2026-08-14 實測正式站圖 404、Pages 圖 200）。
-       ⚠️ 部署到 orangeapple.co 當天，這兩行必須改回
-       https://orangeapple.co/courses/financial/assets/og-financial.jpg
-       🔴 同時要改：4 個 VideoObject 的 contentUrl 與 thumbnailUrl（共 8 個 URL），也全指向 poshlin.github.io
-       否則正式站的分享卡會去抓個人 repo 的圖。canonical 與 og:url 維持正式站不動。 -->
+  <!-- 2026-09-04 上線切換已完成：og:image／twitter:image ＋ 4 個 VideoObject 的
+       contentUrl 與 thumbnailUrl（共 10 個 URL）全部由 poshlin.github.io 改指
+       https://orangeapple.co/courses/financial/assets/（與 /courses/math/、
+       /courses/minecraft_python/ 的實際慣例一致）。
+       ⚠️ 正式站部署完成前，這些圖會暫時 404，分享卡拿不到縮圖——屬預期，部署後自動恢復。 -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="橘子蘋果程式學苑">
   <meta property="og:title" content="橘蘋財商素養課程｜國小 3-6 年級兒童理財課・雙師線上教學 — 橘子蘋果程式學苑">
   <meta property="og:description" content="每週一堂 90 分鐘：雙師帶上課實作＋財商議題課討論；課後在理財經營遊戲裡練習。家長每週收到學習週報。全程模擬金幣、非真實金錢。">
   <meta property="og:url" content="https://orangeapple.co/courses/financial/">
-  <meta property="og:image" content="https://poshlin.github.io/oa-page-fin-platform/assets/og-financial.jpg">
+  <meta property="og:image" content="https://orangeapple.co/courses/financial/assets/og-financial.jpg">
   <meta property="og:image:alt" content="橘蘋財商素養課程｜國小 3-6 年級雙師線上財商課，課程故事主角波比與平台視覺">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:locale" content="zh_TW">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://poshlin.github.io/oa-page-fin-platform/assets/og-financial.jpg">
+  <meta name="twitter:image" content="https://orangeapple.co/courses/financial/assets/og-financial.jpg">
   <meta name="twitter:title" content="橘蘋財商素養課程｜國小 3-6 年級兒童理財課・雙師線上教學">
   <meta name="twitter:description" content="每週一堂 90 分鐘，老師帶著孩子上課與討論財商議題；課後在理財經營遊戲中練習。全程模擬金幣、非真實金錢。">
 
@@ -122,7 +121,7 @@
             },
             "inLanguage": "zh-TW",
             "datePublished": "2026-08-11",
-            "dateModified": "2026-09-03",
+            "dateModified": "2026-09-04",
             "speakable": {
               "@type": "SpeakableSpecification",
               "cssSelector": [
@@ -154,7 +153,7 @@
             "url": "https://orangeapple.co/courses/financial/",
             "timeRequired": "PT67H30M",
             "datePublished": "2026-08-11",
-            "dateModified": "2026-08-13",
+            "dateModified": "2026-09-04",
             "learningResourceType": [
               "線上雙師課程",
               "互動關卡",
@@ -547,8 +546,8 @@
             "@id": "https://orangeapple.co/courses/financial/#video-unit-done",
             "name": "課程影片實際播放：小知識「這是需要還是想要呢？」",
             "description": "財商素養課程的課程影片片段：動畫角色用「打扮自己的眼鏡」講解「想要」與「需要」的差別，搭配字幕與語音。",
-            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-unit_done.mp4",
-            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-unit_done-poster.webp",
+            "contentUrl": "https://orangeapple.co/courses/financial/assets/vid-unit_done.mp4",
+            "thumbnailUrl": "https://orangeapple.co/courses/financial/assets/vid-unit_done-poster.webp",
             "uploadDate": "2026-08-18",
             "duration": "PT12S",
             "inLanguage": "zh-TW",
@@ -561,8 +560,8 @@
             "@id": "https://orangeapple.co/courses/financial/#video-savings",
             "name": "平台實際操作：銀行儲蓄存款",
             "description": "在財商學習平台的銀行儲蓄模組實際存入 2,000 模擬金幣：開啟存款視窗、輸入金額、確認後總額即時增加。",
-            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-savings.mp4",
-            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-savings-poster.webp",
+            "contentUrl": "https://orangeapple.co/courses/financial/assets/vid-savings.mp4",
+            "thumbnailUrl": "https://orangeapple.co/courses/financial/assets/vid-savings-poster.webp",
             "uploadDate": "2026-08-18",
             "duration": "PT11S",
             "inLanguage": "zh-TW",
@@ -575,8 +574,8 @@
             "@id": "https://orangeapple.co/courses/financial/#video-report",
             "name": "平台實際畫面：學習週報",
             "description": "財商學習平台的學習週報實際畫面，分三段呈現：本週摘要與「可以和孩子一起聊聊」的建議、上課進度（活躍天數、等級與經驗值、完成單元數）、理財狀況（總資產與配置、本週金幣收支）。",
-            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-report.mp4",
-            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-report-poster.webp",
+            "contentUrl": "https://orangeapple.co/courses/financial/assets/vid-report.mp4",
+            "thumbnailUrl": "https://orangeapple.co/courses/financial/assets/vid-report-poster.webp",
             "uploadDate": "2026-08-18",
             "duration": "PT10S",
             "inLanguage": "zh-TW",
@@ -589,8 +588,8 @@
             "@id": "https://orangeapple.co/courses/financial/#video-invest",
             "name": "平台實際操作：投資模組",
             "description": "財商學習平台投資模組的實際操作：依序檢視持有的三檔 ETF 走勢圖與平均成本，並捲動可交易清單。全程為教學用的模擬金幣，不連結任何真實金融帳戶。",
-            "contentUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-invest.mp4",
-            "thumbnailUrl": "https://poshlin.github.io/oa-page-fin-platform/assets/vid-invest-poster.webp",
+            "contentUrl": "https://orangeapple.co/courses/financial/assets/vid-invest.mp4",
+            "thumbnailUrl": "https://orangeapple.co/courses/financial/assets/vid-invest-poster.webp",
             "uploadDate": "2026-08-18",
             "duration": "PT15.4S",
             "inLanguage": "zh-TW",

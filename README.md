@@ -75,9 +75,15 @@
 
 ## 上線前待辦
 
+> **2026-09-04：上線前的三個切換已全部完成**（解除 noindex／10 個資產 URL 改指正式站／dateModified 更新）。本頁已可交數位長部署到 `/courses/financial/`。完整流程見知識庫 `OA_LandingPage_上線流程.md`。
+
 - [x] **正式 URL 已定案（保旭 2026-08-13）**：`https://orangeapple.co/courses/financial/` — canonical／og:url／schema 四個 @id／oa.config.json 已全部同步。⚠️ 保旭原話未帶尾斜線，我依官網慣例補上（classroom、minecraft_python、math 皆尾斜線；trailing slash 遷移曾造成 30% 淨損，勿再變動）——交數位長時請確認 Rails 路由採哪一種
-- [ ] 🔴 **og:image／twitter:image 改回正式站**：目前暫時指向 `https://poshlin.github.io/oa-page-fin-platform/assets/og-financial.jpg`，因為正式站尚未部署、指過去會 404，貼到 LINE／FB 拿不到縮圖（2026-08-14 實測）。部署當天改回 `https://orangeapple.co/courses/financial/assets/og-financial.jpg`，**否則正式站分享卡會去抓個人 repo 的圖**。canonical 與 og:url 一直是正式站、不用動
-- [ ] **移除 noindex**：上線時把 robots 換成 `index, follow, max-image-preview:large, max-snippet:-1`
+- [x] 🔴 **資產 URL 已全部改指正式站（2026-09-04）**：共 **10 個** URL 由 `https://poshlin.github.io/oa-page-fin-platform/assets/` 改為 `https://orangeapple.co/courses/financial/assets/`——
+  - og:image、twitter:image（2 個）
+  - 4 個 VideoObject 的 `contentUrl` 與 `thumbnailUrl`（8 個）
+  ⚠️ **本條原本只寫了 og/twitter 兩個，漏掉那 8 個影片 URL**，2026-09-04 稽核才抓出來。目標路徑格式已對照 `/courses/math/`、`/courses/minecraft_python/` 兩個已上線頁確認。
+  正式站部署完成前這些圖會暫時 404、分享卡拿不到縮圖，屬預期。canonical 與 og:url 一直是正式站、未動
+- [x] **noindex 已移除（2026-09-04）**：robots 由 `noindex, nofollow` 改為 `index, follow, max-image-preview:large, max-snippet:-1`
 - [x] **og:image 已完成（2026-08-13）**：`assets/og-financial.jpg` 1200×630／105KB，**本機以真素材合成、非 AI 生成**（平台裝飾原件＋課程角色波比＋登入頁四色波浪＋方格底紋；字型 Heiti TC 確保繁體標點置中）。og:image／twitter:card 相關 tag 已補齊；⚠️ 正式站部署時 `assets/` 需一併上傳，否則分享卡開天窗
 - [x] **素材需求全部結案（保旭 2026-09-03 拍板）**——以下四項**不再等待、不阻斷上線**：
   - **上課畫面沿用現況**：03 用線上程式課頁 hero 影片抽幀的老師照（`photo-teacher`），不另拍老師端線上教學畫面。圖說維持「實際授課老師依班級安排」
