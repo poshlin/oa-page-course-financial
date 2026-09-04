@@ -1,4 +1,4 @@
-# oa-page-fin-platform — 橘蘋財商素養課程 landing page
+# oa-page-course-financial — 橘蘋財商素養課程 landing page
 
 橘子蘋果「橘蘋財商素養課程」（課程搭配「財商學習平台」；內部代號 Coin Quest）的官網銷售頁。留單導向（data-oa-cta modal，母站提供）、不放價格。比照 classroom：自包含單一 `index.html`，注入 orangeapple.co，不自帶 header/footer。
 
@@ -92,9 +92,9 @@
   - **營隊素材已到齊**：營隊已拍完但**沒有平板畫面**，已改由同仁的孩子在家中補拍，即目前頁面上的 `photo-home`／`photo-story`／`photo-quiz`／`photo-fit` 四張。🔴 因此拍攝計畫 `~/Documents/oa-coin-quest/video/08_營隊實拍計畫.md` 與組員版指示已結案，勿再據其索取素材
 - [ ] **hero 與週報區的 CSS mockup**：保留（`vid-report` 已改為真截圖三段淡接；hero 半圓派圖為 CSS 重繪，已依平台實際樣式校正為實心派、三扇形）。上線前與正式環境比對 `assets/` 素材版本
 - [ ] favicon（注入母站後沿用官網，獨立預覽時缺）
-- [x] git init ＋ commit → preflight（hook 強制）→ push **已完成，但推在 `poshlin/oa-page-fin-platform`（PUBLIC）**
-- [x] **repo 位置正常，無需處理**（保旭 2026-09-03 更正 Claude 誤判）：本頁走的是與 about、classroom 相同的既有模式——先在 `poshlin/`（PUBLIC，供 GitHub Pages 預覽）製作 → 交數位長 → 組織端建立 `OrangeApple-Lab/oa-page-*`（PRIVATE）→ 個人那份 archive。實測 about／classroom 皆為此形態。所以組織底下現在沒有 `oa-page-fin-platform` 是**尚未交接**的正常狀態，不是缺失。~~Claude 原先誤判為「位置待決」，已撤銷。~~
-- [ ] ⚠️ **交接後記得 archive `poshlin/oa-page-fin-platform`**：這是上述模式的最後一步。目前 about／classroom／faq／online 的個人版雖已 archive，但 **GitHub Pages 仍在服務且 robots 是 `index, follow`**（2026-09-03 實測），archive 不會自動關掉 Pages。本頁交接後請一併關閉 Pages，避免舊版被索引
+- [x] git init ＋ commit → preflight（hook 強制）→ push **已完成，但推在 `poshlin/oa-page-course-financial`（PUBLIC）**
+- [x] **repo 位置正常，無需處理**（保旭 2026-09-03 更正 Claude 誤判）：本頁走的是與 about、classroom 相同的既有模式——先在 `poshlin/`（PUBLIC，供 GitHub Pages 預覽）製作 → 交數位長 → 組織端建立 `OrangeApple-Lab/oa-page-*`（PRIVATE）→ 個人那份 archive。實測 about／classroom 皆為此形態。所以組織底下現在沒有 `oa-page-course-financial` 是**尚未交接**的正常狀態，不是缺失。~~Claude 原先誤判為「位置待決」，已撤銷。~~
+- [ ] ⚠️ **交接後記得 archive `poshlin/oa-page-course-financial`**：這是上述模式的最後一步。目前 about／classroom／faq／online 的個人版雖已 archive，但 **GitHub Pages 仍在服務且 robots 是 `index, follow`**（2026-09-03 實測），archive 不會自動關掉 Pages。本頁交接後請一併關閉 Pages，避免舊版被索引
 - [x] **`v2.html` 與 `DESIGN-v2.md` 已刪除（保旭 2026-09-03 拍板廢棄 v2）**。刪除前已把其中唯一還有價值的一條踩坑紀錄（滑動列裁切絕對定位徽章）撈進 `DESIGN.md` 並修進 `index.html`。v2 的分頁式階段卡設計本就已被「循序內容用收合、不用分頁」的原則取代；`.typegrid` 與 dataLayer 量測腳手架在 `index.html` 不存在，無需移轉。舊內容仍可由 git 歷史取回
 - [ ] 上線日更新 schema `dateModified`
 
