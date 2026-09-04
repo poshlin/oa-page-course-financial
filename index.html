@@ -629,7 +629,7 @@
                 "name": "上課時家長需要陪在旁邊嗎？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "不需要。孩子自己上課、自己操作平台，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話。您不需要懂財商，也不必陪讀——每週的學習週報會告訴您孩子學到哪、錢又是怎麼管的。"
+                  "text": "不需要。孩子自己上課、自己操作平台，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話。您不需要懂理財，也不必陪讀——每週的學習週報會告訴您孩子學到哪、錢又是怎麼管的。"
                 }
               },
               {
@@ -685,15 +685,15 @@
                 "name": "孩子那週有事不能上課怎麼辦？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "財商是線上課程，和橘子蘋果其他線上課一樣：可以事先調課，但沒有補課。上課前一天 23:59 前，您可以自己到家長後台把那一堂調到同課程的其他時段，期限內不限次數，調成功不算缺席。要先說清楚的是——沒有事先調走又缺席，那一堂就是扣掉了。"
+                  "text": "理財課是線上課程，和橘子蘋果其他線上課一樣：可以事先調課，但沒有補課。上課前一天 23:59 前，您可以自己到家長後台把那一堂調到同課程的其他時段，期限內不限次數，調成功不算缺席。要先說清楚的是——沒有事先調走又缺席，那一堂就是扣掉了。"
                 }
               },
               {
                 "@type": "Question",
-                "name": "孩子沒學過程式，可以直接上財商課嗎？",
+                "name": "孩子沒學過程式，可以直接上理財課嗎？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "可以，不需要任何程式基礎。財商素養課程是獨立模組課程：不是程式課的前置，也不是程式課的延伸；單獨上財商、或只上程式課都可以，兩邊沒有先後順序。課程用動畫故事與遊戲關卡帶著孩子走，真人老師在旁邊看著操作。"
+                  "text": "可以，不需要任何程式基礎。財商素養課程是獨立模組課程：不是程式課的前置，也不是程式課的延伸；單獨上理財課、或只上程式課都可以，兩邊沒有先後順序。課程用動畫故事與遊戲關卡帶著孩子走，真人老師在旁邊看著操作。"
                 }
               },
               {
@@ -706,18 +706,18 @@
               },
               {
                 "@type": "Question",
-                "name": "孩子已經在橘子蘋果上課了，還能上財商嗎？會不會衝堂？",
+                "name": "孩子已經在橘子蘋果上課了，還能上理財課嗎？會不會衝堂？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "可以。財商課每週一堂，報名前課程顧問會與您確認時段、避開孩子現有的課；課後的平台練習則沒有固定時間。兩者練的是不同的能力：程式課練的是解決問題的邏輯，財商練的是面對金錢的判斷。"
+                  "text": "可以。理財課每週一堂，報名前課程顧問會與您確認時段、避開孩子現有的課；課後的平台練習則沒有固定時間。兩者練的是不同的能力：程式課練的是解決問題的邏輯，理財練的是面對金錢的判斷。"
                 }
               },
               {
                 "@type": "Question",
-                "name": "橘子蘋果不是教程式的嗎？為什麼做財商？",
+                "name": "橘子蘋果不是教程式的嗎？為什麼做兒童理財教育？",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，財商也是。"
+                  "text": "橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，理財也是。"
                 }
               }
             ]
@@ -807,6 +807,10 @@
        行框太緊時，下一個元素只靠 margin 撐開，字型度量一變就會視覺相撞。1.32 讓行框容得下字墨。 */
     h1 { font-size: clamp(34px, 5vw, 52px); font-weight: 800; line-height: 1.32; letter-spacing: 0.02em; }
     .h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; line-height: 1.35; margin-bottom: 14px; }
+    /* 內文連結：本頁原無 a 規則，落到瀏覽器預設藍與已訪紫，與暖橘品牌衝突。
+       用 --coral-ink（#B84318，淺底小字專用、對比過 AA）統一，保留底線維持可辨識。 */
+    .wrap p a, .faq-a a, .fitlist a, .fit-alt a { color: var(--coral-ink); font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+    .wrap p a:hover, .faq-a a:hover, .fit-alt a:hover { text-decoration-thickness: 2px; }
     .kicker { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; color: var(--coral-ink); margin-bottom: 8px; }
     .lead { color: var(--text-2); max-width: var(--measure); }
     .sec-head { max-width: var(--measure); margin-bottom: 40px; }
@@ -943,11 +947,14 @@
     .talk-a { color: var(--text-2); padding-left: 22px; border-left: 3px solid var(--gold); margin-top: 8px; }
 
     /* 06 適合誰：勾選清單，不用卡片格 */
-    .fitlist { list-style: none; max-width: 780px; margin-top: 26px; }
+    .fitlist { list-style: none; max-width: var(--measure); margin-top: 26px; }
     .fitlist li { position: relative; padding: 12px 0 12px 34px; border-bottom: 1px dashed var(--gold); line-height: 1.8; }
     .fitlist li:last-child { border-bottom: 0; }
     .fitlist li::before { content: '✓'; position: absolute; left: 0; top: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--teal); color: var(--text); font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
     .fitlist b { font-weight: 800; }
+    /* 07 末的次要出口：導向低年級的實體營隊。它是另一條路、不是本頁主行動，
+       所以用虛線上框＋次要文字色，不做成按鈕，也不掛 data-oa-cta。 */
+    .fit-alt { margin-top: 24px; padding-top: 18px; border-top: 1px dashed var(--gold); color: var(--text-2); }
 
     /* 03 型態說明：一行帶過，取代四張等重卡 */
     .type-line { max-width: var(--measure); margin-top: 26px; color: var(--text-2); }
@@ -1388,7 +1395,7 @@
           <div>
             <div class="eyebrow-row">
               <span class="eyebrow">橘蘋獨立模組課程・僅線上開課</span>
-              <span class="eyebrow eyebrow-online">兒童財商教育・不限地區</span>
+              <span class="eyebrow eyebrow-online">兒童理財教育・不限地區</span>
             </div>
             <h1>橘蘋財商素養課程</h1>
             <p class="hero-tagline">金錢觀不是用聽的，是用<em class="hl">「經歷」</em>學會的。</p>
@@ -1502,7 +1509,7 @@
         <figure class="reveal shot">
           <img src="assets/photo-teacher.webp" width="1400" height="788" decoding="async" loading="lazy"
                alt="線上課的老師端實際畫面：老師戴著耳麥、面對筆記型電腦進行線上授課">
-          <figcaption>線上課的老師端。上課時老師戴著耳麥、看得到每個孩子的畫面——發現卡住就主動開啟通話。圖為財商課程的設計老師；<strong>實際授課老師依班級安排</strong>。</figcaption>
+          <figcaption>線上課的老師端。上課時老師戴著耳麥、看得到每個孩子的畫面——發現卡住就主動開啟通話。圖為這門課的設計老師；<strong>實際授課老師依班級安排</strong>。</figcaption>
         </figure>
         <div class="grid-3 swipe" data-swipe-label="一堂課的三個階段：雙師上課、進度確認、財商議題課，可左右捲動">
           <div class="card">
@@ -2040,14 +2047,15 @@
         <figure class="reveal shot">
           <img src="assets/photo-fit.webp" width="1200" height="675" decoding="async" loading="lazy"
                alt="孩子以手指點選平板上的財商學習平台首頁，畫面顯示今日任務與「進入課程」按鈕">
-          <figcaption>不需要程式基礎，也不需要家長懂財商——孩子自己就點得動。</figcaption>
+          <figcaption>不需要程式基礎，也不需要家長懂理財——孩子自己就點得動。</figcaption>
         </figure>
         <ul class="reveal fitlist">
           <li><b>每週一堂、固定時段</b>由老師帶課，<b>一班最多 10 人</b>；課後平台 24 小時開放，每日任務和日薪讓他自己想回來</li>
           <li><b>線上上課、不限地區</b>，全台各縣市都能參加，家裡就是教室</li>
           <li><b>不需要任何程式基礎</b>，也不需要先上過橘子蘋果的其他課</li>
-          <li><b>家長不必懂財商</b>，每週的學習週報會告訴您孩子學到哪、錢怎麼管的</li>
+          <li><b>家長不必懂理財</b>，每週的學習週報會告訴您孩子學到哪、錢怎麼管的</li>
         </ul>
+        <p class="reveal fit-alt">孩子還在小二、小三？橘子蘋果另有四天的實體<a href="/camps/financial_quotient">財商數學創客營</a>——一樣從貨幣的故事、需要與想要談起，但以實體團體課進行，適合先短期體驗。兩者不是二選一：營隊是小二到小三的起點，這門課是國小 3-6 年級的長期路線。</p>
       </div>
     </section>
 
@@ -2069,7 +2077,7 @@
           </details>
           <details class="faq">
             <summary>上課時家長需要陪在旁邊嗎？</summary>
-            <div class="faq-a">不需要。孩子自己上課、自己操作平台，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話。您不需要懂財商，也不必陪讀——每週的學習週報會告訴您孩子學到哪、錢又是怎麼管的。</div>
+            <div class="faq-a">不需要。孩子自己上課、自己操作平台，真人老師全程看得到每個孩子的畫面，發現卡住會主動開啟通話。您不需要懂理財，也不必陪讀——每週的學習週報會告訴您孩子學到哪、錢又是怎麼管的。</div>
           </details>
           <details class="faq">
             <summary>平台會不會讓孩子沉迷？每天要花很多時間嗎？</summary>
@@ -2097,23 +2105,23 @@
           </details>
           <details class="faq">
             <summary>孩子那週有事不能上課怎麼辦？</summary>
-            <div class="faq-a">財商是線上課程，和橘子蘋果其他線上課一樣：可以事先調課，但沒有補課。上課前一天 23:59 前，您可以自己到家長後台把那一堂調到同課程的其他時段，期限內不限次數，調成功不算缺席。要先說清楚的是——沒有事先調走又缺席，那一堂就是扣掉了。</div>
+            <div class="faq-a">理財課是線上課程，和橘子蘋果其他線上課一樣：可以事先調課，但沒有補課。上課前一天 23:59 前，您可以自己到家長後台把那一堂調到同課程的其他時段，期限內不限次數，調成功不算缺席。要先說清楚的是——沒有事先調走又缺席，那一堂就是扣掉了。</div>
           </details>
           <details class="faq">
-            <summary>孩子沒學過程式，可以直接上財商課嗎？</summary>
-            <div class="faq-a">可以，不需要任何程式基礎。財商素養課程是獨立模組課程：不是程式課的前置，也不是程式課的延伸；單獨上財商、或<a href="/campaigns/online/">只上程式課</a>都可以，兩邊沒有先後順序。課程用動畫故事與遊戲關卡帶著孩子走，真人老師在旁邊看著操作。</div>
+            <summary>孩子沒學過程式，可以直接上理財課嗎？</summary>
+            <div class="faq-a">可以，不需要任何程式基礎。財商素養課程是獨立模組課程：不是程式課的前置，也不是程式課的延伸；單獨上理財課、或<a href="/campaigns/online/">只上程式課</a>都可以，兩邊沒有先後順序。課程用動畫故事與遊戲關卡帶著孩子走，真人老師在旁邊看著操作。</div>
           </details>
           <details class="faq">
             <summary>費用怎麼算？</summary>
             <div class="faq-a">依課程方案與平台使用期間規劃，不同方案內容不同。留下資料後，課程顧問會完整說明包含哪些課程、平台可用多久、費用與付款方式，讓您帶回去考慮，不需要當場決定。</div>
           </details>
           <details class="faq">
-            <summary>孩子已經在橘子蘋果上課了，還能上財商嗎？會不會衝堂？</summary>
-            <div class="faq-a">可以。財商課每週一堂，報名前課程顧問會與您確認時段、避開孩子現有的課；課後的平台練習則沒有固定時間。兩者練的是不同的能力：程式課練的是解決問題的邏輯，財商練的是面對金錢的判斷。</div>
+            <summary>孩子已經在橘子蘋果上課了，還能上理財課嗎？會不會衝堂？</summary>
+            <div class="faq-a">可以。理財課每週一堂，報名前課程顧問會與您確認時段、避開孩子現有的課；課後的平台練習則沒有固定時間。兩者練的是不同的能力：程式課練的是解決問題的邏輯，理財練的是面對金錢的判斷。</div>
           </details>
           <details class="faq">
-            <summary>橘子蘋果不是教程式的嗎？為什麼做財商？</summary>
-            <div class="faq-a"><a href="/about/">橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員</a>，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，財商也是。</div>
+            <summary>橘子蘋果不是教程式的嗎？為什麼做兒童理財教育？</summary>
+            <div class="faq-a"><a href="/about/">橘子蘋果深耕兒童與青少年程式教育 14 年、服務超過 10 萬名學員</a>，一直在做同一件事：把「未來一定用得上、但學校還沒教」的能力，用孩子喜歡的方式教會他們。程式是這樣，理財也是。</div>
           </details>
         </div>
       </div>
