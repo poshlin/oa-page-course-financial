@@ -298,6 +298,25 @@ hero mockup 已依平台實際畫面補上最具辨識度的元件：**半圓環
 - ⚠️ **preview pane 驗不了自動播放**：Chrome 對背景分頁的省電策略會擋 video-only media（`play()` 直接 reject）。要驗請用前景分頁
 - 投資模組影片待 16:00 開盤錄製；保險卡**刻意保留靜態特寫**（醫療險 $3,000 與命運卡敘事連動，比列表捲動更有說服力）
 
+## 🔴 滑動列會裁掉絕對定位的徽章（2026-09-03，v2 廢棄前撈出）
+
+`.swipe` 的 `overflow-x: auto` **會讓 `overflow-y` 一併變成 `auto`**（CSS 規範：兩軸不能一個 visible 一個 auto）。
+於是任何 `top` 為負值、突出卡片上緣的元素，都會被容器在 padding box 邊緣裁掉。
+
+實際案例：`.step-num`（01–06 那顆橘色徽章）是 `top: -18px`，基礎 `.swipe` 只有 `padding: 4px 20px 14px`，
+**實測徽章上緣被裁 10px**（375px 寬）。步驟 04–06 那條列不是滑動列（`class="flow flow-2"`，無 `.swipe`），所以沒事——
+這也是為什麼肉眼容易漏掉：同一區兩條列只有一條壞。
+
+```css
+@media (max-width: 860px) {
+  .flow.swipe { padding-top: 22px; }   /* 容得下 top:-18px 的徽章 + 4px 餘裕 */
+}
+```
+
+**通則**：往 `.swipe` 放任何帶負值定位的裝飾（徽章、緞帶、角標）之前，先確認上／下內距容得下它。
+驗證方法是量，不是看——`clipped = max(0, 容器.getBoundingClientRect().top − 徽章.getBoundingClientRect().top)`，
+修正前後各量一次，才知道自己真的修好了（本次實測 10px → 0px）。
+
 ## 版式原則
 
 - 淺色奶油底＋高飽和暖色點綴＋粗金邊框＋硬邊陰影＝「兒童遊戲化但不廉價」

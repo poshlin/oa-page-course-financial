@@ -87,8 +87,9 @@
 - [ ] **hero 與週報區的 CSS mockup**：保留（`vid-report` 已改為真截圖三段淡接；hero 半圓派圖為 CSS 重繪，已依平台實際樣式校正為實心派、三扇形）。上線前與正式環境比對 `assets/` 素材版本
 - [ ] favicon（注入母站後沿用官網，獨立預覽時缺）
 - [x] git init ＋ commit → preflight（hook 強制）→ push **已完成，但推在 `poshlin/oa-page-fin-platform`（PUBLIC）**
-- [ ] 🔴 **repo 位置待決（2026-09-03 實測發現）**：`OrangeApple-Lab/oa-page-fin-platform` **不存在**；組織底下所有 oa-page-* 都是 PRIVATE，而本頁唯一的家是個人帳號的 PUBLIC repo。依 `reference_orangeapple_github`，OrangeApple-Lab 才是 source of truth（唯一例外是 `poshlin/oa-page-home`）。交接前請決定：轉移到組織、或明列本頁為第二個例外
-- [ ] 🔴 **`v2.html` 與 `DESIGN-v2.md` 是 8/24 的舊草稿**，仍被 git 追蹤、線上回 HTTP 200（167KB）。雖有 `noindex, nofollow` 不會被索引，但交接時若整包部署會把舊版一起推上站。上線前刪除或移入 `_archive/`
+- [x] **repo 位置正常，無需處理**（保旭 2026-09-03 更正 Claude 誤判）：本頁走的是與 about、classroom 相同的既有模式——先在 `poshlin/`（PUBLIC，供 GitHub Pages 預覽）製作 → 交數位長 → 組織端建立 `OrangeApple-Lab/oa-page-*`（PRIVATE）→ 個人那份 archive。實測 about／classroom 皆為此形態。所以組織底下現在沒有 `oa-page-fin-platform` 是**尚未交接**的正常狀態，不是缺失。~~Claude 原先誤判為「位置待決」，已撤銷。~~
+- [ ] ⚠️ **交接後記得 archive `poshlin/oa-page-fin-platform`**：這是上述模式的最後一步。目前 about／classroom／faq／online 的個人版雖已 archive，但 **GitHub Pages 仍在服務且 robots 是 `index, follow`**（2026-09-03 實測），archive 不會自動關掉 Pages。本頁交接後請一併關閉 Pages，避免舊版被索引
+- [x] **`v2.html` 與 `DESIGN-v2.md` 已刪除（保旭 2026-09-03 拍板廢棄 v2）**。刪除前已把其中唯一還有價值的一條踩坑紀錄（滑動列裁切絕對定位徽章）撈進 `DESIGN.md` 並修進 `index.html`。v2 的分頁式階段卡設計本就已被「循序內容用收合、不用分頁」的原則取代；`.typegrid` 與 dataLayer 量測腳手架在 `index.html` 不存在，無需移轉。舊內容仍可由 git 歷史取回
 - [ ] 上線日更新 schema `dateModified`
 
 ## 對外數字 → 來源對照

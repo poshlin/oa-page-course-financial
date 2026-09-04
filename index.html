@@ -1273,6 +1273,10 @@
          內容一律貼齊頂端：編號徽章釘在卡片上緣，標題必須緊接其下，
          留白落在下方才讀得像「卡片有餘裕」；若改成垂直置中，徽章與內容中間會斷開。 */
       .flow.swipe > .card { display: block; }
+      /* 🔴 滑動列的 overflow-x:auto 會讓 overflow-y 一併變成 auto，而 .step-num 是
+         top:-18px 突出卡片上緣。基礎 .swipe 只有 4px 上內距，徽章上緣會被裁掉 10px（375px 寬實測）。
+         上內距要容得下整顆徽章（18px 突出 + 4px 餘裕）。步驟 04-06 那條列不是滑動列，不受影響。 */
+      .flow.swipe { padding-top: 22px; }
       .swipe-hint { display: block; margin-top: 2px; font-size: 0.8rem; font-weight: 800; color: var(--coral-ink); }
       details.def-more > summary { position: relative; padding-right: 28px; }
       details.def-more > summary::after { content: "▸"; position: absolute; right: 2px; top: 50%;
